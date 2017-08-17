@@ -16,8 +16,8 @@
                 <span class="info-box-icon bg-aqua"><i class="fa fa-folder-o" aria-hidden="true"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="{{ route('rooms.index') }}">Rooms</a></span>
-                    <span class="info-box-number">{{ $countRooms }}</span>
+                    <span class="info-box-text"><a href="">Rooms</a></span>
+                    <span class="info-box-number">2</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -29,8 +29,8 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-file-o"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="{{ route('files.index') }}">File</a></span>
-                    <span class="info-box-number">{{ $countFiles }}</span>
+                    <span class="info-box-text"><a href="">File</a></span>
+                    <span class="info-box-number">3</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -46,8 +46,8 @@
                 <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="{{ route('users.index') }}">Users</a></span>
-                    <span class="info-box-number">{{ $countUsers }}</span>
+                    <span class="info-box-text"><a href="">Users</a></span>
+                    <span class="info-box-number">5</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -59,8 +59,8 @@
                 <span class="info-box-icon bg-yellow"><i class="fa fa-smile-o" aria-hidden="true"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="{{ route('emotions.index') }}">Emotions</a></span>
-                    <span class="info-box-number">{{ $countEmotions }}</span>
+                    <span class="info-box-text"><a href="">Emotions</a></span>
+                    <span class="info-box-number">4</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -127,13 +127,13 @@
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
-                    	@foreach ($userRecents as $key => $user)
+                    	@for($i=1;$i<4;$i++)
                         <li>
-                            <img src="{{ asset('storage/avatars/' . $user->avatar) }}" alt="User Image">
-                            <a class="users-list-name" >{{ $user->fullname }}</a>
-                            <span class="users-list-date">{{ $user->name }}</span>
+                            <img src="{{ url("storage/avatars/avatar.png") }}" alt="User Image">
+                            <a class="users-list-name" >Nguyen Manh Linh</a>
+                            <span class="users-list-date">linhnm</span>
                         </li>
-                    	@endforeach
+                    	@endfor
                     </ul>
                     <!-- /.users-list -->
                 </div>
@@ -173,33 +173,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                	@foreach ($bigRoom as $key => $room)
-                                <tr>
-                                		
-                                    <td><a href="{{ route('rooms.show', $room->id) }}">{{ $room->name }}</a></td>
-                                    <td class="text-center">
-                                    	{{ $room->soLuong }}
-                                    </td>
-                                    <td class="text-center">
-                                        <form method="POST" action="{{ route('rooms.destroy', $room->id) }}" accept-charset="UTF-8">
-                                            {{ csrf_field() }}
-                                            <input name="_method" type="hidden" value="DELETE">
-                                            <div class='btn-group'>
-                                                <a href="{{ route('rooms.show', $room->id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                                <a href="{{ route('rooms.edit', $room->id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-edit"></i>
-                                                </a>
-                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Are you sure?&#039;)">
-                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                	@endforeach
-                                                                
+                                	<tr>
+                                        <td>asdasdasd</td>
+                                        <td>12</td>
+                                        <td>asdasdasdasd</td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
@@ -207,8 +185,8 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <a href="{{ route('rooms.create') }}" class="btn btn-sm btn-info btn-flat pull-left">Create room</a>
-                    <a href="{{ route('rooms.index') }}" class="btn btn-sm btn-default btn-flat pull-right">Show all rooms</a>
+                    <a href="" class="btn btn-sm btn-info btn-flat pull-left">Create room</a>
+                    <a href="" class="btn btn-sm btn-default btn-flat pull-right">Show all rooms</a>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -226,49 +204,4 @@
 @section('script')
     <!-- ChartJS 1.0.1 -->
 <script src="{{ asset('admin/js/Chart.min.js') }}"></script>
-
-<script>
-    $(function() {
-        var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-        var pieChart = new Chart(pieChartCanvas);
-        var PieData = [
-            
-            {
-                value: {{ $countUsers }},
-                color: "red",
-                highlight: "red",
-                label: "User"
-            },
-            {
-                value: {{ $countAdmins }},
-                color: "green",
-                highlight: "green",
-                label: "Admin"
-            },
-            {
-                value: {{ $countSuperAdmins }},
-                color: "yellow",
-                highlight: "yellow",
-                label: "Super Admin"
-            },
-            
-            
-
-        ];
-        var pieOptions = {
-            segmentShowStroke: true,
-            segmentStrokeColor: "#fff",
-            segmentStrokeWidth: 2,
-            percentageInnerCutout: 50,
-            animationSteps: 100,
-            animationEasing: "easeOutBounce",
-            animateRotate: true,
-            animateScale: false,
-            responsive: true,
-            maintainAspectRatio: true,
-            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-        };
-        pieChart.Doughnut(PieData, pieOptions);
-    });
-</script>
 @endsection
