@@ -20,3 +20,8 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['namespace'=>'FrontEnd'],function (){
+    Route::get('/home','HomeController@index');
+    Route::get('/about','AboutController@index');
+});

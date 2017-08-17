@@ -24,7 +24,6 @@
                 <div style="font-size: 60px;">
                     404!!! Page Not Found!!!
                     <br>
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Go back</a>
                 </div>
             </div>
         </div>
