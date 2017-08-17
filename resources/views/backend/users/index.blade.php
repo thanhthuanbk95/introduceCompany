@@ -35,18 +35,50 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>sdfsdfsdf</td>
-                                    <td>sdfsdfsdf</td>
-                                    <td>sdfsdfsdf</td>
-                                    <td>sdfsdfsdf</td>
-                                    <td>sdfsdfsdf</td>
-                                </tr>
+                            @if(count($users)<1)
+                                <td colspan="7" class="text-center"><h3>List of Users is empty!</h3></td>
+                            @else
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->fullname }}</td>
+                                        <td>
+                                            @if($user->level == 2)
+                                                Super Admin
+                                            @elseif($user->level == 1)
+                                                Admin
+                                            @else
+                                                User
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            <form method="POST" action="{{ route('users.destroy', $user->id) }}" accept-charset="UTF-8">
+                                                <input name="_method" type="hidden" value="DELETE">
+                                                {{ csrf_field() }}
+                                                <div class='btn-group'>
+                                                    <a href="{{ route('users.show', $user->id) }}" class='btn btn-default btn-xs'>
+                                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                                    </a>
+                                                    <a href="{{ route('users.edit', $user->id) }}" class='btn btn-default btn-xs'>
+                                                        <i class="glyphicon glyphicon-edit"></i>
+                                                    </a>
+                                                    <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Are you sure?&#039;)">
+                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
                     <div class="box-footer clearfix">
-
+                        <div class="pagination-sm no-margin pull-right">
+                            {{ $users->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

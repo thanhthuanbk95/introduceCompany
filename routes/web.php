@@ -14,9 +14,13 @@
 Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
 
     Route::resource('users', 'UserController');
-    Route::get('/index','HomeController@index')->name('admin.index')->middleware('CheckAdmin');
+    Route::get('/index','HomeController@index')->name('admin.index');
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
