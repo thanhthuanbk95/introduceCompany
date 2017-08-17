@@ -28,15 +28,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Chat Blue Team
+                    Sorry!
                 </div>
 
                 <div style="font-size: 60px;">
-                    Welcome to blue team!
-                    @if (Auth::check())
-                    <br>
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Continue</a>
-                    @endif
+                    Be right back!!!
                 </div>
             </div>
         </div>
