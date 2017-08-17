@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\BackEnd;
 
+use App\User;
+use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('backend.users.index');
+        $users = User::orderBy('id','DESC')->paginate(10);
+        return view('backend.users.index')->with('users',$users);
     }
 
     /**
@@ -24,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.users.create');
     }
 
     /**
@@ -35,7 +43,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->fullname = $request->fullname;
+        $user->level = $request->level;
+        $user->avatar = 'avatar.png';
+
+        if($user->save()) {
+            $request->session()->flash('success', 'User was created successful');
+        }else{
+            $request->session()->flash('fail', 'User was created unsuccessful');
+        }
+        return redirect()->route('users.index');
     }
 
     /**
@@ -46,7 +67,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('backend.users.show')->with('user',$user);
     }
 
     /**
@@ -57,7 +79,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('backend.users.edit')->with('user',$user);
     }
 
     /**
@@ -69,7 +93,40 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        //Lay thong tin tu form
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->fullname = $request->fullname;
+        $user->level = $request->level;
+
+        if($request->password != null){
+            $user->password = bcrypt($request->password);
+        }
+
+        if($request->file('avatar') != null){
+
+            if($user->avatar != 'avatar.png'){
+                //Xoa anh cu~
+                File::delete('storage/avatars/'.$user->avatar);
+            }
+            //Up anh moi
+            $image = $request->file('avatar')->store('public/avatars');
+            $arr_filename = explode("/",$image);
+            $filename = end($arr_filename);
+        }else{
+            $filename = $user->avatar;
+        }
+
+        $user->avatar = $filename;
+
+        if($user->save()) {
+            $request->session()->flash('success', 'User was updated successful');
+        }else{
+            $request->session()->flash('fail', 'User was updated unsuccessful');
+        }
+        return redirect()->route('users.index');
     }
 
     /**
@@ -80,6 +137,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        Room::where('user_id', $id)->delete();
+
+        if($user->avatar != 'avatar.png'){
+            //Xoa anh trong folder
+            File::delete('storage/avatars/'.$user->avatar);
+        }
+
+        //Xoa record trong database
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
