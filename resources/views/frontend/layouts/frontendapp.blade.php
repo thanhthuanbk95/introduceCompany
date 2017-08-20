@@ -13,6 +13,7 @@
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="{{ URL::asset('css/style-public.css') }}">
 		
+
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
@@ -33,6 +34,9 @@
 							<small class="site-description">Tư vấn thiết kế và Xây dựng</small>
 						</div>
 					</a> <!-- #branding -->
+
+
+			
 
 					<!-- Default snippet for navigation -->
 					<div class="main-navigation">

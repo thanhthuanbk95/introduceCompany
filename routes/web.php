@@ -24,6 +24,10 @@ Route::get('/', function () {
 Route::group(['namespace'=>'FrontEnd'],function (){
     Route::get('/home','HomeController@index');
     Route::get('/about','AboutController@index');
+    Route::get('/project','ProjectController@index');
+    Route::get('/furniture','FurnitureController@index');
+    Route::get('/phongthuy','PhongThuyController@index');
+    Route::get('/contact','ContactController@index');
 });
 Auth::routes();
 
