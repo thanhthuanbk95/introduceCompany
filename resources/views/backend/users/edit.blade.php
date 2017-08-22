@@ -4,7 +4,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Update User
+            Cập nhật người dùng
         </h1>
     </section>
 
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-6">
-                                <label for="name">Name:</label>
+                                <label for="name">Tên người dùng:</label>
                                 <input class="form-control" name="name" type="text" id="name" value="{{ $user->name }}">
                             </div>
                             <!-- Email Field -->
@@ -38,13 +38,13 @@
                         <div class="form-group">
                             <!-- Password Field -->
                             <div class="col-sm-6">
-                                <label for="password">Password:</label>
+                                <label for="password">Mật khẩu mới:</label>
                                 <input class="form-control" name="password" type="password" id="password" value="">
                             </div>
 
                             <!-- Password Confirmation Field -->
                             <div class="col-sm-6">
-                                <label for="password_confirmation">Password Confirmation:</label>
+                                <label for="password_confirmation">Xác nhận mật khẩu:</label>
                                 <input class="form-control" name="password_confirmation" type="password" id="password_confirmation" value="">
                             </div>
                             
@@ -53,12 +53,12 @@
                         <div class="form-group">
                             <!-- Fullname Field -->
                             <div class="col-sm-6">
-                                <label for="fullname">Fullname:</label>
+                                <label for="fullname">Họ và têm:</label>
                                 <input class="form-control" name="fullname" type="text" id="fullname" value="{{ $user->fullname }}">
                             </div>
                             <!-- Level Field -->
                             <div class="col-sm-6">
-                                <label for="level">Level:</label>
+                                <label for="level">Cấp bậc:</label>
                                 <select name="level" id="level" class="form-control">
                                     <option value="2" @if($user->level == 2) selected="selected" @endif>Super Admin</option>
                                     <option value="1" @if($user->level == 1) selected="selected" @endif>Admin</option>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <!-- Avatar Field -->
                             <div class="col-sm-6">
-                                <label for="avatar">Avatar:</label>
+                                <label for="avatar">Ảnh đại diện:</label>
                                 <input class="form-control" name="avatar" type="file" id="avatar" onchange="viewImg(this)">
                                 <br>
                                 <p><img id="avartar-img-show" src="{{ url('storage/avatars/' . $user->avatar) }}" alt="avatar" class="img-responsive" width="100px" height="100px"></p>

@@ -6,6 +6,7 @@ use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -135,11 +136,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         $user = User::findOrFail($id);
-
-        Room::where('user_id', $id)->delete();
 
         if($user->avatar != 'avatar.png'){
             //Xoa anh trong folder
@@ -148,6 +147,7 @@ class UserController extends Controller
 
         //Xoa record trong database
         $user->delete();
+        $request->session()->flash('success', 'Xóa người dùng thành công!');
         return redirect()->route('users.index');
     }
 }

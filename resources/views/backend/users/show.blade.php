@@ -4,10 +4,10 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1 class="pull-left">
-            User's Information
+            Thông tin người dùng
         </h1>
         <h1 class="pull-right">
-            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Add New</a>
+            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Thêm mới</a>
         </h1>
     </section>
 
@@ -21,16 +21,16 @@
                         <table class="table table-responsive table-bordered" id="tours-table">
                             <thead>
                                 <tr class="info">
-                                    <th class="text-center" colspan="2"><h3>USER'S INFORMATION</h3></th>
+                                    <th class="text-center" colspan="2"><h4>Thông tin người dùng</h4></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>ID</td>
+                                    <td>Mã người dùng</td>
                                     <td>{{ $user->id }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Name</td>
+                                    <td>Tên người dùng</td>
                                     <td>{{ $user->name }}</td>
                                 </tr>
                                 <tr>
@@ -38,11 +38,11 @@
                                     <td>{{ $user->email }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Full name</td>
+                                    <td>Họ và tên</td>
                                     <td>{{ $user->fullname }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Level</td>
+                                    <td>Cấp bậc</td>
                                     <td>
                                         @if($user->level == 2)
                                             Super Admin
@@ -54,15 +54,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Created At</td>
+                                    <td>Ngày tạo</td>
                                     <td class="text-success">{{ $user->created_at }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Updated At</td>
+                                    <td>Cập nhật gần nhất</td>
                                     <td class="text-danger">{{ $user->updated_at }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Avatar</td>
+                                    <td>Ảnh đại diện</td>
                                     <td><img src="{{ url("storage/avatars/$user->avatar") }}" width="200px"></td>
                                 </tr>
                             </tbody>

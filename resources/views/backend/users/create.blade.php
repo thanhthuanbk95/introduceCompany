@@ -4,7 +4,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Add Users
+            Thêm người dùng
         </h1>
     </section>
 
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-6">
-                                <label for="name">Name:</label>
+                                <label for="name" style="color: #9c3328">Tên người dùng (duy nhất ):</label>
                                 <input class="form-control" name="name" type="text" id="name">
                             </div>
                             <!-- Email Field -->
@@ -37,13 +37,13 @@
                         <div class="form-group">
                             <!-- Password Field -->
                             <div class="col-sm-6">
-                                <label for="password">Password:</label>
+                                <label for="password">Mật khẩu:</label>
                                 <input class="form-control" name="password" type="password" id="password">
                             </div>
 
                             <!-- Password Confirmation Field -->
                             <div class="col-sm-6">
-                                <label for="password_confirmation">Password Confirmation:</label>
+                                <label for="password_confirmation">Xác nhận mật khẩu:</label>
                                 <input class="form-control" name="password_confirmation" type="password" id="password_confirmation" value="">
                             </div>
                             
@@ -52,12 +52,12 @@
                         <div class="form-group">
                             <!-- Fullname Field -->
                             <div class="col-sm-6">
-                                <label for="fullname">Fullname:</label>
+                                <label for="fullname">Họ và tên:</label>
                                 <input class="form-control" name="fullname" type="text" id="fullname">
                             </div>
                             <!-- Level Field -->
                             <div class="col-sm-6">
-                                <label for="level">Level:</label>
+                                <label for="level">Cấp bậc:</label>
                                 <select name="level" id="level" class="form-control">
                                     <option value="2">Super Admin</option>
                                     <option value="1">Admin</option>
@@ -70,7 +70,7 @@
                             <!-- Submit Field -->
                             <div class="col-sm-12">
                                 <input class="btn btn-primary" type="submit" value="Save">
-                                <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
+                                <a href="{{ route('users.index') }}" class="btn btn-default">Trở lại</a>
                             </div>
                         </div>
                     </form>
