@@ -1,5 +1,4 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -9,18 +8,19 @@
     </section>
 
     <section class="content">
-        @if($errors->count()>0)
+        <?php if($errors->count()>0): ?>
             <ul class="alert alert-danger" style="list-style-type: none">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
-        @endif
+        <?php endif; ?>
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('users.store') }}" accept-charset="UTF-8" id="user">
-                        {{ csrf_field() }}
+                    <form method="POST" action="<?php echo e(route('users.store')); ?>" accept-charset="UTF-8" id="user">
+                        <?php echo e(csrf_field()); ?>
+
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-6">
@@ -70,7 +70,7 @@
                             <!-- Submit Field -->
                             <div class="col-sm-12">
                                 <input class="btn btn-primary" type="submit" value="Save">
-                                <a href="{{ route('users.index') }}" class="btn btn-default">Trở lại</a>
+                                <a href="<?php echo e(route('users.index')); ?>" class="btn btn-default">Trở lại</a>
                             </div>
                         </div>
                     </form>
@@ -81,4 +81,5 @@
 
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

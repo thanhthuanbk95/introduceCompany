@@ -1,5 +1,4 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -7,7 +6,7 @@
             Người dùng
         </h1>
         <h1 class="pull-right">
-            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Thêm mới</a>
+            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="<?php echo e(route('users.create')); ?>">Thêm mới</a>
         </h1>
     </section>
 
@@ -15,12 +14,12 @@
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12">
-                @if(Session::has('success'))
-                    <div class="alert alert-success"><p><strong>{{ Session::get('success') }}</strong></p></div>
-                @endif
-                @if(Session::has('fail'))
-                    <div class="alert alert-danger"><p><strong>{{ Session::get('fail') }}</strong></p></div>
-                @endif
+                <?php if(Session::has('success')): ?>
+                    <div class="alert alert-success"><p><strong><?php echo e(Session::get('success')); ?></strong></p></div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="alert alert-danger"><p><strong><?php echo e(Session::get('fail')); ?></strong></p></div>
+                <?php endif; ?>
                 <div class="clearfix"></div>
                 <div class="box box-primary">
                     <div class="box-body table-responsive">
@@ -35,32 +34,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @if(count($users)<1)
+                            <?php if(count($users)<1): ?>
                                 <td colspan="7" class="text-center"><h3>List of Users is empty!</h3></td>
-                            @else
-                                @foreach($users as $user)
+                            <?php else: ?>
+                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td class="text-center">{{ $user->name }}</td>
-                                        <td class="text-center">{{ $user->email }}</td>
-                                        <td class="text-center"{{ $user->fullname }}</td>
+                                        <td class="text-center"><?php echo e($user->name); ?></td>
+                                        <td class="text-center"><?php echo e($user->email); ?></td>
+                                        <td class="text-center"<?php echo e($user->fullname); ?></td>
                                         <td class="text-center">
-                                            @if($user->level == 2)
+                                            <?php if($user->level == 2): ?>
                                                 Super Admin
-                                            @elseif($user->level == 1)
+                                            <?php elseif($user->level == 1): ?>
                                                 Admin
-                                            @else
+                                            <?php else: ?>
                                                 User
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                         <td class="text-center">
-                                            <form method="POST" action="{{ route('users.destroy', $user->id) }}" accept-charset="UTF-8">
+                                            <form method="POST" action="<?php echo e(route('users.destroy', $user->id)); ?>" accept-charset="UTF-8">
                                                 <input name="_method" type="hidden" value="DELETE">
-                                                {{ csrf_field() }}
+                                                <?php echo e(csrf_field()); ?>
+
                                                 <div class='btn-group'>
-                                                    <a href="{{ route('users.show', $user->id) }}" class='btn btn-default btn-xs'>
+                                                    <a href="<?php echo e(route('users.show', $user->id)); ?>" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-eye-open"></i>
                                                     </a>
-                                                    <a href="{{ route('users.edit', $user->id) }}" class='btn btn-default btn-xs'>
+                                                    <a href="<?php echo e(route('users.edit', $user->id)); ?>" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-edit"></i>
                                                     </a>
                                                     <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Bạn muốn xóa người dùng này?&#039;)">
@@ -70,14 +70,15 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
-                            @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="box-footer clearfix">
                         <div class="pagination-sm no-margin pull-right">
-                            {{ $users->links() }}
+                            <?php echo e($users->links()); ?>
+
                         </div>
                     </div>
                 </div>
@@ -86,4 +87,5 @@
     </section>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
