@@ -24,7 +24,7 @@
                 <div style="font-size: 60px;">
                     405!!! Method not allowed!!!
                     <br>
-                    <a href="{{ route('home') }}" style="text-decoration: none;">Go back</a>
+                    <!-- <a href="{{ route('home') }}" style="text-decoration: none;">Go back</a> -->
                 </div>
             </div>
         </div>

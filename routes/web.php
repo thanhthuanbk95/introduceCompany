@@ -23,6 +23,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['namespace'=>'FrontEnd'],function (){
+    Route::get('/home','HomeController@index');
+    Route::get('/about','AboutController@index');
+    Route::get('/project','ProjectController@index');
+    Route::get('/project-single','ProjectSingleController@index');
+    Route::get('/furniture','FurnitureController@index');
+    Route::get('/phongthuy','PhongThuyController@index');
+    Route::get('/contact','ContactController@index');
+});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
