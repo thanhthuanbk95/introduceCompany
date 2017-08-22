@@ -27,7 +27,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="{{ url('/home') }}" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">VIỆT VŨ LONG</h1>
@@ -42,12 +42,12 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="index.html">TRANG CHỦ</a></li>
-							<li class="menu-item"><a href="about.html">GIỚI THIỆU</a></li>
-							<li class="menu-item"><a href="news.html">DỰ ÁN</a></li>
-							<li class="menu-item"><a href="about.html">NỘI THẤT</a></li>
-							<li class="menu-item"><a href="project.html">PHONG THỦY</a></li>
-							<li class="menu-item"><a href="contact.html">LIÊN HỆ</a></li>
+							<li class="menu-item current-menu-item"><a href="{{ url('/home') }}">TRANG CHỦ</a></li>
+							<li class="menu-item"><a href="{{ url('/about') }}">GIỚI THIỆU</a></li>
+							<li class="menu-item"><a href="{{ url('/project') }}">DỰ ÁN</a></li>
+							<li class="menu-item"><a href="{{ url('/furniture') }}">NỘI THẤT</a></li>
+							<li class="menu-item"><a href="{{ url('/phongthuy') }}">PHONG THỦY</a></li>
+							<li class="menu-item"><a href="{{ url('/contact') }}">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -66,7 +66,7 @@
 					<div class="pull-left">
 
 						<address>
-							<strong>CÔNG TY TNHH TƯ VẤN THIẾT KẾ VÀ XÂY DỰNG VIỆT VŨ LONG</strong>
+							<strong>CÔNG TY TNHH TƯ VẤN THIẾT KẾ VÀ XÂY DỰNG VIỆT VŨ LONG - EVITA</strong>
 							<p>78 Nguyễn Đình Tựu, Q. Thanh Khê, Tp Đà Nẵng</p>
 						</address>
 
@@ -85,7 +85,7 @@
 
 					</div> <!-- .pull-right -->
 
-					<div class="colophon">something here<a href="http://www.evita.com.vn/" title="Designed by VandelayDesign.com" target="_blank"> evita.com.vn</a>. All rights reserved.</div>
+					<!-- <div class="colophon">something here<a href="http://www.evita.com.vn/" title="Designed by VandelayDesign.com" target="_blank"> evita.com.vn</a>. All rights reserved.</div> -->
 
 				</div> <!-- .container -->
 			</footer> <!-- .site-footer -->

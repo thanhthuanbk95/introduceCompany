@@ -249,7 +249,7 @@ p {
 
 form input, form textarea, form select {
   outline: none;
-  border: 2px solid #ffffff;
+  border: 2px solid #383838;
   padding: 10px;
   background: none;
   margin-bottom: 10px;
@@ -313,7 +313,7 @@ form input[type="submit"], form button, form input[type="reset"] {
   padding: 10px 30px;
   margin-bottom: 50px;
   position: relative;
-  border: 2px solid #ffffff;
+  border: 2px solid #383838;
   color: #d3d3d3;
   text-transform: uppercase; }
   .button-back img {
@@ -325,14 +325,14 @@ form input[type="submit"], form button, form input[type="reset"] {
     position: absolute;
     background: #212121; }
   .button-back:before {
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #383838;
     -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
     top: -10px;
     left: -10px; }
   .button-back:after {
-    border-top: 2px solid #ffffff;
+    border-top: 2px solid #383838;
     -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
@@ -340,7 +340,8 @@ form input[type="submit"], form button, form input[type="reset"] {
     right: -10px; }
 
 .map {
-  min-height: 400px; }
+  height: 400px;
+  width: 100%; }
 
 .contact-detail {
   padding: 30px 0; }
@@ -362,7 +363,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     vertical-align: middle;
     width: 40px;
     height: 40px;
-    border: 2px solid #ffffff;
+    border: 2px solid #383838;
     text-align: center;
     position: relative;
     margin-right: 20px; }
@@ -373,14 +374,14 @@ form input[type="submit"], form button, form input[type="reset"] {
       position: absolute;
       background: #212121; }
     .contact-detail .contact-icon:before {
-      border-bottom: 2px solid #ffffff;
+      border-bottom: 2px solid #383838;
       -webkit-transform: rotate(-45deg);
           -ms-transform: rotate(-45deg);
               transform: rotate(-45deg);
       top: -5px;
       left: -5px; }
     .contact-detail .contact-icon:after {
-      border-top: 2px solid #ffffff;
+      border-top: 2px solid #383838;
       -webkit-transform: rotate(-45deg);
           -ms-transform: rotate(-45deg);
               transform: rotate(-45deg);
@@ -1430,8 +1431,8 @@ form input[type="submit"], form button, form input[type="reset"] {
 
 .section-title {
   font-size: 36px;
-  font-size: 2.5714285714em;
-  letter-spacing: 2px;
+  font-size: 1.7714285714em;
+  letter-spacing: 1px;
   font-weight: 300;
   text-transform: uppercase; }
 
@@ -1549,7 +1550,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     margin-bottom: 20px; }
 
 .page {
-  padding: 0px 0; }
+  padding: 50px 0; }
   .page .align-left {
     float: left;
     margin-right: 30px;
@@ -1706,14 +1707,26 @@ form input[type="submit"], form button, form input[type="reset"] {
     opacity: 1;
     transition: .5s ease;
   }
+
+  .project-item:hover .project-title{
+    transition: .5s ease;
+    visibility: visible;
+  }
   .project-item .project-title {
+    width: 100%;
+    opacity: 0.7;
+    margin-top: -37px;
+    text-align: center;
+    position: relative;
+    display: block;
+    visibility: hidden;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#547085), to(#3d4f5d));
     font-size: 18px;
     font-size: 1.2857142857em;
-    margin-bottom: 0;
+    padding: 3px 10px;
     letter-spacing: 2px;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: #34b5d4; }
+    font-weight: bold;
+    color: #fff; }
   .project-item .project-subtitle {
     font-size: 12px;
     font-size: 0.8571428571em;
@@ -1741,11 +1754,10 @@ form input[type="submit"], form button, form input[type="reset"] {
     .project-images .thumbs a img {
       max-width: 100%; }
 
-/*
- * Footer Styles
- */
+ /* Footer Styles*/
+ 
 .site-footer {
-  margin-top: 50px; }
+  margin-top: 20px; }
   .site-footer .container {
     border-top: 1px solid #ffffff;
     padding: 50px 15px 30px;
@@ -1840,6 +1852,9 @@ form input[type="submit"], form button, form input[type="reset"] {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    display: inline-block;
+    position: relative;
+    z-index: 3;
 }
 
 .close:hover,
@@ -1847,12 +1862,12 @@ form input[type="submit"], form button, form input[type="reset"] {
     color: #515151;
     text-decoration: none;
     cursor: pointer;
+    display: block;
 }
 
 /*CSS pagination*/
 .pagination {
     padding: 20px;
-    margin-bottom: 20px;
     float: right !important;
     right: 0 !important;
 }
@@ -1889,11 +1904,11 @@ form input[type="submit"], form button, form input[type="reset"] {
 
 /*CSS Slideshow*/
 * {box-sizing:border-box}
-.mySlides {display:none}
+.mySlides {display: none;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 100%;
+  width: 100%;
   position: relative;
   margin: auto;
 }
@@ -1927,13 +1942,13 @@ form input[type="submit"], form button, form input[type="reset"] {
 
 /* Caption text */
 .text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 20px;
   position: absolute;
-  bottom: 8px;
+  bottom: 2px;
   width: 100%;
-  text-align: center;
+  
 }
 
 /* Number text (1/3 etc) */
@@ -1951,14 +1966,14 @@ form input[type="submit"], form button, form input[type="reset"] {
   height: 13px;
   width: 13px;
   margin: 0 2px;
-  background-color: #bbb;
+  background-color: #eee;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.3s ease;
 }
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: #34b5d4;
 }
 
 /* Fading animation */

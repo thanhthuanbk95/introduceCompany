@@ -12,7 +12,7 @@
 								<option value="">Bếp</option>
 								<option value="">Phòng tắm</option>
 								<option value="">Đèn trang trí</option>
-								<option value="">Sofa</option>
+								<option value="	">Sofa</option>
 							</select>
 
 							<a href="#" class="current" data-filter="*">Furniture</a>
@@ -74,14 +74,13 @@
 									</figcaption> -->
 								</figure>
 							</div>
-							<!-- Modal content -->
 							<span style="float:right; width: 100%;">
 							<div class="pagination dark" style="float: right;">
 								<a href="#" class="pagenumber dark gradient"><<</a>
 								<span class="pagenumber dark active">1</span>
 								<a href="#" class="pagenumber dark gradient">2</a>
 								<a href="#" class="pagenumber dark gradient">3</a>
-								<a href="#" class="pagenumber dark gradient">1</a>
+								<a href="#" class="pagenumber dark gradient">4</a>
 								<a href="#" class="pagenumber dark gradient">5</a>
 								<a href="#" class="pagenumber dark gradient">6</a>
 								<a href="#" class="pagenumber dark gradient">>></a>
@@ -144,7 +143,7 @@
 
 		</div>
   </div>
-
+	<script src="<?php echo e(URL::asset('js/public/furniture.js')); ?>"></script>
 </div>
 <?php $__env->stopSection(); ?>
 

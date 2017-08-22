@@ -1,6 +1,4 @@
-@extends('frontend.layouts.frontendapp')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 			<main class="main-content">
 				
@@ -43,4 +41,5 @@
 				</div> <!-- .page -->
 
 			</main> <!-- .main-content -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.frontendapp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

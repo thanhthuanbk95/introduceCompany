@@ -8,33 +8,35 @@
 
 						<div class="filter-links filterable-nav">
 							<select class="mobile-filter">
-								<option value=".shopping-center">Furniture</option>
-								<option value="*">Bếp</option>
-								<option value=".skyscraper">Phòng tắm</option>
-								<option value=".shopping-center">Đèn trang trí</option>
-								<option value=".shopping-center">Sofa</option>
+								<option value="">Biệt thự</option>
+								<option value="">Bar, Nhà hàng, Cafe</option>
+								<option value="">Nhà phố</option>
+								<option value="">Công cộng - Dịch vụ</option>
+								<option value="	">Thi công</option>
 							</select>
-							<a href="#" class="current wow fadeInRight" data-filter="*">Furniture</a>
-							<a href="#" class="wow fadeInRight" data-wow-delay=".2s" data-filter=".skyscraper">Bếp</a>
-							<a href="#" class="wow fadeInRight" data-wow-delay=".4s" data-filter=".shopping-center">Phòng tắm</a>
-							<a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".apartment">Đèn trang trí</a>
-							<a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".apartment">Sofa</a>
+
+							<a href="#" class="current" data-filter="*">Biệt thự</a>
+							<a href="#" class="">Bar, Nhà hàng, Cafe</a>
+							<a href="#" class="" >Nhà phố</a>
+							<a href="#" class="" >Công cộng - Dịch vụ</a>
+							<a href="#" class="" >Thi công</a>
 						</div>
 
 						<div class="filterable-items">
 							<div class="project-item filterable-item shopping-center">
 								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-1.jpg" alt="#"></a>
+									<a href="<?php echo e(url('/project-single')); ?>"><img src="dummy/large-thumb-1.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
+
 								</figure>
 							</div>
 							<div class="project-item filterable-item skyscrapper">
 								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-2.jpg" alt="#"></a>
+									<a href="project-single.html"><img src="dummy/large-thumb-2.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
 								</figure>
 							</div>
 							<div class="project-item filterable-item skyscraper">
 								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-3.jpg" alt="#"></a>
+									<a href="project-single.html"><img src="dummy/large-thumb-3.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
 								</figure>
 							</div>
 							<div class="project-item filterable-item apartment">
@@ -65,17 +67,20 @@
 							<div class="project-item filterable-item skyscrapper">
 								<figure class="featured-image">
 									<a href="project-single.html"><img src="dummy/large-thumb-9.jpg" alt="#"></a>
-									<!-- <figcaption>
-										<h2 class="project-title"><a href="project-single.html">quam exercitationem</a></h2>
-										<p class="project-subtotle">Maecenas dictum suscipit</p>
-										<p>Sed ut perspiciatis unde omnis iste natus accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-										<a href="#" class="more-link"><img src="images/arrow.png" alt=""></a>
-									</figcaption> -->
 								</figure>
 							</div>
-							<div class="Pagination">
-									<div class="page"><img src="images/page.png" class="page-img"><span class="page-number">1</span></div>
+							<span style="float:right; width: 100%;">
+							<div class="pagination dark" style="float: right;">
+								<a href="#" class="pagenumber dark gradient"><<</a>
+								<span class="pagenumber dark active">1</span>
+								<a href="#" class="pagenumber dark gradient">2</a>
+								<a href="#" class="pagenumber dark gradient">3</a>
+								<a href="#" class="pagenumber dark gradient">4</a>
+								<a href="#" class="pagenumber dark gradient">5</a>
+								<a href="#" class="pagenumber dark gradient">6</a>
+								<a href="#" class="pagenumber dark gradient">>></a>
 							</div>
+							</span>
 						</div>
 					</div>
 				</div> <!-- .page -->
