@@ -14,6 +14,8 @@
 Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
 
     Route::resource('users', 'UserController');
+    Route::resource('parentcats', 'ParentCatController');
+    Route::resource('categories', 'CatController');
     Route::get('/index','HomeController@index')->name('admin.index');
 });
 
