@@ -4,10 +4,10 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1 class="pull-left">
-            Users
+            Người dùng
         </h1>
         <h1 class="pull-right">
-            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Add New</a>
+            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('users.create') }}">Thêm mới</a>
         </h1>
     </section>
 
@@ -27,11 +27,11 @@
                         <table class="table table-responsive table-bordered" id="tours-table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Fullname</th>
-                                    <th>Level</th>
-                                    <th class="text-center" colspan="3">Action</th>
+                                    <th class="text-center">Tên người dùng</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Họ và tên</th>
+                                    <th class="text-center">Cấp bậc</th>
+                                    <th class="text-center" colspan="3">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,10 +40,10 @@
                             @else
                                 @foreach($users as $user)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->fullname }}</td>
-                                        <td>
+                                        <td class="text-center">{{ $user->name }}</td>
+                                        <td class="text-center">{{ $user->email }}</td>
+                                        <td class="text-center"{{ $user->fullname }}</td>
+                                        <td class="text-center">
                                             @if($user->level == 2)
                                                 Super Admin
                                             @elseif($user->level == 1)
@@ -63,7 +63,7 @@
                                                     <a href="{{ route('users.edit', $user->id) }}" class='btn btn-default btn-xs'>
                                                         <i class="glyphicon glyphicon-edit"></i>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Are you sure?&#039;)">
+                                                    <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Bạn muốn xóa người dùng này?&#039;)">
                                                         <i class="glyphicon glyphicon-trash"></i>
                                                     </button>
                                                 </div>

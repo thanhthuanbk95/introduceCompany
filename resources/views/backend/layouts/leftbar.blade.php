@@ -16,18 +16,23 @@
                 <i class="fa fa-home"></i> <span>Dashboard</span>
             </a>
         </li>
-        @if(Auth::user()->level == 1)
+        @if(Auth::user()->level == 2)
 
             <li class="{{ Request::is('admin/users*')? 'active' : '' }}">
                 <a href="{{ route('users.index') }}">
-                    <i class="fa fa-user"></i> <span>Users</span>
+                    <i class="fa fa-user"></i> <span>Người dùng</span>
                 </a>
             </li>
 
         @endif
-        <li class="{{ Request::is('admin/files*')? 'active' : '' }}">
-            <a href="">
-                <i class="fa fa-file-audio-o"></i> <span>Files</span>
+        <li class="{{ Request::is('admin/parentcats*')? 'active' : '' }}">
+            <a href="{{ route('parentcats.index') }}">
+                <i class="fa fa-database"></i> <span>Danh mục</span>
+            </a>
+        </li>
+        <li class="{{ Request::is('admin/categories*')? 'active' : '' }}">
+            <a href="{{ route('categories.index') }}">
+                <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
             </a>
         </li>
 
