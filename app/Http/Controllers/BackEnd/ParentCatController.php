@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackEnd;
 
+use App\Category;
 use App\ParentCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -98,5 +99,17 @@ class ParentCatController extends Controller
         $parentcat->delete();
         $request->session()->flash('success', 'Xóa danh mục thành công!');
         return redirect()->route('parentcats.index');
+    }
+    public function setCategories(Request $request){
+        $id_parent = $request->id_parrent;
+        //lay danh sach tieu muc
+        $categories = Category::where('id_parent','=',$id_parent)->get();
+        $output = "<div class=\"col-sm-12\">
+                                <label for=\"category\">Chọn tiểu mục:</label><select name=\"category\" class=\"form-control\">";
+        foreach ($categories as $category){
+            $output = $output . "<option value=\"$category->id\">$category->name</option>";
+        }
+        $output = $output . "</select></div><div class=\"clearfix\"></div>";
+        echo $output;
     }
 }

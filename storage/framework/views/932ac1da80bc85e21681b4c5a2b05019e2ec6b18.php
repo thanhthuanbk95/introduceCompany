@@ -13,11 +13,11 @@
     <ul class="sidebar-menu" id="list_pages">
 
         <li class="<?php echo e(Request::is('admin/index')? 'active' : ''); ?>">
-            <a href="">
+            <a href="<?php echo e(route('admin.index')); ?>">
                 <i class="fa fa-home"></i> <span>Dashboard</span>
             </a>
         </li>
-        <?php if(Auth::user()->level == 2): ?>
+        <?php if(Auth::user()->level ==  2): ?>
 
             <li class="<?php echo e(Request::is('admin/users*')? 'active' : ''); ?>">
                 <a href="<?php echo e(route('users.index')); ?>">
@@ -36,7 +36,11 @@
                 <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
             </a>
         </li>
-
+        <li class="<?php echo e(Request::is('admin/papers*')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('papers.index')); ?>">
+                <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+            </a>
+        </li>
 
     </ul>
 </section>

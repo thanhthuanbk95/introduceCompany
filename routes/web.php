@@ -16,15 +16,17 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
     Route::resource('users', 'UserController');
     Route::resource('parentcats', 'ParentCatController');
     Route::resource('categories', 'CatController');
+    Route::resource('papers', 'PaperController');
     Route::get('/index','HomeController@index')->name('admin.index');
+    Route::post('/setCategories','ParentCatController@setCategories')->name('setCategories');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::group(['namespace'=>'FrontEnd'],function (){
-    Route::get('/home','HomeController@index');
+    Route::get('/','HomeController@index');
     Route::get('/about','AboutController@index');
     Route::get('/project','ProjectController@index');
     Route::get('/project-single','ProjectSingleController@index');

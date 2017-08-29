@@ -12,11 +12,11 @@
     <ul class="sidebar-menu" id="list_pages">
 
         <li class="{{ Request::is('admin/index')? 'active' : '' }}">
-            <a href="">
+            <a href="{{ route('admin.index') }}">
                 <i class="fa fa-home"></i> <span>Dashboard</span>
             </a>
         </li>
-        @if(Auth::user()->level == 2)
+        @if(Auth::user()->level ==  2)
 
             <li class="{{ Request::is('admin/users*')? 'active' : '' }}">
                 <a href="{{ route('users.index') }}">
@@ -35,7 +35,11 @@
                 <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
             </a>
         </li>
-
+        <li class="{{ Request::is('admin/papers*')? 'active' : '' }}">
+            <a href="{{ route('papers.index') }}">
+                <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+            </a>
+        </li>
 
     </ul>
 </section>

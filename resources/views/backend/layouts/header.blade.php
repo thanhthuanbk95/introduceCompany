@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('admin/css/AdminLTE.min.css') }}">
 
         <link rel="stylesheet" href="{{ asset('admin/css/skin-blue.min.css') }}">
-        <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('admin/js/jquery.min.js') }}" type="text/javascript"></script>
 
         <style>
             .error{

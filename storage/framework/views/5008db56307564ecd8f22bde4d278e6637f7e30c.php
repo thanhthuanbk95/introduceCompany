@@ -41,7 +41,7 @@
                                     <tr>
                                         <td class="text-center"><?php echo e($user->name); ?></td>
                                         <td class="text-center"><?php echo e($user->email); ?></td>
-                                        <td class="text-center"<?php echo e($user->fullname); ?></td>
+                                        <td class="text-center"><?php echo e($user->fullname); ?></td>
                                         <td class="text-center">
                                             <?php if($user->level == 2): ?>
                                                 Super Admin
