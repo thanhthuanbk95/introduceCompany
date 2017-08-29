@@ -24,14 +24,32 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
+<body class="hold-transition login-page" style="">
+<div class="background-image"></div>
+
+<style type="text/css">
+  /*background login*/
+.background-image{
+  background: url('../images/backgroundlogin.jpg');-webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+</style>
+
+<div class="login-box" style="margin: 10% auto;">
+    <!-- /.login-logo -->
+    <div class="login-box-body">
     <div class="login-logo">
         <a href="<?php echo e(url('/home')); ?>"><b>Evita </b>Company</a>
     </div>
-
-    <!-- /.login-logo -->
-    <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
         <form method="post" action="<?php echo e(url('/login')); ?>">
@@ -75,7 +93,6 @@
         </form>
 
         <a href="<?php echo e(url('/password/reset')); ?>">I forgot my password</a><br>
-        <a href="<?php echo e(url('/register')); ?>" class="text-center">Register a new membership</a>
 
     </div>
     <!-- /.login-box-body -->

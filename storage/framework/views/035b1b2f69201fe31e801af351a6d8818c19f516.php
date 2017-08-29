@@ -66,7 +66,7 @@
 					<div class="pull-left">
 
 						<address>
-							<strong>CÔNG TY TNHH TƯ VẤN THIẾT KẾ VÀ XÂY DỰNG VIỆT VŨ LONG - EVITA</strong>
+							<strong>CÔNG TY TNHH TƯ VẤN THIẾT KẾ VÀ XÂY DỰNG VIỆT VŨ LONG</strong>
 							<p>78 Nguyễn Đình Tựu, Q. Thanh Khê, Tp Đà Nẵng</p>
 						</address>
 

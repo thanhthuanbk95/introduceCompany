@@ -55,5 +55,6 @@
 				</div> <!-- .page -->
 
 			</main> <!-- .main-content -->
+			<script src="<?php echo e(URL::asset('js/public/single-project.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('frontend.layouts.frontendapp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
