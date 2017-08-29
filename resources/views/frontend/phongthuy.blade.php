@@ -6,13 +6,12 @@
 				
 				<div class="page">
 					<div class="container">
-						<h2 class="section-title">September</h2>
 						<ul class="news-list">
 							<li>
-								<figure><img src="dummy/thumb-1.jpg" alt=""></figure>
-								<h3 class="entry-title"><a href="#">Etiam tincidunt odio</a></h3>
+								<figure><a href="#"><img src="dummy/thumb-1.jpg" alt=""></a></figure>
+								<h3 class="entry-title"><a href="#">Nhà bạn sắp phát tài lớn và có hỷ sự nếu xuất hiện 3 hiện tượng này!</a></h3>
 								<div class="date">30.09.2014</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dicta ab velit aliquid quisquam ex dolorem consectetur ad soluta iste. Cumque vero voluptate impedit, nostrum a sequi id vitae sed!</p>
+								<p>Đây là những hiện tượng thường hay xảy ra hằng ngày. Tuy nhiên không ít người thắc mắc, về góc độ phong thủy, chúng nói lên điều gì?</p>
 							</li>
 							<li>
 								<figure><img src="dummy/thumb-2.jpg" alt=""></figure>
@@ -27,17 +26,17 @@
 								<p>Explicabo tempora dignissimos, dicta maxime modi illum sit, facilis aliquid, a sint quasi quisquam. Beatae quia aut libero molestias, omnis minus autem, quas asperiores corporis. Distinctio eveniet molestiae, libero dignissimos.</p>
 							</li>
 							<li>
+								<figure><img src="dummy/thumb-3.jpg" alt=""></figure>
+								<h3 class="entry-title"><a href="#">Etiam tincidunt odio</a></h3>
+								<div class="date">30.09.2014</div>
+								<p>Explicabo tempora dignissimos, dicta maxime modi illum sit, facilis aliquid, a sint quasi quisquam. Beatae quia aut libero molestias, omnis minus autem, quas asperiores corporis. Distinctio eveniet molestiae, libero dignissimos.</p>
+							</li>
+							<li>
 								<figure><img src="dummy/thumb-4.jpg" alt=""></figure>
 								<h3 class="entry-title"><a href="#">Etiam tincidunt odio</a></h3>
 								<div class="date">30.09.2014</div>
 								<p>Autem aspernatur saepe, placeat, debitis laborum obcaecati sed ut repellat dolore possimus unde. Odit non unde, quas consequuntur dignissimos odio fugit corporis repudiandae rerum, tempora pariatur quasi, quia earum, quidem?</p>
 							</li>
-						</ul>
-						
-						<hr class="separator padding">
-						
-						<h2 class="section-title">August</h2>
-						<ul class="news-list">
 							<li>
 								<figure><img src="dummy/thumb-5.jpg" alt=""></figure>
 								<h3 class="entry-title"><a href="#">Etiam tincidunt odio</a></h3>
@@ -63,8 +62,18 @@
 								<p>In voluptatibus, sit error autem reprehenderit illo placeat dignissimos, itaque sint enim, adipisci natus, consequatur suscipit. Voluptate voluptates, nihil animi, inventore corporis consequuntur sequi expedita? Perspiciatis, soluta voluptatem sit quasi.</p>
 							</li>
 						</ul>
-						
-						<a href="#" class="button">Show Older News</a>
+						<span style="float:right; width: 100%;">
+							<div class="pagination dark" style="float: right;">
+								<a href="#" class="pagenumber dark gradient"><<</a>
+								<span class="pagenumber dark active">1</span>
+								<a href="#" class="pagenumber dark gradient">2</a>
+								<a href="#" class="pagenumber dark gradient">3</a>
+								<a href="#" class="pagenumber dark gradient">4</a>
+								<a href="#" class="pagenumber dark gradient">5</a>
+								<a href="#" class="pagenumber dark gradient">6</a>
+								<a href="#" class="pagenumber dark gradient">>></a>
+							</div>
+							</span>
 					</div>
 				</div> <!-- .page -->
 

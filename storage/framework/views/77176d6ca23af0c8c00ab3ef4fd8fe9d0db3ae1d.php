@@ -76,20 +76,24 @@
 <script>
     $('#parentcat').change(function() {
         var value = $("#parentcat :selected").val();
-        $.ajax({
-            url : "<?php echo e(route('setCategories')); ?>",
-            type : 'post',
-            dataType:'text',
-            data : {
-                'id_parrent': value
-            },
-            success : function (result){
-                $('#categoryform').html(result);
+        if(value ==0){
+            $('#categoryform').html('<option>Mời chọn danh mục</option>');
+        }else{
+            $.ajax({
+                url : "<?php echo e(route('setCategories')); ?>",
+                type : 'post',
+                dataType:'text',
+                data : {
+                    'id_parrent': value
+                },
+                success : function (result){
+                    $('#categoryform').html(result);
 //                alert(result);
-            },error: function (){
-                alert('aee');
-            }
-        });
+                },error: function (){
+                    alert('aee');
+                }
+            });
+        }
     });
 </script>
 <?php $__env->stopSection(); ?>

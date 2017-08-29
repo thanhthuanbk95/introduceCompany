@@ -1515,7 +1515,7 @@ form input[type="submit"], form button, form input[type="reset"] {
 
 .news-list {
   list-style: none;
-  margin: 0 -15px;
+  margin: 0 0;
   *zoom: 1; }
   .news-list:after {
     content: " ";
@@ -1524,7 +1524,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     overflow: hidden;
     height: 0; }
   .news-list li {
-    width: 25%;
+    width: 33%;
     padding: 0 15px;
     float: left;
     margin-bottom: 30px; }
@@ -1535,19 +1535,29 @@ form input[type="submit"], form button, form input[type="reset"] {
       .news-list li {
         width: 100%; } }
     .news-list li img {
-      max-width: 100%; }
+      max-width: 100%;
+      height: inherit;}
   .news-list figure {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    vertical-align: middle;
+    height: 250px; }
+    .news-list figure a {
+    height: 250px; }
   .news-list .entry-title {
-    text-transform: uppercase;
+    text-transform: none !important;
     margin-bottom: 0;
-    font-size: 18px;
-    font-size: 1.2857142857em; }
+    font-size: 15px;
+    font-size: 1.3857142857em !important;
+    text-align:justify;  }
+    .news-list p {
+      line-height: 1.5 !important;
+      text-align:justify;
+    }
   .news-list .date {
     font-size: 12px;
-    font-size: 0.8571428571em;
+    font-size: 0.9571428571em;
     display: block;
-    margin-bottom: 20px; }
+    margin-bottom: 10px; }
 
 .page {
   padding: 50px 0; }
@@ -1561,7 +1571,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     margin-bottom: 30px; }
   .page .entry-title {
     font-size: 36px;
-    font-size: 2.5714285714em;
+    font-size: 2.0714285714em;
     list-style: 3px;
     font-weight: 300;
     text-transform: uppercase; }
