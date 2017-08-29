@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="<?php echo e(asset('admin/css/AdminLTE.min.css')); ?>">
 
         <link rel="stylesheet" href="<?php echo e(asset('admin/css/skin-blue.min.css')); ?>">
-        <script src="<?php echo e(asset('admin/js/jquery.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/js/jquery.min.js')); ?>" type="text/javascript"></script>
 
         <style>
             .error{
