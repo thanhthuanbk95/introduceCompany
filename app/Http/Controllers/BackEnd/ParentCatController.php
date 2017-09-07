@@ -101,7 +101,7 @@ class ParentCatController extends Controller
         return redirect()->route('parentcats.index');
     }
     public function setCategories(Request $request){
-        $id_parent = $request->id_parrent;
+        $id_parent = $request->id_parent;
         //lay danh sach tieu muc
         $categories = Category::where('id_parent','=',$id_parent)->get();
         $output = "<div class=\"col-sm-12\">

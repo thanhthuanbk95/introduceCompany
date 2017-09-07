@@ -10,10 +10,14 @@
     </div>
 
     <ul class="sidebar-menu" id="list_pages">
-
+        <li class="{{ Request::is('homepage')? 'active' : '' }}">
+            <a href="{{ route('homepage') }}">
+                <i class="fa fa-home"></i> <span>Trang chủ</span>
+            </a>
+        </li>
         <li class="{{ Request::is('admin/index')? 'active' : '' }}">
             <a href="{{ route('admin.index') }}">
-                <i class="fa fa-home"></i> <span>Dashboard</span>
+                <i class="fa fa-bar-chart"></i> <span>Thống kê</span>
             </a>
         </li>
         @if(Auth::user()->level ==  2)

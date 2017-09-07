@@ -3,8 +3,8 @@
 <header class="main-header">
 
     <a href="<?php echo e(route('admin.index')); ?>" class="logo">
-        <span class="logo-mini"><b>A</b></span>
-        <span class="logo-lg"><b>Admin</b></span>    
+        <span class="logo-mini"><b>E</b></span>
+        <span class="logo-lg"><b>Evita</b></span>
     </a>
 
     <nav class="navbar navbar-static-top" role="navigation">
