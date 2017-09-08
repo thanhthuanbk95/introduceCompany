@@ -24,7 +24,7 @@
                 <div style="font-size: 60px;">
                     405!!! Method not allowed!!!
                     <br>
-                    <!-- <a href="<?php echo e(route('home')); ?>" style="text-decoration: none;">Go back</a> -->
+                    <!-- <a href="<?php echo e(route('homepage')); ?>" style="text-decoration: none;">Go back</a> -->
                 </div>
             </div>
         </div>

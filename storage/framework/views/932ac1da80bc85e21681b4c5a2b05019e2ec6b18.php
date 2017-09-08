@@ -11,10 +11,14 @@
     </div>
 
     <ul class="sidebar-menu" id="list_pages">
-
+        <li class="<?php echo e(Request::is('homepage')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('homepage')); ?>">
+                <i class="fa fa-home"></i> <span>Trang chủ</span>
+            </a>
+        </li>
         <li class="<?php echo e(Request::is('admin/index')? 'active' : ''); ?>">
             <a href="<?php echo e(route('admin.index')); ?>">
-                <i class="fa fa-home"></i> <span>Dashboard</span>
+                <i class="fa fa-bar-chart"></i> <span>Thống kê</span>
             </a>
         </li>
         <?php if(Auth::user()->level ==  2): ?>

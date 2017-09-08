@@ -19,6 +19,8 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
     Route::resource('papers', 'PaperController');
     Route::get('/index','HomeController@index')->name('admin.index');
     Route::post('/setCategories','ParentCatController@setCategories')->name('setCategories');
+    Route::post('/uploadimage/{idpaper}','PaperController@uploadImage')->name('uploadImage');
+    Route::post('/deleteimage','PaperController@deleteImage')->name('deleteImage');
 });
 
 //Route::get('/', function () {
@@ -26,7 +28,7 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
 //});
 
 Route::group(['namespace'=>'FrontEnd'],function (){
-    Route::get('/','HomeController@index');
+    Route::get('/','HomeController@index')->name('homepage');
     Route::get('/about','AboutController@index');
     Route::get('/project','ProjectController@index');
     Route::get('/project-single','ProjectSingleController@index');

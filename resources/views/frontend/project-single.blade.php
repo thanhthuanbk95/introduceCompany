@@ -57,4 +57,5 @@
 				</div> <!-- .page -->
 
 			</main> <!-- .main-content -->
+			<script src="{{ URL::asset('js/public/single-project.js') }}"></script>
 @endsection
