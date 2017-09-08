@@ -59,7 +59,7 @@
                             </label>
                         </form>
                         {{--<button class="btn btn-primary">--}}
-                            <a href="{{ route('papers.show', $paper->id) }}" title="Lưu" class="btn btn-primary" onclick="return confirm('Bạn có muốn thoát?')">Lưu</a>
+                            <a href="{{ route('papers.show', $paper->id) }}" title="Lưu" class="btn btn-primary" onclick="return confirm('Nhấn OK để xem toàn bộ bài viết')">Lưu</a>
                         {{--</button>--}}
                     </div>
                     <div class="col-sm-1"></div>

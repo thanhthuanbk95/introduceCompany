@@ -110,9 +110,13 @@ class PaperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $paper = Paper::findOrFail($id);
+        if($paper->id_user != Auth::user()->id && Auth::user()->level < 2){
+            $request->session()->flash('fail','Bạn không thể thay đổi nội dung bài viết của người khác!');
+            return redirect()->back();
+        }
         $category = Category::findOrFail($paper->id_cat);
         $parentcat = ParentCat::findOrFail($category->id_parent);
         $paper->idcat = $category->id;
@@ -134,7 +138,27 @@ class PaperController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $paper = Paper::findOrFail($id);
+        if($paper->id_user != Auth::user()->id && Auth::user()->level < 2){
+            $request->session()->flash('fail','Bạn không thể thay đổi nội dung bài viết của người khác!');
+            return redirect()->back();
+        }
+        $title = $request->title;
+        $describe = $request->describe;
+        $id_parent = $request->parentcat;
+        $id_cat = $request->category;
+        $category = Category::findOrFail($id_cat);
+        if($category->id_parent != $id_parent){
+            $request->session()->flash('fail','Tiểu mục và danh mục không chính xác!');
+            return redirect()->back();
+        }else{
+            $paper->title = $title;
+            $paper->describe = $describe;
+            $paper->id_cat = $id_cat;
+            $paper->id_user = Auth::user()->id;
+            $paper->save();
+            return redirect()->route('papers.show',$id);
+        }
     }
 
     /**
