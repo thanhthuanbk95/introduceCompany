@@ -42,7 +42,7 @@
                                     <tr>
                                         <td class="text-center">{{ $user->name }}</td>
                                         <td class="text-center">{{ $user->email }}</td>
-                                        <td class="text-center"{{ $user->fullname }}</td>
+                                        <td class="text-center">{{ $user->fullname }}</td>
                                         <td class="text-center">
                                             @if($user->level == 2)
                                                 Super Admin

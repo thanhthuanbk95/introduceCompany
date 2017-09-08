@@ -4,7 +4,7 @@
 <div class="content-wrapper">
     <section class="content-header">
     <h1>
-        Home
+        Trang chủ
     </h1>
 </section>
 
@@ -13,11 +13,11 @@
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="fa fa-folder-o" aria-hidden="true"></i></span>
+                <span class="info-box-icon bg-aqua"><i class="fa fa-database" aria-hidden="true"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">Rooms</a></span>
-                    <span class="info-box-number">2</span>
+                    <span class="info-box-text"><a href="">DANH MỤC</a></span>
+                    <span class="info-box-number">{{ $parent_count }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -26,11 +26,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-file-o"></i></span>
+                <span class="info-box-icon bg-red"><i class="fa fa-file-code-o"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">File</a></span>
-                    <span class="info-box-number">3</span>
+                    <span class="info-box-text"><a href="">TIỂU MỤC</a></span>
+                    <span class="info-box-number">{{ $cat_count }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -43,11 +43,11 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
+                <span class="info-box-icon bg-green"><i class="fa fa-newspaper-o"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">Users</a></span>
-                    <span class="info-box-number">5</span>
+                    <span class="info-box-text"><a href="">BÀI VIẾT</a></span>
+                    <span class="info-box-number">{{ $paper_count }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -56,11 +56,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-smile-o" aria-hidden="true"></i></span>
+                <span class="info-box-icon bg-yellow"><i class="fa fa-user" aria-hidden="true"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">Emotions</a></span>
-                    <span class="info-box-number">4</span>
+                    <span class="info-box-text"><a href="">NGƯỜI DÙNG</a></span>
+                    <span class="info-box-number">{{ $user_count }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -77,7 +77,7 @@
             <!-- Chat box -->
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">User</h3>
+                    <h3 class="box-title">Người dùng</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -204,4 +204,48 @@
 @section('script')
     <!-- ChartJS 1.0.1 -->
 <script src="{{ asset('admin/js/Chart.min.js') }}"></script>
+    <script>
+        $(function() {
+            var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+            var pieChart = new Chart(pieChartCanvas);
+            var PieData = [
+
+                {
+                    value: {{ $countUsers }},
+                    color: "red",
+                    highlight: "red",
+                    label: "User"
+                },
+                {
+                    value: {{ $countAdmins }},
+                    color: "green",
+                    highlight: "green",
+                    label: "Admin"
+                },
+                {
+                    value: {{ $countSuperAdmins }},
+                    color: "yellow",
+                    highlight: "yellow",
+                    label: "Super Admin"
+                },
+
+
+
+            ];
+            var pieOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                percentageInnerCutout: 50,
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false,
+                responsive: true,
+                maintainAspectRatio: true,
+                legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+        };
+        pieChart.Doughnut(PieData, pieOptions);
+    });
+</script>
 @endsection
