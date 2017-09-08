@@ -49,23 +49,17 @@ $( document ).ready( function () {
 			}
         }
     });
-    $( "#user_update" ).validate( {
+    $( "#papers" ).validate( {
 
         rules: {
-            name: {
-                required: true,
-                minlength: 2,
-                maxlength: 32,
-            },
-            email: {
+            title: {
                 required: true,
                 minlength: 10,
-                maxlength: 200,
+                maxlength: 100,
             },
-            fullname: {
+            describe: {
                 required: true,
-                minlength: 2,
-                maxlenght: 100
+                minlength: 10,
             }
         }
     });
