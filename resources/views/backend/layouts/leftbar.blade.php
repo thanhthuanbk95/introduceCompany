@@ -29,6 +29,17 @@
             </li>
 
         @endif
+        <li class="{{ Request::is('admin/infor')? 'active' : '' }}">
+            <a href="{{ route('infor') }}">
+                <i class="fa fa-newspaper-o"></i> <span>Thông tin</span>
+            </a>
+        </li>
+        <li class="{{ Request::is('admin/introInfo')? 'active' : '' }}">
+            <a href="{{ route('introInfo') }}">
+                <i class="fa fa-newspaper-o"></i> <span>Giới thiệu</span>
+            </a>
+        </li>
+
         <li class="{{ Request::is('admin/parentcats*')? 'active' : '' }}">
             <a href="{{ route('parentcats.index') }}">
                 <i class="fa fa-database"></i> <span>Danh mục</span>

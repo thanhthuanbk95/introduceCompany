@@ -17,8 +17,10 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
     Route::resource('parentcats', 'ParentCatController');
     Route::resource('categories', 'CatController');
     Route::resource('papers', 'PaperController');
-    Route::resource('info', 'InformationController');
-    Route::resource('intro', 'IntroduceController');
+    Route::get('infor', 'InformationController@index')->name('infor');
+    Route::post('inforUpdate', 'InformationController@update')->name('inforUpdate');
+    Route::get('introInfo', 'IntroduceController@index')->name('introInfo');
+    Route::post('introUpdate', 'IntroduceController@update')->name('introUpdate');
     Route::get('/index','HomeController@index')->name('admin.index');
     Route::post('/setCategories','ParentCatController@setCategories')->name('setCategories');
     Route::post('/uploadimage/{idpaper}','PaperController@uploadImage')->name('uploadImage');
@@ -41,3 +43,11 @@ Route::group(['namespace'=>'FrontEnd'],function (){
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

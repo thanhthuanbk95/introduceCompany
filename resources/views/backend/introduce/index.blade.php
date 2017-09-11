@@ -9,27 +9,30 @@
     </section>
 
     <section class="content">
-
+        @if(Session::has('success'))
+                    <div class="alert alert-success"><p><strong>{{ Session::get('success') }}</strong></p></div>
+                @endif
+                @if(Session::has('fail'))
+                    <div class="alert alert-danger"><p><strong>{{ Session::get('fail') }}</strong></p></div>
+                @endif
+                <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="" accept-charset="UTF-8" id="room">
-                        <!-- {{ csrf_field() }} -->
-                        <input type="hidden" name="_method" value="PUT">
+                    <form method="POST" action="{{ route('introUpdate') }}" accept-charset="UTF-8" id="introForm">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
                                 <label for="intro">Giới thiệu về Công ty</label>
-                                <textarea class="form-control" name="intro" id="intro" rows="4" cols="20"></textarea>
+                                <textarea class="form-control" name="detail" id="intro" rows="4" cols="20">{{ $introduces->detail }}</textarea>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-
-                                <input class="btn btn-primary" type="submit" value="Save">
-                                <a href="{{ route('parentcats.index')}}" class="btn btn-default">Cancel</a>
+                                <input class="btn btn-primary" type="submit" value="Lưu">
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -38,8 +41,6 @@
             </div>
         </div>
     </section>
-
-    <?php phpinfo(); ?>
 
     <script>
         CKEDITOR.replace('intro', {
