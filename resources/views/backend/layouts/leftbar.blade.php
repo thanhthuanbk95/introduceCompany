@@ -27,6 +27,11 @@
                     <i class="fa fa-user"></i> <span>Người dùng</span>
                 </a>
             </li>
+            <li class="{{ Request::is('admin/users*')? 'active' : '' }}">
+                <a href="{{ route('users.index') }}">
+                    <i class="fa fa-user"></i> <span>Giới thiệu</span>
+                </a>
+            </li>
 
         @endif
         <li class="{{ Request::is('admin/infor')? 'active' : '' }}">

@@ -56,7 +56,7 @@
                                                 <a href="{{ route('papers.edit',$paper->id) }}" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-edit"></i>
                                                 </a>
-                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Tất cả các hình ảnh của bài viết này sẽ bị xóa theo!<br />Bạn muốn xóa?&#039;)">
+                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Nếu bạn xóa bài viết này\nTất cả các hình ảnh của bài viết này sẽ bị xóa theo!\n\tBạn muốn xóa?&#039;)">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </div>

@@ -37,6 +37,10 @@
                                     <td>{{ $paper->describe }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Người đăng</td>
+                                    <td class="text-blue">{{ $paper->user }}</td>
+                                </tr>
+                                <tr>
                                     <td>Ngày tạo</td>
                                     <td class="text-success">{{ $paper->created_at }}</td>
                                 </tr>
