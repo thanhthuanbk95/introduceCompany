@@ -21,8 +21,8 @@ class CreateTalbeContact extends Migration
             $table->string('content');
             $table->timestamps();
             $table->string('reply');
-            $table->integer('id_user');
-            $table->timestamp('reply_time');
+            $table->unsignedInteger('id_user');
+            $table->timestamp('reply_time')->nullable();
         });
     }
 

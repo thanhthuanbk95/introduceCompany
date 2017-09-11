@@ -16,20 +16,24 @@
 										</div>
 										<p><strong>Công ty TNHH Tư vấn thiết kế và Xây dựng Việt Vũ Long</strong> <br>78 Nguyễn Đình Tựu, Q. Thanh Khê, Tp Đà Nẵng</p>
 									</address>
-									<a href="#" class="phone"><span class="contact-icon"><img src="images/icon-phone.png" class="icon"></span>0934 380 037</a>
-									<a href="#" class="email"><span class="contact-icon"><img src="images/icon-envelope.png" class="icon"></span>vietvulong@evita.com</a>
+									<a href="javascript:void(0)" class="phone"><span class="contact-icon"><img src="images/icon-phone.png" class="icon"></span>0934 380 037</a>
+									<a href="javascript:void(0)" class="email"><span class="contact-icon"><img src="images/icon-envelope.png" class="icon"></span>vietvulong@evita.com</a>
 								</div>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
 								<div class="contact-form">
+									<?php if(Session::has('success')): ?>
+										<h3><?php echo e(Session::get('success')); ?></h3>
+									<?php endif; ?>
 									<h2 class="section-title">Liên hệ với chúng tôi</h2>
-									<!-- <p>Dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam dolorem.</p> -->
 
-									<form action="#">
-										<input type="text" placeholder="Họ và tên">
-										<input type="text" placeholder="Email..">
-										<input type="text" placeholder="Số điện thoại">
-										<textarea placeholder="Nội dung"></textarea>
+									<form method="POST" action="<?php echo e(route('contact.store')); ?>" id="contact">
+										<?php echo e(csrf_field()); ?>
+
+										<input type="text" name="hoten" placeholder="Họ và tên" value="" required >
+										<input type="text" name="email" placeholder="Email.." value="">
+										<input type="text" name="sodienthoai" placeholder="Số điện thoại" value="">
+										<textarea name="noidung" placeholder="Nội dung"></textarea>
 										<p class="text-right">
 											<button type="submit">Gửi tin nhắn</button>
 										</p>

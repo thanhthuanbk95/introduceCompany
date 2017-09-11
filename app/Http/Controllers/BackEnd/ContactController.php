@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\BackEnd;
 
-use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('frontend.contact');
+        //
     }
 
     /**
@@ -36,20 +35,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $fullname = $request->hoten;
-        $email = $request->email;
-        $phone = $request->sodienthoai;
-        $content = $request->noidung;
-        $contact = new Contact();
-        $contact->fullname = $fullname;
-        $contact->email = $email;
-        $contact->phone = $phone;
-        $contact->content = $content;
-        $contact->reply = "Chưa trả lời";
-        $contact->id_user = 0;
-        $contact->save();
-        $request->session()->flash('success','Cảm ơn bạn đã gửi liên hệ! Chúng tôi sẽ phản hồi sớm nhất!');
-        return redirect()->back();
+        //
     }
 
     /**

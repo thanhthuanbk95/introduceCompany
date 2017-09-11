@@ -42,6 +42,10 @@
                                     <td><?php echo e($paper->describe); ?></td>
                                 </tr>
                                 <tr>
+                                    <td>Người đăng</td>
+                                    <td class="text-blue"><?php echo e($paper->user); ?></td>
+                                </tr>
+                                <tr>
                                     <td>Ngày tạo</td>
                                     <td class="text-success"><?php echo e($paper->created_at); ?></td>
                                 </tr>

@@ -34,7 +34,7 @@ Route::group(['namespace'=>'FrontEnd'],function (){
     Route::get('/project-single','ProjectSingleController@index');
     Route::get('/furniture','FurnitureController@index');
     Route::get('/phongthuy','PhongThuyController@index');
-    Route::get('/contact','ContactController@index');
+    Route::resource('/contact', 'ContactController');
 });
 Auth::routes();
 

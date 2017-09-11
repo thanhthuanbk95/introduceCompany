@@ -14,10 +14,10 @@
 		<link rel="stylesheet" href="{{ URL::asset('css/style-public.css') }}">
 		
 
-		<!--[if lt IE 9]>
-		<script src="js/ie-support/html5.js"></script>
-		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
+		<script src="{{ asset('js/public/ie-support/html5.js') }}"></script>
+		<script src="{{ asset('js/public/ie-support/respond.js') }}"></script>
+		<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.min.js') }}"></script>
 
 	</head>
 
@@ -47,7 +47,7 @@
 							<li class="menu-item"><a href="{{ url('/project') }}">DỰ ÁN</a></li>
 							<li class="menu-item"><a href="{{ url('/furniture') }}">NỘI THẤT</a></li>
 							<li class="menu-item"><a href="{{ url('/phongthuy') }}">PHONG THỦY</a></li>
-							<li class="menu-item"><a href="{{ url('/contact') }}">LIÊN HỆ</a></li>
+							<li class="menu-item"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 

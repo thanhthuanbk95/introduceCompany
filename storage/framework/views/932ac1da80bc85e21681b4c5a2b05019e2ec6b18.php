@@ -28,6 +28,11 @@
                     <i class="fa fa-user"></i> <span>Người dùng</span>
                 </a>
             </li>
+            <li class="<?php echo e(Request::is('admin/users*')? 'active' : ''); ?>">
+                <a href="<?php echo e(route('users.index')); ?>">
+                    <i class="fa fa-user"></i> <span>Giới thiệu</span>
+                </a>
+            </li>
 
         <?php endif; ?>
         <li class="<?php echo e(Request::is('admin/parentcats*')? 'active' : ''); ?>">
