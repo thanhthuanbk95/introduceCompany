@@ -97,8 +97,10 @@ class PaperController extends Controller
         $paper = Paper::findOrFail($id);
         $category = Category::findOrFail($paper->id_cat);
         $parentcat = ParentCat::findOrFail($category->id_parent);
+        $user = User::findOrFail($paper->id_user);
         $paper->category = $category->name;
         $paper->parentcat = $parentcat->name;
+        $paper->user = $user->fullname;
         //lay danh sach anh
         $images = Image::where('id_paper','=',$id)->get();
         return view('backend.paper.show',compact('paper','images'));
@@ -167,9 +169,24 @@ class PaperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $paper = Paper::findOrFail($id);
+        if($paper->id_user != Auth::user()->id && Auth::user()->level < 2){
+            $request->session()->flash('fail','Bạn chỉ có thể xóa bài viết của chính mình!');
+            return redirect()->back();
+        }
+        $images = Image::where('id_paper','=',$id)->get();
+        foreach ($images as $image){
+            //xoá hết ảnh trong thư mục
+            File::delete('storage/images/'.$image->name);
+            //xóa hết ảnh trong db
+            $image->delete();
+        }
+        //xóa bài viết
+        $paper->delete();
+        $request->session()->flash('success','Bài viết đã được xóa thành công!');
+        return redirect()->back();
     }
     public function uploadImage(Request $request){
         $id_paper = $request->idpaper;
