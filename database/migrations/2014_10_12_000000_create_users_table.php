@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnFullnameUserTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class AddColumnFullnameUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table)
-        {
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('fullname');
             $table->boolean('level');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +32,6 @@ class AddColumnFullnameUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 }

@@ -1,15 +1,26 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
-    <section class="content-header">
+    <!-- <section class="content-header" style="color: #3c8dbc; margin-left: 15px;">
         <h1>
             Cập nhật thông tin
         </h1>
-    </section>
+    </section> -->
 
     <section class="content">
-
+        <?php if(Session::has('success')): ?>
+                    <div class="alert alert-success"><p><strong><?php echo e(Session::get('success')); ?></strong></p></div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="alert alert-danger"><p><strong><?php echo e(Session::get('fail')); ?></strong></p></div>
+                <?php endif; ?>
+                <div class="clearfix"></div>
         <div class="box box-primary">
+            <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Cập nhật thông tin
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
                     <form method="POST" action="<?php echo e(route('inforUpdate')); ?>" accept-charset="UTF-8" id="information">
@@ -82,7 +93,7 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <input class="btn btn-primary" type="submit" value="Lưu">
+                                <button type="submit" form="information" class="btn btn-primary" name="submit" value="Lưu"><i class="glyphicon glyphicon-edit"></i> Lưu</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>

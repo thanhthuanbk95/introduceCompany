@@ -1,18 +1,17 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
-        @if(Session::has('fail'))
-            <div class="alert alert-danger"><p><strong>{{ Session::get('fail') }}</strong></p></div>
-        @endif
-        @if($errors->count()>0)
+        <?php if(Session::has('fail')): ?>
+            <div class="alert alert-danger"><p><strong><?php echo e(Session::get('fail')); ?></strong></p></div>
+        <?php endif; ?>
+        <?php if($errors->count()>0): ?>
             <ul class="alert alert-danger" style="list-style-type: none">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
-        @endif
+        <?php endif; ?>
 
         <div class="box box-primary">
             <div class="box-header with-border" style="background-color: #c4e3f3;" >
@@ -22,8 +21,9 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('papers.store') }}" accept-charset="UTF-8" id="papers">
-                        {{ csrf_field() }}
+                    <form method="POST" action="<?php echo e(route('papers.store')); ?>" accept-charset="UTF-8" id="papers">
+                        <?php echo e(csrf_field()); ?>
+
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
@@ -37,9 +37,9 @@
                             <div class="col-sm-12">
                                 <label for="parentcat">Chọn danh mục:</label>
                                 <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()">
-                                    @foreach($parentcats as $parentcat)
-                                    <option value="{{ $parentcat->id }}">{{ $parentcat->name }}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($parentcat->id); ?>"><?php echo e($parentcat->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
@@ -49,11 +49,11 @@
                             <div class="col-sm-12">
                                 <label for="category">Chọn tiểu mục:</label>
                                 <select name="category" class="form-control">
-                                @foreach($categories as $category)
-                                    @if($category->id_parent == $parentcats[0]->id)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endif
-                                @endforeach
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category->id_parent == $parentcats[0]->id): ?>
+                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
@@ -87,7 +87,7 @@
             $('#categoryform').html("<div class=\"col-sm-12\"><label for=\"category\">Chọn tiểu mục:</label><label for=\"category\" class=\"form-control\"><span style=\"color: #9f191f\">BẠN CHƯA CHỌN DANH MỤC</span></label></div><div class=\"clearfix\"></div>");
         } else {
             $.ajax({
-                url: "{{ route('setCategories') }}",
+                url: "<?php echo e(route('setCategories')); ?>",
                 type: 'POST',
                 cache: false,
                 data: {
@@ -102,4 +102,5 @@
         }
     }
 </script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

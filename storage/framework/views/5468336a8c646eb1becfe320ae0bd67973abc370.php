@@ -1,15 +1,14 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
-        @if($errors->count()>0)
+        <?php if($errors->count()>0): ?>
             <ul class="alert alert-danger" style="list-style-type: none">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
-        @endif
+        <?php endif; ?>
 
         <div class="box box-primary">
             <div class="box-header with-border" style="background-color: #c4e3f3;" >
@@ -19,14 +18,15 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('papers.update',$paper->id) }}" accept-charset="UTF-8" id="papers">
-                        {{ csrf_field() }}
+                    <form method="POST" action="<?php echo e(route('papers.update',$paper->id)); ?>" accept-charset="UTF-8" id="papers">
+                        <?php echo e(csrf_field()); ?>
+
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
                                 <label for="title">Tiêu đề bài viết:</label>
-                                <input class="form-control" name="title" type="text" id="name" value="{{ $paper->title }}">
+                                <input class="form-control" name="title" type="text" id="name" value="<?php echo e($paper->title); ?>">
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -35,9 +35,9 @@
                             <div class="col-sm-12">
                                 <label for="parentcat">Chọn danh mục:</label>
                                 <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()">
-                                    @foreach($parentcats as $parentcat)
-                                        <option value="{{ $parentcat->id }}" @if($parentcat->id == $paper->idparent) selected="selected" @endif>{{ $parentcat->name }}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($parentcat->id); ?>" <?php if($parentcat->id == $paper->idparent): ?> selected="selected" <?php endif; ?>><?php echo e($parentcat->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
@@ -47,11 +47,11 @@
                             <div class="col-sm-12">
                                 <label for="category">Chọn tiểu mục:</label>
                                 <select name="category" class="form-control">
-                                    @foreach($categories as $category)
-                                        @if($category->id_parent == $paper->idparent)
-                                            <option value="{{ $category->id }}" @if($category->id == $paper->idcat) selected="selected" @endif>{{ $category->name }}</option>
-                                        @endif
-                                    @endforeach
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($category->id_parent == $paper->idparent): ?>
+                                            <option value="<?php echo e($category->id); ?>" <?php if($category->id == $paper->idcat): ?> selected="selected" <?php endif; ?>><?php echo e($category->name); ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
@@ -60,7 +60,7 @@
                             <!-- Parent Cat -->
                             <div class="col-sm-12">
                                 <label for="describe">Mô tả:</label>
-                                <textarea name="describe" class="form-control" id="describe" width="100%" rows="5">{{ $paper->describe }}</textarea>
+                                <textarea name="describe" class="form-control" id="describe" width="100%" rows="5"><?php echo e($paper->describe); ?></textarea>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -74,18 +74,19 @@
                     </form>
                     <div id="list-images" class="col-sm-10 col-sm-offset-1">
                         <div id="list">
-                            @foreach($images as $image)
-                                <div class="picture-{{ $image->id }}">
-                                    <img src="{{ asset('../storage/images/'.$image->name) }}" class="img-thumbnail" width="400px">
+                            <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="picture-<?php echo e($image->id); ?>">
+                                    <img src="<?php echo e(asset('../storage/images/'.$image->name)); ?>" class="img-thumbnail" width="400px">
                                     <form method="POST" action="javascript:void(0)">
-                                        <meta name="csrf-token" content="{{ csrf_token() }}">
-                                        <input type="submit" value="Xóa Ảnh" onclick="deleteImage({{ $image->id }})">
+                                        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+                                        <input type="submit" value="Xóa Ảnh" onclick="deleteImage(<?php echo e($image->id); ?>)">
                                     </form>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                         <form method="POST" enctype="multipart/form-data" action="javascript:void(0)" id="form-upload-photo">
-                            {{ csrf_field() }}
+                            <?php echo e(csrf_field()); ?>
+
                             <label for="upload-file-selector">
                                 <label for="upload-file-selector">Thêm ảnh từ máy tính</label>
                                 <span class="bton">
@@ -121,7 +122,7 @@
             formdata = new FormData(form[0]);
         }
         $.ajax({
-            url: "{{ route('uploadImage',[$paper->id]) }}",
+            url: "<?php echo e(route('uploadImage',[$paper->id])); ?>",
             type: 'post',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: formdata,
@@ -129,7 +130,7 @@
                 alert(data.name);
                 var show = '<div class=\"picture-'+data.id+'\"><img src=\"../../../storage/images/'+ data.name +'\" class=\"img-thumbnail\" width=\"400px\">';
                 show = show + '<form method=\"POST\" action=\"javascript:void(0)\">'
-                    + '<meta name=\"csrf-token\" content=\"{{ csrf_token() }}\">'
+                    + '<meta name=\"csrf-token\" content=\"<?php echo e(csrf_token()); ?>\">'
                     + '<input type=\"submit\" value=\"Xóa Ảnh\" onclick=\"deleteImage('+data.id+')\">';
                 show = show+'</form></div>'
                 $('#list').append(show);
@@ -147,7 +148,7 @@
             $('#categoryform').html("<div class=\"col-sm-12\"><label for=\"category\">Chọn tiểu mục:</label><label for=\"category\" class=\"form-control\"><span style=\"color: #9f191f\">BẠN CHƯA CHỌN DANH MỤC</span></label></div><div class=\"clearfix\"></div>");
         } else {
             $.ajax({
-                url: "{{ route('setCategories') }}",
+                url: "<?php echo e(route('setCategories')); ?>",
                 type: 'POST',
                 cache: false,
                 data: {
@@ -163,7 +164,7 @@
     }
     function deleteImage(id){
         $.ajax({
-            url: "{{ route('deleteImage') }}",
+            url: "<?php echo e(route('deleteImage')); ?>",
             type: 'post',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -177,4 +178,5 @@
         });
     }
 </script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

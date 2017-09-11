@@ -27,7 +27,7 @@ class InformationController extends Controller
         $information->pinterest = $request->pinterest;
         // dd($information);
         $information->save();
-        $request->session()->flash('success','Cập nhật giới thiệu thành công!');
+        $request->session()->flash('success','Cập nhật thông tin thành công!');
         return redirect()->route('infor');
     }
 }

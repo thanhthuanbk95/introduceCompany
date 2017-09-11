@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ReaddNameImage extends Migration
+class CreateIntroduceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class ReaddNameImage extends Migration
      */
     public function up()
     {
-        Schema::table('images',function(Blueprint $table){
-            $table->string('name');
-        });
+        //
     }
 
     /**

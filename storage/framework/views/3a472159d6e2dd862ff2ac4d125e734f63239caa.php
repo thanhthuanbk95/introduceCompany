@@ -1,15 +1,14 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
-        @if($errors->count()>0)
+        <?php if($errors->count()>0): ?>
             <ul class="alert alert-danger" style="list-style-type: none">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
-        @endif
+        <?php endif; ?>
 
         <div class="box box-primary">
             <div class="box-header with-border" style="background-color: #c4e3f3;" >
@@ -19,8 +18,9 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('categories.store') }}" accept-charset="UTF-8" id="room">
-                        {{ csrf_field() }}
+                    <form method="POST" action="<?php echo e(route('categories.store')); ?>" accept-charset="UTF-8" id="room">
+                        <?php echo e(csrf_field()); ?>
+
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
@@ -34,9 +34,9 @@
                             <div class="col-sm-12">
                                 <label for="parent">Chọn danh mục:</label>
                                 <select name="parent" id="level" class="form-control">
-                                    @foreach($parentcat as $parent)
-                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $parentcat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($parent->id); ?>"><?php echo e($parent->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
@@ -56,4 +56,5 @@
 
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

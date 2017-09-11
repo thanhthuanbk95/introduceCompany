@@ -1,17 +1,16 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12">
-                @if(Session::has('success'))
-                    <div class="alert alert-success"><p><strong>{{ Session::get('success') }}</strong></p></div>
-                @endif
-                @if(Session::has('fail'))
-                    <div class="alert alert-danger"><p><strong>{{ Session::get('fail') }}</strong></p></div>
-                @endif
+                <?php if(Session::has('success')): ?>
+                    <div class="alert alert-success"><p><strong><?php echo e(Session::get('success')); ?></strong></p></div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="alert alert-danger"><p><strong><?php echo e(Session::get('fail')); ?></strong></p></div>
+                <?php endif; ?>
                 <div class="clearfix"></div>
                 <div class="box box-default">
                     <div class="box-header" style="background-color: #f4f4f4; ">
@@ -19,7 +18,7 @@
                             Danh mục
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('parentcats.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('parentcats.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -31,21 +30,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @if(count($parentcats) <1)
+                            <?php if(count($parentcats) <1): ?>
                                 <td  class="text-center" colspan="2">Danh sách danh mục hiện đang trống!</td>
-                            @else
-                            @foreach($parentcats as $parentcat)
+                            <?php else: ?>
+                            <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $parentcat->name }}</td>
+                                    <td><?php echo e($parentcat->name); ?></td>
                                     <td class="text-center">
-                                        <form method="POST" action="{{ route('parentcats.destroy',$parentcat->id) }}" accept-charset="UTF-8">
-                                            {{ csrf_field() }}
+                                        <form method="POST" action="<?php echo e(route('parentcats.destroy',$parentcat->id)); ?>" accept-charset="UTF-8">
+                                            <?php echo e(csrf_field()); ?>
+
                                             <input name="_method" type="hidden" value="DELETE">
                                             <div class='btn-group'>
-                                                <a href="{{ route('parentcats.show',$parentcat->id) }}" class='btn btn-default btn-xs'>
+                                                <a href="<?php echo e(route('parentcats.show',$parentcat->id)); ?>" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-eye-open"></i>
                                                 </a>
-                                                <a href="{{ route('parentcats.edit',$parentcat->id) }}" class='btn btn-default btn-xs'>
+                                                <a href="<?php echo e(route('parentcats.edit',$parentcat->id)); ?>" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Danh mục con của danh mục này sẽ bị xóa theo?&#039;)">
@@ -55,14 +55,15 @@
                                         </form>
                                     </td>
                                 </tr>
-                               @endforeach
-                            @endif
+                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="box-footer clearfix">
                         <div class="pagination-sm no-margin pull-right">
-                            {{ $parentcats->links() }}
+                            <?php echo e($parentcats->links()); ?>
+
                         </div>
                     </div>
                 </div>
@@ -71,4 +72,5 @@
     </section>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

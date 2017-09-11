@@ -21,8 +21,6 @@ class CreateTableInformation extends Migration
             $table->string('facebook');
             $table->string('twitter');
             $table->string('google');
-            $table->string('pinterest');
-            $table->timestamps();
         });
     }
 

@@ -1,12 +1,6 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Cập nhật thông tin
-        </h1>
-    </section>
-
     <section class="content">
         <?php if(Session::has('success')): ?>
                     <div class="alert alert-success"><p><strong><?php echo e(Session::get('success')); ?></strong></p></div>
@@ -16,6 +10,11 @@
                 <?php endif; ?>
                 <div class="clearfix"></div>
         <div class="box box-primary">
+        <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Giới thiệu về Công ty
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
                     <form method="POST" action="<?php echo e(route('introUpdate')); ?>" accept-charset="UTF-8" id="introForm">
@@ -24,7 +23,6 @@
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
-                                <label for="intro">Giới thiệu về Công ty</label>
                                 <textarea class="form-control" name="detail" id="intro" rows="4" cols="20"><?php echo e($introduces->detail); ?></textarea>
                             </div>
                             <div class="clearfix"></div>
@@ -32,7 +30,7 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <input class="btn btn-primary" type="submit" value="Lưu">
+                                <button type="submit" form="introForm" class="btn btn-primary" name="submit" value="Lưu"><i class="glyphicon glyphicon-edit"></i> Lưu</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
