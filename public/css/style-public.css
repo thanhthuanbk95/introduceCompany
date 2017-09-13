@@ -1877,38 +1877,43 @@ form input[type="submit"], form button, form input[type="reset"] {
 
 /*CSS pagination*/
 .pagination {
-    padding: 20px;
     float: right !important;
     right: 0 !important;
 }
 
-.pagenumber {
+.pagination li{
+    list-style-type: none;
+    display: inline;
+}
+
+.pagination li a{
     display: inline-block;
-    padding: 2px 9px;
+    padding: 2px 11px;
     margin-right: 4px;
     border-radius: 3px;
-    font-size: .975em;
+    font-size: 1.075em;
     font-weight: bold;
     text-decoration: none;
     color: #fff;
-    
 }
 
-.pagenumber.dark:hover, .pagenumber.dark.gradient:hover {
+.pagination li a:hover{
     background: #3d4f5d;
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#547085), to(#3d4f5d));
     background: -moz-linear-gradient(0% 0% 270deg,#547085, #3d4f5d);
 }
 
-.pagenumber.dark.active {
+.pagination .active{
+    font-size: 1.075em;
+    margin-right: 4px;
+    padding: 2px 11px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-decoration: none;
     border: none;
     background: #fff;
     box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .1);
     color: rgba(0,0,0, .5);
-    margin-left: 4px;
-}
-
-.pagenumber.dark.gradient {
 }
 
 

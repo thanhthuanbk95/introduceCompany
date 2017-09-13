@@ -25,6 +25,6 @@ class AddColumnTime extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('parentcategory');
     }
 }

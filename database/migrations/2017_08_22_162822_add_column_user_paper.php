@@ -25,6 +25,6 @@ class AddColumnUserPaper extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('papers');
     }
 }

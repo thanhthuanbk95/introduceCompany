@@ -46,7 +46,7 @@
 							<li class="menu-item"><a href="{{ url('/about') }}">GIỚI THIỆU</a></li>
 							<li class="menu-item"><a href="{{ url('/project') }}">DỰ ÁN</a></li>
 							<li class="menu-item"><a href="{{ url('/furniture') }}">NỘI THẤT</a></li>
-							<li class="menu-item"><a href="{{ url('/phongthuy') }}">PHONG THỦY</a></li>
+							<li class="menu-item"><a href="{{ route('phongthuy') }}">PHONG THỦY</a></li>
 							<li class="menu-item"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->

@@ -13,7 +13,11 @@ class CreateIntroduceTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('introduce',function (Blueprint $table){
+            $table->increments('id');
+            $table->text('detail');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateIntroduceTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('introduce');
     }
 }

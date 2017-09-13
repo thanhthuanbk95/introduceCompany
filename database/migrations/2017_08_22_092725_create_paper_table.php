@@ -17,6 +17,7 @@ class CreatePaperTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('id_cat');
             $table->unsignedInteger('seen');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatePaperTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('papers');
     }
 }

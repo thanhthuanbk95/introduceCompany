@@ -25,6 +25,6 @@ class DeleteNameImage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('images');
     }
 }
