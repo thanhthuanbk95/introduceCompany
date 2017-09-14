@@ -23,7 +23,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="<?php echo e(route('inforUpdate')); ?>" accept-charset="UTF-8" id="information">
+                    <form method="POST" action="<?php echo e(route('inforUpdate')); ?>" accept-charset="UTF-8" id="information" class="informationForm">
                         <?php echo e(csrf_field()); ?>
 
                         <div class="form-group">

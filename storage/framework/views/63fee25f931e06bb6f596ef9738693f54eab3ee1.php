@@ -1,5 +1,4 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
@@ -10,10 +9,10 @@
                 <div class="box box-default">
                     <div class="box-header" style="background-color: #f4f4f4; ">
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
-                            Chi tiết bài viết <span style="color: #9f191f">{{ $paper->name }}</span>
+                            Chi tiết bài viết <span style="color: #9f191f"><?php echo e($paper->name); ?></span>
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('papers.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('papers.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -22,31 +21,31 @@
                             <tbody>
                                 <tr>
                                     <td>Tiêu đề</td>
-                                    <td>{{ $paper->title }}</td>
+                                    <td><?php echo e($paper->title); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Danh mục</td>
-                                    <td>{{ $paper->parentcat }}</td>
+                                    <td><?php echo e($paper->parentcat); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tiểu mục</td>
-                                    <td>{{ $paper->category }}</td>
+                                    <td><?php echo e($paper->category); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Mô tả</td>
-                                    <td>{{ $paper->describe }}</td>
+                                    <td><?php echo e($paper->describe); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Người đăng</td>
-                                    <td class="text-blue">{{ $paper->user }}</td>
+                                    <td class="text-blue"><?php echo e($paper->user); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Ngày tạo</td>
-                                    <td class="text-success">{{ $paper->created_at }}</td>
+                                    <td class="text-success"><?php echo e($paper->created_at); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Cập nhật gần nhất</td>
-                                    <td class="text-danger">{{ $paper->updated_at }}</td>
+                                    <td class="text-danger"><?php echo e($paper->updated_at); ?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -56,20 +55,20 @@
                                 <tr>
                                     <th colspan="2" class="text-center"><h3><span style="color: #337ab7"><i class="fa fa-picture-o" aria-hidden="true"></i> Ảnh bài viết</span></h3></th>
                                 </tr>
-                            @for($i = 0 ; $i < count($images) ; $i += 2)
+                            <?php for($i = 0 ; $i < count($images) ; $i += 2): ?>
                                 <tr>
                                     <td class="text-center">
-                                        <img src="{{ asset('../storage/images/'.$images[$i]->name) }}" alt="{{ $images[$i]->name }}" class="img-thumbnail" width="400px">
+                                        <img src="<?php echo e(asset('../storage/images/'.$images[$i]->name)); ?>" alt="<?php echo e($images[$i]->name); ?>" class="img-thumbnail" width="400px">
                                     </td>
-                                    @if($i+1 <count($images))
+                                    <?php if($i+1 <count($images)): ?>
                                     <td class="text-center">
-                                        <img src="{{ asset('../storage/images/'.$images[$i+1]->name) }}" alt="{{ $images[$i+1]->name }}" class="img-thumbnail" width="400px">
+                                        <img src="<?php echo e(asset('../storage/images/'.$images[$i+1]->name)); ?>" alt="<?php echo e($images[$i+1]->name); ?>" class="img-thumbnail" width="400px">
                                     </td>
-                                    @endif
+                                    <?php endif; ?>
                                 </tr>
-                            @endfor
+                            <?php endfor; ?>
                             </table>
-                            <button class="btn btn-warning" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                            <button class="btn btn-warning" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                         </div>
                     </div>
                 </div>
@@ -78,4 +77,5 @@
     </section>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
