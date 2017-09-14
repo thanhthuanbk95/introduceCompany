@@ -39,6 +39,8 @@ Route::group(['namespace'=>'FrontEnd'],function (){
     Route::get('/furniture','FurnitureController@index');
     Route::get('/phongthuy','PhongThuyController@index');
     Route::resource('/contact', 'ContactController');
+    Route::get('/danhmuc/{id}', 'ParentCatController@index')->name('danhmuc');
+    Route::get('/danhmuc/tieumuc/{id}', 'CategoryController@index')->name('tieumuc');
 });
 Auth::routes();
 

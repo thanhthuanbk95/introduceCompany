@@ -9,6 +9,8 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return view('frontend.about');
+        //lay danh sach danh muc
+        $parentcats = ParentCat::all();
+        return view('frontend.about',compact('parentcats'));
     }
 }

@@ -8,16 +8,16 @@
 		<title>Modern Architecture</title>
 
 		<!-- Loading third party fonts -->
-		<link href="{{ URL::asset('fonts/font-awesome.min.css') }} " rel="stylesheet" type="text/css">
+		<link href="<?php echo e(URL::asset('fonts/font-awesome.min.css')); ?> " rel="stylesheet" type="text/css">
 
 		<!-- Loading main css file -->
-		<link rel="stylesheet" href="{{ URL::asset('css/style-public.css') }}">
+		<link rel="stylesheet" href="<?php echo e(URL::asset('css/style-public.css')); ?>">
 		
 
-		<script src="{{ asset('js/public/ie-support/html5.js') }}"></script>
-		<script src="{{ asset('js/public/ie-support/respond.js') }}"></script>
-		<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-		<script src="{{ asset('js/jquery.min.js') }}"></script>
+		<script src="<?php echo e(asset('js/public/ie-support/html5.js')); ?>"></script>
+		<script src="<?php echo e(asset('js/public/ie-support/respond.js')); ?>"></script>
+		<script src="<?php echo e(asset('js/jquery.validate.min.js')); ?>"></script>
+		<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 
 	</head>
 
@@ -27,7 +27,7 @@
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="{{ url('/home') }}" id="branding">
+					<a href="<?php echo e(url('/home')); ?>" id="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">VIỆT VŨ LONG</h1>
@@ -42,13 +42,13 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="{{ url('/home') }}">TRANG CHỦ</a></li>
-							<li class="menu-item"><a href="{{ url('/about') }}">GIỚI THIỆU</a></li>
-							@foreach($parentcats as $parentcat)
-							<li class="menu-item"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
-							@endforeach
-							<li class="menu-item"><a href="{{ url('/phongthuy') }}">PHONG THỦY</a></li>
-							<li class="menu-item"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>
+							<li class="menu-item current-menu-item"><a href="<?php echo e(url('/home')); ?>">TRANG CHỦ</a></li>
+							<li class="menu-item"><a href="<?php echo e(url('/about')); ?>">GIỚI THIỆU</a></li>
+							<?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<li class="menu-item"><a href="<?php echo e(route('danhmuc',$parentcat->id)); ?>"><?php echo e($parentcat->name); ?></a></li>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+							<li class="menu-item"><a href="<?php echo e(url('/phongthuy')); ?>">PHONG THỦY</a></li>
+							<li class="menu-item"><a href="<?php echo e(route('contact.index')); ?>">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -59,7 +59,7 @@
 			
 
 			<!-- content -->
-			@yield('content')
+			<?php echo $__env->yieldContent('content'); ?>
 
 
 			<footer class="site-footer">
@@ -92,9 +92,9 @@
 			</footer> <!-- .site-footer -->
 		</div>
 
-		<script src="{{ URL::asset('js/public/jquery-1.11.1.min.js') }}"></script>
-		<script src="{{ URL::asset('js/public/plugins.js') }}"></script>
-		<script src="{{ URL::asset('js/public/app.js') }}"></script>
+		<script src="<?php echo e(URL::asset('js/public/jquery-1.11.1.min.js')); ?>"></script>
+		<script src="<?php echo e(URL::asset('js/public/plugins.js')); ?>"></script>
+		<script src="<?php echo e(URL::asset('js/public/app.js')); ?>"></script>
 		
 	</body>
 
