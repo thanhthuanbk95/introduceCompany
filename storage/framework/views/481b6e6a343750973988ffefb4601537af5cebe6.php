@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="<?php echo e(asset('admin/css/skin-blue.min.css')); ?>">
         <script src="<?php echo e(asset('admin/js/jquery.min.js')); ?>" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo e(asset('/admin/js/ckeditor/ckeditor.js')); ?>"></script>
 
         <style>
             .error{

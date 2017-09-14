@@ -2,12 +2,6 @@
 @section('content')
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Thêm ảnh cho bài viết
-        </h1>
-    </section>
-
     <section class="content">
         @if($errors->count()>0)
             <ul class="alert alert-danger" style="list-style-type: none">
@@ -17,13 +11,17 @@
             </ul>
         @endif
         <div class="box box-primary">
+            <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Thêm ảnh cho bài viết
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-10 col-md-offset-1">
                         <table class="table table-hovered">
                             <tr>
-                                <th colspan="2" class="text-center success"><h3><span style="color: #0d6aad">&raquo; Thông tin bài viết</span></h3></th>
+                                <th colspan="2" class="text-center success"><h3 style="margin: 0px;"><span>Thông tin bài viết</span></h3></th>
                             </tr>
                             <tr>
                                 <td>Tiêu đề</td>
@@ -62,7 +60,6 @@
                             <a href="{{ route('papers.show', $paper->id) }}" title="Lưu" class="btn btn-primary" onclick="return confirm('Nhấn OK để xem toàn bộ bài viết')">Lưu</a>
                         {{--</button>--}}
                     </div>
-                    <div class="col-sm-1"></div>
                 </div>
             </div>
         </div>

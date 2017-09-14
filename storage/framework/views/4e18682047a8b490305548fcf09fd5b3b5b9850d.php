@@ -25,7 +25,7 @@
 						<div class="filterable-items">
 							<div class="project-item filterable-item shopping-center">
 								<figure class="featured-image">
-									<img src="dummy/large-thumb-1.jpg" alt="#" id="open-slideshow">
+									<img src="<?php echo e(URL::asset('/dummy/large-thumb-1.jpg')); ?>" alt="#" id="open-slideshow">
 								</figure>
 							</div>
 							<div class="project-item filterable-item skyscrapper">

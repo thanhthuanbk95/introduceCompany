@@ -1,15 +1,6 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1 class="pull-left">
-            Danh mục
-        </h1>
-        <h1 class="pull-right">
-            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="<?php echo e(route('parentcats.create')); ?>">Thêm mới</a>
-        </h1>
-    </section>
-
     <section class="content">
         <div class="clearfix"></div>
         <div class="row">
@@ -21,7 +12,15 @@
                     <div class="alert alert-danger"><p><strong><?php echo e(Session::get('fail')); ?></strong></p></div>
                 <?php endif; ?>
                 <div class="clearfix"></div>
-                <div class="box box-primary">
+                <div class="box box-default">
+                    <div class="box-header" style="background-color: #f4f4f4; ">
+                        <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
+                            Danh mục
+                        </h3>
+                        <div class="pull-right" style="margin: 0px 10px;">
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('parentcats.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                        </div>
+                    </div>
                     <div class="box-body table-responsive">
                         <table class="table table-responsive table-bordered" id="tours-table">
                             <thead>

@@ -13,6 +13,8 @@
 		<script src="<?php echo e(asset('admin/js/bootstrap.min.js')); ?>"></script>
 		<script src="<?php echo e(asset('admin/js/app.min.js')); ?>"></script>
 
+		
+
 		<?php echo $__env->yieldContent('script'); ?>
 	</body>
 </html>

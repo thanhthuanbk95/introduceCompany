@@ -14,6 +14,7 @@ class CreateTableInformation extends Migration
     public function up()
     {
         Schema::create('information',function (Blueprint $table){
+            $table->increments('id');
             $table->string('name');
             $table->string('address');
             $table->string('email');
@@ -21,6 +22,7 @@ class CreateTableInformation extends Migration
             $table->string('facebook');
             $table->string('twitter');
             $table->string('google');
+            $table->string('pinterest');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ class CreateTableInformation extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('information');
     }
 }

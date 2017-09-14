@@ -7,78 +7,39 @@
 						<p>Dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p> -->
 
 						<div class="filter-links filterable-nav">
+						<?php if(count($categories) > 0): ?>
 							<select class="mobile-filter">
-								<option value="">Biệt thự</option>
-								<option value="">Bar, Nhà hàng, Cafe</option>
-								<option value="">Nhà phố</option>
-								<option value="">Công cộng - Dịch vụ</option>
-								<option value="	">Thi công</option>
+							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</select>
-
-							<a href="#" class="current" data-filter="*">Biệt thự</a>
-							<a href="#" class="">Bar, Nhà hàng, Cafe</a>
-							<a href="#" class="" >Nhà phố</a>
-							<a href="#" class="" >Công cộng - Dịch vụ</a>
-							<a href="#" class="" >Thi công</a>
+							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						<?php endif; ?>	
 						</div>
-
 						<div class="filterable-items">
+						<?php if(count($papers)>0): ?>
+							<?php $__currentLoopData = $papers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $paper): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<div class="project-item filterable-item shopping-center">
+									<figure class="featured-image">
+										<a href="<?php echo e(route('baiviet',$paper->id)); ?>">
+										<img src="<?php echo e(url('storage/images/'.$paper->image)); ?>" alt="#" width="400px" height="300px"><span class="project-title"><?php echo e($paper->user); ?></span>
+										</a>
+									</figure>
+								</div>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						<?php else: ?>
 							<div class="project-item filterable-item shopping-center">
-								<figure class="featured-image">
-									<a href="<?php echo e(url('/project-single')); ?>"><img src="dummy/large-thumb-1.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
-
-								</figure>
+								<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>
 							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-2.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscraper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-3.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item apartment">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-4.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-5.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-6.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item shopping-center">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-7.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-8.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-9.jpg" alt="#"></a>
-								</figure>
-							</div>
+						<?php endif; ?>	
 							<span style="float:right; width: 100%;">
 							<div class="pagination dark" style="float: right;">
-								<a href="#" class="pagenumber dark gradient"><<</a>
-								<span class="pagenumber dark active">1</span>
-								<a href="#" class="pagenumber dark gradient">2</a>
-								<a href="#" class="pagenumber dark gradient">3</a>
-								<a href="#" class="pagenumber dark gradient">4</a>
-								<a href="#" class="pagenumber dark gradient">5</a>
-								<a href="#" class="pagenumber dark gradient">6</a>
-								<a href="#" class="pagenumber dark gradient">>></a>
+								<?php if(count($papers) > 0): ?>
+									<?php echo e($papers->links()); ?>
+
+								<?php endif; ?>
 							</div>
 							</span>
 						</div>

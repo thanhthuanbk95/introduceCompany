@@ -13,6 +13,7 @@
 
         <link rel="stylesheet" href="{{ asset('admin/css/skin-blue.min.css') }}">
         <script src="{{ asset('admin/js/jquery.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('/admin/js/ckeditor/ckeditor.js') }}"></script>
 
         <style>
             .error{

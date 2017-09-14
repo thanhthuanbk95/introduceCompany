@@ -14,12 +14,12 @@
 								<div class="contact-detail">
 									<address>
 										<div class="contact-icon">
-											<img src="images/icon-marker.png" class="icon">
+											<img src="{{URL::asset('/images/icon-marker.png')}}" class="icon">
 										</div>
-										<p><strong>Công ty TNHH Tư vấn thiết kế và Xây dựng Việt Vũ Long</strong> <br>78 Nguyễn Đình Tựu, Q. Thanh Khê, Tp Đà Nẵng</p>
+										<p><strong>{{$infor->name}}</strong> <br>{{$infor->address}}</p>
 									</address>
-									<a href="javascript:void(0)" class="phone"><span class="contact-icon"><img src="images/icon-phone.png" class="icon"></span>0934 380 037</a>
-									<a href="javascript:void(0)" class="email"><span class="contact-icon"><img src="images/icon-envelope.png" class="icon"></span>vietvulong@evita.com</a>
+									<span class="phone"><span class="contact-icon"><img src="{{URL::asset('/images/icon-phone.png')}}" class="icon"></span>{{$infor->phone}}</span>
+									<span class="email"><span class="contact-icon"><img src="{{URL::asset('/images/icon-envelope.png')}}" class="icon"></span>{{$infor->email}}</span>
 								</div>
 							</div>
 							<div class="col-md-3 col-md-offset-1">

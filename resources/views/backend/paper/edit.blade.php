@@ -2,12 +2,6 @@
 @section('content')
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Cập nhật tiểu mục
-        </h1>
-    </section>
-
     <section class="content">
         @if($errors->count()>0)
             <ul class="alert alert-danger" style="list-style-type: none">
@@ -18,6 +12,11 @@
         @endif
 
         <div class="box box-primary">
+            <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Cập nhật bài viết
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
                     <form method="POST" action="{{ route('papers.update',$paper->id) }}" accept-charset="UTF-8" id="papers">
@@ -73,8 +72,7 @@
                             <div class="clearfix"></div>
                         </div>
                     </form>
-                    <div class="col-sm-1"></div>
-                    <div id="list-images" class="col-sm-10">
+                    <div id="list-images" class="col-sm-10 col-sm-offset-1">
                         <div id="list">
                             @foreach($images as $image)
                                 <div class="picture-{{ $image->id }}">
@@ -96,7 +94,6 @@
                             </label>
                         </form>
                     </div>
-                    <div class="col-sm-1"></div>
                 </div>
             </div>
         </div>

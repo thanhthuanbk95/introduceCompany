@@ -9,78 +9,38 @@
 						<p>Dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p> -->
 
 						<div class="filter-links filterable-nav">
+						@if(count($categories) > 0)
 							<select class="mobile-filter">
-								<option value="">Biệt thự</option>
-								<option value="">Bar, Nhà hàng, Cafe</option>
-								<option value="">Nhà phố</option>
-								<option value="">Công cộng - Dịch vụ</option>
-								<option value="	">Thi công</option>
+							@foreach($categories as $category)
+								<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@endforeach
 							</select>
-
-							<a href="#" class="current" data-filter="*">Biệt thự</a>
-							<a href="#" class="">Bar, Nhà hàng, Cafe</a>
-							<a href="#" class="" >Nhà phố</a>
-							<a href="#" class="" >Công cộng - Dịch vụ</a>
-							<a href="#" class="" >Thi công</a>
+							@foreach($categories as $category)
+							<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+							@endforeach
+						@endif	
 						</div>
-
 						<div class="filterable-items">
+						@if(count($papers)>0)
+							@foreach($papers as $paper)
+								<div class="project-item filterable-item shopping-center">
+									<figure class="featured-image">
+										<a href="{{ route('baiviet',$paper->id) }}">
+										<img src="{{ url('storage/images/'.$paper->image) }}" alt="#" width="400px" height="300px"><span class="project-title">{{ $paper->user }}</span>
+										</a>
+									</figure>
+								</div>
+							@endforeach
+						@else
 							<div class="project-item filterable-item shopping-center">
-								<figure class="featured-image">
-									<a href="{{ url('/project-single') }}"><img src="dummy/large-thumb-1.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
-
-								</figure>
+								<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>
 							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-2.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscraper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-3.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item apartment">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-4.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-5.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-6.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item shopping-center">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-7.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-8.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-9.jpg" alt="#"></a>
-								</figure>
-							</div>
+						@endif	
 							<span style="float:right; width: 100%;">
 							<div class="pagination dark" style="float: right;">
-								<a href="#" class="pagenumber dark gradient"><<</a>
-								<span class="pagenumber dark active">1</span>
-								<a href="#" class="pagenumber dark gradient">2</a>
-								<a href="#" class="pagenumber dark gradient">3</a>
-								<a href="#" class="pagenumber dark gradient">4</a>
-								<a href="#" class="pagenumber dark gradient">5</a>
-								<a href="#" class="pagenumber dark gradient">6</a>
-								<a href="#" class="pagenumber dark gradient">>></a>
+								@if(count($papers) > 0)
+									{{ $papers->links() }}
+								@endif
 							</div>
 							</span>
 						</div>

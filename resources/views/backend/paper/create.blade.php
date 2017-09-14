@@ -2,12 +2,6 @@
 @section('content')
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Thêm bài viết
-        </h1>
-    </section>
-
     <section class="content">
         @if(Session::has('fail'))
             <div class="alert alert-danger"><p><strong>{{ Session::get('fail') }}</strong></p></div>
@@ -21,6 +15,11 @@
         @endif
 
         <div class="box box-primary">
+            <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Thêm bài viết
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
                     <form method="POST" action="{{ route('papers.store') }}" accept-charset="UTF-8" id="papers">
@@ -28,7 +27,7 @@
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
-                                <label for="title">Tiêu đề viết:</label>
+                                <label for="title">Tiêu đề bài viết:</label>
                                 <input class="form-control" name="title" type="text" id="name">
                             </div>
                             <div class="clearfix"></div>
@@ -70,7 +69,7 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <input class="btn btn-primary" type="submit" value="Thêm ảnh">
+                                <button type="submit" form="papers" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm ảnh</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>

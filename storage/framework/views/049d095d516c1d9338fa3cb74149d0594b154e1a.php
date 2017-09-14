@@ -25,18 +25,18 @@
 						<div class="filterable-items">
 							<div class="project-item filterable-item shopping-center">
 								<figure class="featured-image">
-									<a href="<?php echo e(url('/project-single')); ?>"><img src="dummy/large-thumb-1.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
+									<a href="<?php echo e(url('/project-single')); ?>"><img src="<?php echo e(URL::asset('/dummy/large-thumb-1.jpg')); ?>" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
 
 								</figure>
 							</div>
 							<div class="project-item filterable-item skyscrapper">
 								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-2.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
+									<a href="project-single.html"><img src="<?php echo e(URL::asset('/dummy/large-thumb-2.jpg')); ?>" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
 								</figure>
 							</div>
 							<div class="project-item filterable-item skyscraper">
 								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-3.jpg" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
+									<a href="project-single.html"><img src="<?php echo e(URL::asset('/dummy/large-thumb-3.jpg')); ?>" alt="#"><span class="project-title">Phan Thanh Thuận</span></a>
 								</figure>
 							</div>
 							<div class="project-item filterable-item apartment">

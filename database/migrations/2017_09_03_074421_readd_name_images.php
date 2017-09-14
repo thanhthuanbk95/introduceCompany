@@ -25,6 +25,6 @@ class ReaddNameImages extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('images');
     }
 }

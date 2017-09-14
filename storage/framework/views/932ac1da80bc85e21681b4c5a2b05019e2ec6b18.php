@@ -28,13 +28,19 @@
                     <i class="fa fa-user"></i> <span>Người dùng</span>
                 </a>
             </li>
-            <li class="<?php echo e(Request::is('admin/users*')? 'active' : ''); ?>">
-                <a href="<?php echo e(route('users.index')); ?>">
-                    <i class="fa fa-user"></i> <span>Giới thiệu</span>
-                </a>
-            </li>
 
         <?php endif; ?>
+        <li class="<?php echo e(Request::is('admin/infor')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('infor')); ?>">
+                <i class="fa fa-newspaper-o"></i> <span>Thông tin</span>
+            </a>
+        </li>
+        <li class="<?php echo e(Request::is('admin/introInfo')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('introInfo')); ?>">
+                <i class="fa fa-newspaper-o"></i> <span>Giới thiệu</span>
+            </a>
+        </li>
+
         <li class="<?php echo e(Request::is('admin/parentcats*')? 'active' : ''); ?>">
             <a href="<?php echo e(route('parentcats.index')); ?>">
                 <i class="fa fa-database"></i> <span>Danh mục</span>
@@ -48,6 +54,11 @@
         <li class="<?php echo e(Request::is('admin/papers*')? 'active' : ''); ?>">
             <a href="<?php echo e(route('papers.index')); ?>">
                 <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+            </a>
+        </li>
+        <li class="<?php echo e(Request::is('admin/phongthuy*')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('phongthuy.index')); ?>">
+                <i class="fa fa-newspaper-o"></i> <span>Phong thủy</span>
             </a>
         </li>
 

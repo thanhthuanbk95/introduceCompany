@@ -2,12 +2,6 @@
 @section('content')
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Thêm tiểu mục
-        </h1>
-    </section>
-
     <section class="content">
         @if($errors->count()>0)
             <ul class="alert alert-danger" style="list-style-type: none">
@@ -18,6 +12,11 @@
         @endif
 
         <div class="box box-primary">
+            <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Thêm tiểu mục
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
                     <form method="POST" action="{{ route('categories.store') }}" accept-charset="UTF-8" id="room">
@@ -45,7 +44,7 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <input class="btn btn-primary" type="submit" value="Save">
+                                <button type="submit" form="room" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
