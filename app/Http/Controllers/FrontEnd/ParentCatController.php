@@ -9,22 +9,26 @@ use App\Category;
 use App\ParentCat;
 use App\Paper;
 use App\User;
+use App\Information;
 class ParentCatController extends Controller
 {
     protected $parentcats;
+    protected $infor;
     public function __construct(){
         //lay danh sach danh muc
         $this->parentcats = ParentCat::all();
+        $this->infor = $infor = Information::findOrFail(1);
     }
     public function index(Request $request){
         $parentcats = $this->parentcats;
+        $infor = $this->infor;
         $id = $request->id;
         //lay danh sach tieu muc
         $categories = Category::where('id_parent','=',$id)->get();
         $papers = null;
         if(count($categories) > 0){
             //lay bai viet cua danh muc dau tien
-            $papers = Paper::where('id_cat','=',$categories[0]->id)->paginate(1);
+            $papers = Paper::where('id_cat','=',$categories[0]->id)->paginate(6);
             if(count($papers) > 0){
                 foreach($papers as $paper){
                     //lay ten nguoi dung dang bai viet
@@ -42,6 +46,6 @@ class ParentCatController extends Controller
             }
         }
         // dd(count($papers));
-        return view('frontend.project',compact('parentcats','categories','papers'));
+        return view('frontend.project',compact('parentcats','categories','papers','infor'));
     }
 }

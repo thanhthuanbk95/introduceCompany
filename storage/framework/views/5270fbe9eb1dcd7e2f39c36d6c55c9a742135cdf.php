@@ -10,11 +10,11 @@
 						<?php if(count($categories) > 0): ?>
 							<select class="mobile-filter">
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>	
-							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>	
+								<option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</select>
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<a href="<?php echo e(route('tieumuc',$category->id)); ?>" class="current" data-filter="*"><?php echo e($category->name); ?></a>
+							<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						<?php endif; ?>	
 						</div>
@@ -23,7 +23,7 @@
 							<?php $__currentLoopData = $papers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $paper): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<div class="project-item filterable-item shopping-center">
 									<figure class="featured-image">
-										<a href="<?php echo e(url('/project-single')); ?>">
+										<a href="<?php echo e(route('baiviet',$paper->id)); ?>">
 										<img src="<?php echo e(url('storage/images/'.$paper->image)); ?>" alt="#" width="400px" height="300px"><span class="project-title"><?php echo e($paper->user); ?></span>
 										</a>
 									</figure>
@@ -31,7 +31,7 @@
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						<?php else: ?>
 							<div class="project-item filterable-item shopping-center">
-								<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>	
+								<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>
 							</div>
 						<?php endif; ?>	
 							<span style="float:right; width: 100%;">

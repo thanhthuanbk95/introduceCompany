@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Contact;
+use App\ParentCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Information;
@@ -14,10 +15,17 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $parentcats;
+    function __construct()
+    {
+        $this->parentcats = ParentCat::all();
+    }
+
     public function index()
-    {   
-        $information = Information::findOrFail(1);
-        return view('frontend.contact')->with('infor', $information);
+    {
+        $parentcats = $this->parentcats;
+        $infor = Information::findOrFail(1);
+        return view('frontend.contact',compact('infor','parentcats'));
     }
 
     /**

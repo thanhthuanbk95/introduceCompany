@@ -12,11 +12,11 @@
 						@if(count($categories) > 0)
 							<select class="mobile-filter">
 							@foreach($categories as $category)
-								<option value="{{ $category->id }}">{{ $category->name }}</option>	
-							@endforeach	
+								<option value="{{ $category->id }}">{{ $category->name }}</option>
+							@endforeach
 							</select>
 							@foreach($categories as $category)
-							<a href="{{ route('tieumuc',$category->id) }}" class="current" data-filter="*">{{ $category->name }}</a>
+							<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
 							@endforeach
 						@endif	
 						</div>
@@ -25,7 +25,7 @@
 							@foreach($papers as $paper)
 								<div class="project-item filterable-item shopping-center">
 									<figure class="featured-image">
-										<a href="{{ url('/project-single') }}">
+										<a href="{{ route('baiviet',$paper->id) }}">
 										<img src="{{ url('storage/images/'.$paper->image) }}" alt="#" width="400px" height="300px"><span class="project-title">{{ $paper->user }}</span>
 										</a>
 									</figure>
