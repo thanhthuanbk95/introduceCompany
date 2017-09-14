@@ -57,7 +57,7 @@
                             </label>
                         </form>
                         
-                            <a href="<?php echo e(route('papers.show', $paper->id)); ?>" title="Lưu" class="btn btn-primary" onclick="return confirm('Nhấn OK để xem toàn bộ bài viết')">Lưu</a>
+                            <a href="<?php echo e(route('papers.show', $paper->id)); ?>" title="Lưu" class="btn btn-primary" onclick="return confirm('Nhấn OK để xem toàn bộ bài viết')"><i class="glyphicon glyphicon-edit"></i> Lưu</a>
                         
                     </div>
                 </div>

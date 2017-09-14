@@ -22,7 +22,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('papers.store') }}" accept-charset="UTF-8" id="papers">
+                    <form method="POST" action="{{ route('papers.store') }}" accept-charset="UTF-8" id="papers" class="papersForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->
@@ -70,6 +70,7 @@
                             <!-- Submit Field -->
                             <div class="col-sm-12">
                                 <button type="submit" form="papers" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm ảnh</button>
+                                <button class="btn btn-default" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>

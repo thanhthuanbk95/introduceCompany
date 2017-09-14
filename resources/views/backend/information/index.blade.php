@@ -24,7 +24,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('inforUpdate') }}" accept-charset="UTF-8" id="information">
+                    <form method="POST" action="{{ route('inforUpdate') }}" accept-charset="UTF-8" id="information" class="informationForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->

@@ -21,12 +21,12 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('parentcats.store') }}" accept-charset="UTF-8" id="room">
+                    <form method="POST" action="{{ route('parentcats.store') }}" accept-charset="UTF-8" id="createParentCat" class="parentCatForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
-                                <label for="name">Name:</label>
+                                <label for="name">Tên danh mục:</label>
                                 <input class="form-control" name="name" type="text" id="name">
                             </div>
                             <div class="clearfix"></div>
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <button type="submit" form="room" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+                                <button type="submit" form="createParentCat" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>

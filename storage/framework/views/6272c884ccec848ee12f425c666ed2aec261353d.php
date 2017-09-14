@@ -17,7 +17,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="<?php echo e(route('introUpdate')); ?>" accept-charset="UTF-8" id="introForm">
+                    <form method="POST" action="<?php echo e(route('introUpdate')); ?>" accept-charset="UTF-8" id="introForm" class="introdudeForm">
                         <?php echo e(csrf_field()); ?>
 
                         <div class="form-group">

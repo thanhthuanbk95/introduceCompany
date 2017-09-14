@@ -19,7 +19,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('categories.update',$category->id) }}" accept-charset="UTF-8" id="room">
+                    <form method="POST" action="{{ route('categories.update',$category->id) }}" accept-charset="UTF-8" id="editCat" class="catForm">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
@@ -45,8 +45,8 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <button type="submit" form="room" class="btn btn-primary" name="submit" value="Lưu"><i class="glyphicon glyphicon-edit"></i> Lưu</button>
-                                <button class="btn btn-default" type="button" onclick="window.location='{{ route('categories.index')}}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                                <button type="submit" form="editCat" class="btn btn-primary" name="submit" value="Lưu"><i class="glyphicon glyphicon-edit"></i> Lưu</button>
+                                <button class="btn btn-default" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>

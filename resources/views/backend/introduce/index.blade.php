@@ -18,7 +18,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('introUpdate') }}" accept-charset="UTF-8" id="introForm">
+                    <form method="POST" action="{{ route('introUpdate') }}" accept-charset="UTF-8" id="introForm" class="introdudeForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->

@@ -1,5 +1,4 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
@@ -13,7 +12,7 @@
                             Thông tin người dùng
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('users.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('users.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -26,47 +25,47 @@
                             <tbody>
                                 <tr>
                                     <td>Mã người dùng</td>
-                                    <td>{{ $user->id }}</td>
+                                    <td><?php echo e($user->id); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tên người dùng</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td><?php echo e($user->name); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td><?php echo e($user->email); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Họ và tên</td>
-                                    <td>{{ $user->fullname }}</td>
+                                    <td><?php echo e($user->fullname); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Cấp bậc</td>
                                     <td>
-                                        @if($user->level == 2)
+                                        <?php if($user->level == 2): ?>
                                             Super Admin
-                                        @elseif($user->level == 1)
+                                        <?php elseif($user->level == 1): ?>
                                             Admin
-                                        @else
+                                        <?php else: ?>
                                             User
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Ngày tạo</td>
-                                    <td class="text-success">{{ $user->created_at }}</td>
+                                    <td class="text-success"><?php echo e($user->created_at); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Cập nhật gần nhất</td>
-                                    <td class="text-danger">{{ $user->updated_at }}</td>
+                                    <td class="text-danger"><?php echo e($user->updated_at); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Ảnh đại diện</td>
-                                    <td><img src="{{ url("storage/avatars/$user->avatar") }}" width="200px"></td>
+                                    <td><img src="<?php echo e(url("storage/avatars/$user->avatar")); ?>" width="200px"></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-warning" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                        <button class="btn btn-warning" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                     </div>
                 </div>
             </div>
@@ -74,4 +73,5 @@
     </section>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

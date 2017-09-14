@@ -12,7 +12,7 @@
                             Chi tiết bài viết
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="<?php echo e(route('papers.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('phongthuy.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                             <a class="btn btn-primary pull-right" href="<?php echo e(route('phongthuy.edit',$phongthuy->id)); ?>" style="margin-right: 10px;"><i class="glyphicon glyphicon-edit"></i> Sửa tin</a>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                             </tbody>
                         </table>
                         <br>
-                        <button class="btn btn-default" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                        <button class="btn btn-warning" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                         
                     </div>
                 </div>
