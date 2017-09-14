@@ -1,9 +1,7 @@
-@extends('frontend.layouts.frontendapp')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="hero hero-slider">
 				<ul class="slides">
-					<li data-bg-image="{{URL::asset('/dummy/slide-1.jpg')}}">
+					<li data-bg-image="<?php echo e(URL::asset('/dummy/slide-1.jpg')); ?>">
 						<div class="container">
 							<div class="slide-title">
 							</div>
@@ -33,4 +31,6 @@
 				</ul> <!-- .slides -->
 			</div> <!-- .hero-slider -->			
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layouts.frontendapp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -9,9 +9,9 @@
 							<li>
 								<figure><a href="<?php echo e(route('phongthuysingle', $item->id)); ?>">
 								<?php if(empty($item->feature_image)): ?>
-									<img src="<?php echo e(URL::asset('/images/phongthuy/defaultimage.jpg')); ?>" alt="No Image">
+									<img src="<?php echo e(URL::asset('/images/defaultimage.jpg')); ?>" alt="No Image">
 								<?php else: ?>
-									<img src="<?php echo e(URL::asset('/images/phongthuy/'.$item->feature_image)); ?>" alt="<?php echo e($item->feature_image); ?>">
+									<img src="<?php echo e(URL::asset('/storage/phongthuy/'.$item->feature_image)); ?>" alt="<?php echo e($item->feature_image); ?>">
 								<?php endif; ?>
 								</a></figure>
 								<h3 class="entry-title"><a href="<?php echo e(route('phongthuysingle', $item->id)); ?>"><?php echo e($item->title); ?></a></h3>

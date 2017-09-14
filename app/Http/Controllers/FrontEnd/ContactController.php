@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Information;
 
 class ContactController extends Controller
 {
@@ -14,8 +15,9 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('frontend.contact');
+    {   
+        $information = Information::findOrFail(1);
+        return view('frontend.contact')->with('infor', $information);
     }
 
     /**

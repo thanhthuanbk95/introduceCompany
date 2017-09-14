@@ -1,6 +1,4 @@
-@extends('frontend.layouts.frontendapp')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 			<main class="main-content">
 				
@@ -14,23 +12,24 @@
 								<div class="contact-detail">
 									<address>
 										<div class="contact-icon">
-											<img src="{{URL::asset('/images/icon-marker.png')}}" class="icon">
+											<img src="<?php echo e(URL::asset('/images/icon-marker.png')); ?>" class="icon">
 										</div>
-										<p><strong>{{$infor->name}}</strong> <br>{{$infor->address}}</p>
+										<p><strong><?php echo e($infor->name); ?></strong> <br><?php echo e($infor->address); ?></p>
 									</address>
-									<span class="phone"><span class="contact-icon"><img src="{{URL::asset('/images/icon-phone.png')}}" class="icon"></span>{{$infor->phone}}</span>
-									<span class="email"><span class="contact-icon"><img src="{{URL::asset('/images/icon-envelope.png')}}" class="icon"></span>{{$infor->email}}</span>
+									<span class="phone"><span class="contact-icon"><img src="<?php echo e(URL::asset('/images/icon-phone.png')); ?>" class="icon"></span><?php echo e($infor->phone); ?></span>
+									<span class="email"><span class="contact-icon"><img src="<?php echo e(URL::asset('/images/icon-envelope.png')); ?>" class="icon"></span><?php echo e($infor->email); ?></span>
 								</div>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
 								<div class="contact-form">
-									@if(Session::has('success'))
-										<h3>{{ Session::get('success') }}</h3>
-									@endif
+									<?php if(Session::has('success')): ?>
+										<h3><?php echo e(Session::get('success')); ?></h3>
+									<?php endif; ?>
 									<h2 class="section-title">Liên hệ với chúng tôi</h2>
 
-									<form method="POST" action="{{ route('contact.store') }}" id="contact">
-										{{ csrf_field() }}
+									<form method="POST" action="<?php echo e(route('contact.store')); ?>" id="contact">
+										<?php echo e(csrf_field()); ?>
+
 										<input type="text" name="hoten" placeholder="Họ và tên" value="" required >
 										<input type="text" name="email" placeholder="Email.." value="">
 										<input type="text" name="sodienthoai" placeholder="Số điện thoại" value="">
@@ -46,4 +45,5 @@
 				</div> <!-- .page -->
 
 			</main> <!-- .main-content -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.frontendapp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

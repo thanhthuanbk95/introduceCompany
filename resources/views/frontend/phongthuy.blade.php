@@ -11,9 +11,9 @@
 							<li>
 								<figure><a href="{{ route('phongthuysingle', $item->id) }}">
 								@if(empty($item->feature_image))
-									<img src="{{URL::asset('/images/phongthuy/defaultimage.jpg')}}" alt="No Image">
+									<img src="{{URL::asset('/images/defaultimage.jpg')}}" alt="No Image">
 								@else
-									<img src="{{URL::asset('/images/phongthuy/'.$item->feature_image)}}" alt="{{$item->feature_image}}">
+									<img src="{{URL::asset('/storage/phongthuy/'.$item->feature_image)}}" alt="{{$item->feature_image}}">
 								@endif
 								</a></figure>
 								<h3 class="entry-title"><a href="{{ route('phongthuysingle', $item->id) }}">{{$item->title}}</a></h3>

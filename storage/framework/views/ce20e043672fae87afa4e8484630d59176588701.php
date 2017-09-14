@@ -1,5 +1,4 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
@@ -13,8 +12,8 @@
                             Chi tiết bài viết
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('papers.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
-                            <a class="btn btn-primary pull-right" href="{{ route('phongthuy.edit',$phongthuy->id) }}" style="margin-right: 10px;"><i class="glyphicon glyphicon-edit"></i> Sửa tin</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('papers.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-primary pull-right" href="<?php echo e(route('phongthuy.edit',$phongthuy->id)); ?>" style="margin-right: 10px;"><i class="glyphicon glyphicon-edit"></i> Sửa tin</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -23,38 +22,38 @@
                             <tbody>
                                 <tr>
                                     <td class="text-bold">ID</td>
-                                    <td>{{ $phongthuy->id }}</td>
+                                    <td><?php echo e($phongthuy->id); ?></td>
                                 </tr>
                                 <tr>
                                     <td class="text-bold">ngày tạo</td>
-                                    <td>{{ $phongthuy->created_at }}</td>
+                                    <td><?php echo e($phongthuy->created_at); ?></td>
                                 </tr>
                                 <tr>
                                     <td class="text-bold">Hình ảnh</td>
                                     <td>
-                                        @if(empty($phongthuy->feature_image))
-                                            <img src="{{URL::asset('/images/noimage.png')}}" height="150px">
-                                        @else
-                                            <img src="{{URL::asset('/storage/phongthuy/'.$phongthuy->feature_image)}}" height="150px">
-                                        @endif
+                                        <?php if(empty($phongthuy->feature_image)): ?>
+                                            <img src="<?php echo e(URL::asset('/images/noimage.png')); ?>" height="150px">
+                                        <?php else: ?>
+                                            <img src="<?php echo e(URL::asset('/storage/phongthuy/'.$phongthuy->feature_image)); ?>" height="150px">
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="text-bold">Tiêu đề</td>
-                                    <td>{{ $phongthuy->title }}</td>
+                                    <td><?php echo e($phongthuy->title); ?></td>
                                 </tr>
                                 <tr>
                                     <td class="text-bold">Mô tả</td>
-                                    <td>{{ $phongthuy->preview_text }}</td>
+                                    <td><?php echo e($phongthuy->preview_text); ?></td>
                                 </tr>
                                 <tr>
                                     <td class="text-bold">Nội dung chi tiết</td>
-                                    <td>{{ $phongthuy->detail_text }}</td>
+                                    <td><?php echo e($phongthuy->detail_text); ?></td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
-                        <button class="btn btn-default" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                        <button class="btn btn-default" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                         
                     </div>
                 </div>
@@ -63,4 +62,5 @@
     </section>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

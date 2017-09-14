@@ -1,17 +1,16 @@
-@extends('backend.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
     <section class="content">
         <div class="clearfix"></div>
         <div class="row">
             <div class="col-md-12">
-                @if(Session::has('success'))
-                    <div class="alert alert-success"><p><strong>{{ Session::get('success') }}</strong></p></div>
-                @endif
-                @if(Session::has('fail'))
-                    <div class="alert alert-danger"><p><strong>{{ Session::get('fail') }}</strong></p></div>
-                @endif
+                <?php if(Session::has('success')): ?>
+                    <div class="alert alert-success"><p><strong><?php echo e(Session::get('success')); ?></strong></p></div>
+                <?php endif; ?>
+                <?php if(Session::has('fail')): ?>
+                    <div class="alert alert-danger"><p><strong><?php echo e(Session::get('fail')); ?></strong></p></div>
+                <?php endif; ?>
                 <div class="clearfix"></div>
                 <div class="box box-default">
                     <div class="box-header" style="background-color: #f4f4f4; ">
@@ -19,7 +18,7 @@
                             Bài viết Phong thủy
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('phongthuy.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('phongthuy.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
@@ -34,30 +33,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($phongthuy) < 1)
+                                <?php if(count($phongthuy) < 1): ?>
                                 <td  class="text-center" colspan="8">Chưa có bài viết nào!</td>
-                            @else
-                            @foreach($phongthuy as $item)
+                            <?php else: ?>
+                            <?php $__currentLoopData = $phongthuy; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td class="text-center">{{ $item->id }}</td>
-                                    <td class="text-center">{{ $item->title }}</td>
-                                    <td class="text-center">{{ $item->preview_text }}</td>
+                                    <td class="text-center"><?php echo e($item->id); ?></td>
+                                    <td class="text-center"><?php echo e($item->title); ?></td>
+                                    <td class="text-center"><?php echo e($item->preview_text); ?></td>
                                     <td class="text-center">
-                                        @if(empty($item->feature_image))
-                                            <img src="{{URL::asset('/images/noimage.png')}}" height="150px">
-                                        @else
-                                            <img src="{{URL::asset('/storage/phongthuy/'.$item->feature_image)}}" height="150px">
-                                        @endif
+                                        <?php if(empty($item->feature_image)): ?>
+                                            <img src="<?php echo e(URL::asset('/images/noimage.png')); ?>" height="150px">
+                                        <?php else: ?>
+                                            <img src="<?php echo e(URL::asset('/storage/phongthuy/'.$item->feature_image)); ?>" height="150px">
+                                        <?php endif; ?>
                                     </td>
                                     <td class="text-center">
-                                        <form method="POST" action="{{ route('phongthuy.destroy',$item->id) }}" accept-charset="UTF-8">
-                                            {{ csrf_field() }}
+                                        <form method="POST" action="<?php echo e(route('phongthuy.destroy',$item->id)); ?>" accept-charset="UTF-8">
+                                            <?php echo e(csrf_field()); ?>
+
                                             <input name="_method" type="hidden" value="DELETE">
                                             <div class='btn-group'>
-                                                <a href="{{ route('phongthuy.show',$item->id) }}" class='btn btn-default btn-xs'>
+                                                <a href="<?php echo e(route('phongthuy.show',$item->id)); ?>" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-eye-open"></i>
                                                 </a>
-                                                <a href="{{ route('phongthuy.edit',$item->id) }}" class='btn btn-default btn-xs'>
+                                                <a href="<?php echo e(route('phongthuy.edit',$item->id)); ?>" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Bạn muốn xóa bài viết này?&#039;)">
@@ -67,14 +67,15 @@
                                         </form>
                                     </td>
                                 </tr>
-                               @endforeach
-                            @endif
+                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="box-footer clearfix">
                         <div class="pagination-sm no-margin pull-right">
-                            {{ $phongthuy->links() }}
+                            <?php echo e($phongthuy->links()); ?>
+
                         </div>
                     </div>
                 </div>
@@ -83,4 +84,5 @@
     </section>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

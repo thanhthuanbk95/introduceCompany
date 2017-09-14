@@ -1,6 +1,5 @@
 <?php $__env->startSection('content'); ?>
 <main class="main-content">
-				
 				<div class="page">
 					<div class="container">
 						<div class="col-md-10 col-md-offset-1">

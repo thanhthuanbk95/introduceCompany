@@ -5,7 +5,7 @@
 				
 				<div class="page">
 					<div class="container">
-						<a href="{{ route('phongthuy') }}" class="button-back"><img src="{{URL::asset('/images/arrow-back.png')}}" alt="" class="icon">Quay lại</a>
+						<a href="{{ url()->previous() }}" class="button-back"><img src="{{URL::asset('/images/arrow-back.png')}}" alt="" class="icon">Quay lại</a>
 						<div class="row">
 							<div class="col-md-10 col-md-offset-1">
 								<div class="project-detail">

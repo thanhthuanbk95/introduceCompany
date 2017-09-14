@@ -1783,6 +1783,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     display: block;
     margin-right: 20px; }
   .site-footer .phone {
+    color: #34b5d4;
     font-size: 18px;
     font-size: 1.2857142857em; }
   .site-footer .colophon {

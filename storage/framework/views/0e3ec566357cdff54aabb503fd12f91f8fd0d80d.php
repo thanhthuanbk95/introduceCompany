@@ -1,16 +1,14 @@
-@extends('frontend.layouts.frontendapp')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 			<main class="main-content">
 				
 				<div class="page">
 					<div class="container">
-						<a href="project.html" class="button-back"><img src="{{URL::asset('/images/arrow-back.png')}}" alt="" class="icon">Back to the projects</a>
+						<a href="project.html" class="button-back"><img src="<?php echo e(URL::asset('/images/arrow-back.png')); ?>" alt="" class="icon">Back to the projects</a>
 
 						<div class="slideshow-container" style="width: 90%;">
 
 						<div class="mySlides fade">
-						  <img src="{{URL::asset('/dummy/slide-1.jpg')}}" style="width:100%">
+						  <img src="<?php echo e(URL::asset('/dummy/slide-1.jpg')); ?>" style="width:100%">
 						  <div class="text" style="background: #000; opacity: 0.8;">
 						  	<span>Chủ đầu tư&nbsp;: </span><span>Phan Thanh Thuận</span><br />
 							<span>Địa chỉ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </span><span>100 Hùng Vương, Đà Nẵng</span><br>
@@ -57,5 +55,6 @@
 				</div> <!-- .page -->
 
 			</main> <!-- .main-content -->
-			<script src="{{ URL::asset('js/public/single-project.js') }}"></script>
-@endsection
+			<script src="<?php echo e(URL::asset('js/public/single-project.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.frontendapp', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

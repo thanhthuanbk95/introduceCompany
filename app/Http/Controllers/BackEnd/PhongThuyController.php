@@ -45,8 +45,10 @@ class PhongThuyController extends Controller
         $phongthuy->feature_image = "";
          if($request->hasFile("upload")){
             $image = $request->upload;
-            $phongthuy->feature_image = 'PT_'.date('YmdHis').'.'.$image->getClientOriginalExtension();
-            $image->move('images/phongthuy',$phongthuy->feature_image);
+            // $phongthuy->feature_image = 'PT_'.date('YmdHis').'.'.$image->getClientOriginalExtension();
+            $image = $request->file('upload')->store('public/phongthuy');
+            $arr_filename = explode("/",$image);
+            $phongthuy->feature_image = end($arr_filename);
          }
          $phongthuy->save();
          $request->session()->flash('success','Thêm thành công');
@@ -92,8 +94,9 @@ class PhongThuyController extends Controller
         $phongthuy->detail_text = $request->detail_text;
          if($request->hasFile("upload")){
             $image = $request->upload;
-            $phongthuy->feature_image = 'PT_'.date('YmdHis').'.'.$image->getClientOriginalExtension();
-            $image->move('images/phongthuy',$phongthuy->feature_image);
+            $image = $request->file('upload')->store('public/phongthuy');
+            $arr_filename = explode("/",$image);
+            $phongthuy->feature_image = end($arr_filename);
          }
          $phongthuy->save();
          $request->session()->flash('success','Sửa thành công');
@@ -109,13 +112,15 @@ class PhongThuyController extends Controller
     public function destroy($id, Request $request)
     {   
         $phongthuy = PhongThuy::findOrFail($id);
-
         //delete image
         if(!empty($phongthuy->feature_image)){
-            $image_path = 'images/phongthuy/'.$phongthuy->feature_image;
+            $image_path = 'storage/phongthuy/'.$phongthuy->feature_image;
+            //dd($image_path);
             if(File::exists($image_path)){
+                //dd($image_path);
                 File::delete($image_path);
             }
+            //dd('end');
         }
         $phongthuy->delete();
         $request->session()->flash('success', 'Xóa thành công!');
@@ -126,7 +131,7 @@ class PhongThuyController extends Controller
         $phongthuy = PhongThuy::findOrFail($request->id);
         //delete image
         if(!empty($phongthuy->feature_image)){
-            $image_path = 'images/phongthuy/'.$phongthuy->feature_image;
+            $image_path = 'storage/phongthuy/'.$phongthuy->feature_image;
             if(File::exists($image_path)){
                 File::delete($image_path);
             }

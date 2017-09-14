@@ -3,7 +3,7 @@
 				
 				<div class="page">
 					<div class="container">
-						<a href="<?php echo e(route('phongthuy')); ?>" class="button-back"><img src="<?php echo e(URL::asset('/images/arrow-back.png')); ?>" alt="" class="icon">Quay lại</a>
+						<a href="<?php echo e(url()->previous()); ?>" class="button-back"><img src="<?php echo e(URL::asset('/images/arrow-back.png')); ?>" alt="" class="icon">Quay lại</a>
 						<div class="row">
 							<div class="col-md-10 col-md-offset-1">
 								<div class="project-detail">
