@@ -14,7 +14,7 @@ class ReaddNameImage extends Migration
     public function up()
     {
         Schema::table('images',function(Blueprint $table){
-            $table->string('name');
+            // $table->string('name');
         });
     }
 
@@ -25,6 +25,6 @@ class ReaddNameImage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('images');
     }
 }

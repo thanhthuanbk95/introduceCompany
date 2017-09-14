@@ -23,12 +23,11 @@
 
 
 	<body>
-		
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="{{ url('/home') }}" id="branding">
-						<img src="images/logo.png" alt="" class="logo">
+					<a href="{{ url('/') }}" id="branding">
+						<img src="{{URL::asset('/images/logo.png')}}" alt="logo" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">VIỆT VŨ LONG</h1>
 							<small class="site-description">Tư vấn thiết kế và Xây dựng</small>
@@ -42,7 +41,7 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="{{ url('/home') }}">TRANG CHỦ</a></li>
+							<li class="menu-item current-menu-item"><a href="{{ url('/') }}">TRANG CHỦ</a></li>
 							<li class="menu-item"><a href="{{ url('/about') }}">GIỚI THIỆU</a></li>
 							@foreach($parentcats as $parentcat)
 							<li class="menu-item"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
@@ -67,20 +66,20 @@
 					<div class="pull-left">
 
 						<address>
-							<strong>CÔNG TY TNHH TƯ VẤN THIẾT KẾ VÀ XÂY DỰNG VIỆT VŨ LONG</strong>
-							<p>78 Nguyễn Đình Tựu, Q. Thanh Khê, Tp Đà Nẵng</p>
+							<strong style="text-transform: uppercase;">{{ $infor->name}}</strong>
+							<p>{{$infor->address}}</p>
 						</address>
 
-						<a href="#" class="phone">0934 380 037</a>
+						<span class="phone">{{ $infor->phone}}</span>
 					</div> <!-- .pull-left -->
 					<div class="pull-right">
 
 						<div class="social-links">
 
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-google-plus"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-pinterest"></i></a>
+							<a href="http://{{$infor->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a href="http://{{$infor->google}}" target="_blank"><i class="fa fa-google-plus"></i></a>
+							<a href="http://{{$infor->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+							<a href="http://{{$infor->pinterest}}" target="_blank"><i class="fa fa-pinterest"></i></a>
 
 						</div>
 

@@ -33,7 +33,7 @@
 							@endforeach
 						@else
 							<div class="project-item filterable-item shopping-center">
-								<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>	
+								<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>
 							</div>
 						@endif	
 							<span style="float:right; width: 100%;">

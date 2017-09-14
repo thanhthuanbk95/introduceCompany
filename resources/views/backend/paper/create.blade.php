@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
-                                <label for="title">Tiêu đề viết:</label>
+                                <label for="title">Tiêu đề bài viết:</label>
                                 <input class="form-control" name="title" type="text" id="name">
                             </div>
                             <div class="clearfix"></div>

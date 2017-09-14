@@ -33,6 +33,6 @@ class CreateTalbeContact extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('contact');
     }
 }

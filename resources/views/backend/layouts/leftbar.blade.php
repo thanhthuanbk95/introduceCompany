@@ -60,6 +60,11 @@
                 <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
             </a>
         </li>
+        <li class="{{ Request::is('admin/phongthuy*')? 'active' : '' }}">
+            <a href="{{ route('phongthuy.index') }}">
+                <i class="fa fa-newspaper-o"></i> <span>Phong thủy</span>
+            </a>
+        </li>
 
     </ul>
 </section>
