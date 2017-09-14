@@ -42,6 +42,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <button class="btn btn-warning" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                     </div>
                 </div>
             </div>

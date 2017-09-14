@@ -18,14 +18,14 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="<?php echo e(route('phongthuy.update', $phongthuy->id)); ?>" accept-charset="UTF-8" id="phongthuy" enctype="multipart/form-data">
+                    <form method="POST" action="<?php echo e(route('phongthuy.update', $phongthuy->id)); ?>" accept-charset="UTF-8" id="phongthuy" class="phongthuyForm" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="title">ID:</label>
-                                <input class="form-control" name="title" type="text" id="title" value="<?php echo e($phongthuy->id); ?>" readonly="readonly">
+                                <input class="form-control" name="id" type="text" id="id" value="<?php echo e($phongthuy->id); ?>" readonly="readonly">
                             </div>
                             <div class="clearfix"></div>
                         </div>

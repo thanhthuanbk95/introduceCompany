@@ -19,7 +19,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('categories.store') }}" accept-charset="UTF-8" id="room">
+                    <form method="POST" action="{{ route('categories.store') }}" accept-charset="UTF-8" id="createCat" class="catForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->
@@ -44,7 +44,8 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <button type="submit" form="room" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+                                <button type="submit" form="createCat" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+                                <button class="btn btn-default" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
