@@ -8,13 +8,28 @@
 
 						<div class="filter-links filterable-nav">
 						<?php if(count($categories) > 0): ?>
-							<select class="mobile-filter">
+							<select class="mobile-filter" id="CatSelect" onchange="selectChange();">
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+								<option value="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></option>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</select>
+							<script type="text/javascript">
+								function selectChange(){
+									var id = document.getElementById("CatSelect").value;
+									window.location=id;
+								}
+							</script>
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+								<?php if(Request::is('danhmuc/*')): ?>
+									<?php if($loop->first): ?>
+										<a class="current" href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+									<?php endif; ?>
+								<?php endif; ?>
+								<?php if(Request::is('danhmuc/tieumuc/'.$category->id)): ?>
+									<a class="current" href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+								<?php else: ?>
+									<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+								<?php endif; ?>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						<?php endif; ?>	
 						</div>
@@ -24,7 +39,12 @@
 								<div class="project-item filterable-item shopping-center">
 									<figure class="featured-image">
 										<a href="<?php echo e(route('baiviet',$paper->id)); ?>">
-										<img src="<?php echo e(url('storage/images/'.$paper->image)); ?>" alt="#" width="400px" height="300px"><span class="project-title"><?php echo e($paper->user); ?></span>
+										<?php if(empty($paper->image)): ?>
+										<img src="<?php echo e(asset('images/projectdefault.png')); ?>" alt="#" ><span class="project-title">
+										<?php else: ?>
+										<img src="<?php echo e(url('storage/images/'.$paper->image)); ?>" alt="#" ><span class="project-title">
+										<?php endif; ?>
+											<?php echo e($paper->title); ?></span>
 										</a>
 									</figure>
 								</div>

@@ -60,6 +60,16 @@
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>
             </a>
         </li>
+        <li class="{{ Request::is('admin/indexImage*')? 'active' : '' }}">
+            <a href="{{ route('indexImage.index') }}">
+                <i class="fa fa-adjust"></i> <span>Ảnh Homepage</span>
+            </a>
+        </li>
+        <li class="{{ Request::is('admin/adcontact*')? 'active' : '' }}">
+            <a href="{{ route('adcontact.index') }}">
+                <i class="fa fa-envelope"></i> <span>Liên hệ</span>
+            </a>
+        </li>
 
     </ul>
 </section>

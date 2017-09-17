@@ -1,12 +1,6 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Cập nhật người dùng
-        </h1>
-    </section>
-
     <section class="content">
         <?php if($errors->count()>0): ?>
             <ul class="alert alert-danger" style="list-style-type: none">
@@ -16,9 +10,14 @@
             </ul>
         <?php endif; ?>
         <div class="box box-primary">
+            <div class="box-header with-border" style="background-color: #c4e3f3;" >
+                <h3 style="margin: 0px 5px; color: #0d6496;">
+                    Cập nhật người dùng
+                </h3>
+            </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="<?php echo e(route('users.update',$user->id)); ?>" accept-charset="UTF-8" id="user_update" enctype="multipart/form-data">
+                    <form method="POST" action="<?php echo e(route('users.update',$user->id)); ?>" accept-charset="UTF-8" id="user_update" class="userForm" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
                         <input type="hidden" name="_method" value="PUT">
@@ -81,8 +80,8 @@
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <input class="btn btn-primary" type="submit" value="Save">
-                                <a href="<?php echo e(route('users.index')); ?>" class="btn btn-default">Back</a>
+                                <button type="submit" form="user_update" class="btn btn-primary" name="submit" value="Sửa"><i class="glyphicon glyphicon-edit"></i> Sửa</button>
+                                <button class="btn btn-default" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                             </div>
                         </div>
                     </form>
