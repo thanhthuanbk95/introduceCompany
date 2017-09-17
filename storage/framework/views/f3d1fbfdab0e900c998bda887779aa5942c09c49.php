@@ -38,7 +38,6 @@
                     <i class="fa fa-file-text-o"></i> <span>Giới thiệu</span>
                 </a>
             </li>
-
         <?php endif; ?>
         
 
@@ -60,6 +59,11 @@
         <li class="<?php echo e(Request::is('admin/phongthuy*')? 'active' : ''); ?>">
             <a href="<?php echo e(route('phongthuy.index')); ?>">
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>
+            </a>
+        </li>
+        <li class="<?php echo e(Request::is('admin/adcontact*')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('adcontact.index')); ?>">
+                <i class="fa fa-envelope"></i> <span>Liên hệ</span>
             </a>
         </li>
 

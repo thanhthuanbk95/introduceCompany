@@ -39,9 +39,10 @@ class ParentCatController extends Controller
                     if(count($images) > 0){
                         $index = rand(0,count($images)-1);
                         $paper->image = $images[$index]->name;
-                    }else{
-                        $paper->image = 'default.jpg';
                     }
+                    // else{
+                    //     $paper->image = 'default.jpg';
+                    // }
                 }
             }
         }

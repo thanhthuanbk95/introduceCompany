@@ -7,19 +7,22 @@ use App\Http\Controllers\Controller;
 use App\PhongThuy;
 use Illuminate\Pagination\Paginator;
 use App\Information;
+use App\ParentCat;
 
 class PhongThuyController extends Controller
 {
     public function index()
     {	
-    	$information = Information::findOrFail(1);
+        $parentcats = ParentCat::all();
+    	$infor = Information::findOrFail(1);
     	$phongthuy = PhongThuy::orderBy('id','DESC')->paginate(3);
-        return view('frontend.phongthuy')->with('phongthuy', $phongthuy)->with('infor', $information);
+        return view('frontend.phongthuy', compact('parentcats','phongthuy','infor'));
     }
 
     public function showSinglePage($id){
+        $parentcats = ParentCat::all();
     	$phongthuy = PhongThuy::findOrFail($id);
-    	$information = Information::findOrFail(1);
-        return view('frontend.phongthuy-single')->with('phongthuy', $phongthuy)->with('infor', $information);
+    	$infor = Information::findOrFail(1);
+        return view('frontend.phongthuy-single', compact('parentcats','phongthuy','infor'));
     }
 }

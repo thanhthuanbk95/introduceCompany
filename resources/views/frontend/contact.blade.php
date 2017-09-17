@@ -23,11 +23,11 @@
 								</div>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
-								<div class="contact-form">
+								<div class="contact-form" >
 									@if(Session::has('success'))
-										<h3>{{ Session::get('success') }}</h3>
+										<h3 style="color: #fff">{{ Session::get('success') }}</h3>
 									@endif
-									<h2 class="section-title">Liên hệ với chúng tôi</h2>
+									<h2 class="section-title" style="color: #34b5d4;">Liên hệ với chúng tôi</h2>
 
 									<form method="POST" action="{{ route('contact.store') }}" id="contact">
 										{{ csrf_field() }}
