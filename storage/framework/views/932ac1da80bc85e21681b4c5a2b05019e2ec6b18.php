@@ -66,6 +66,11 @@
                 <i class="fa fa-adjust"></i> <span>Ảnh Homepage</span>
             </a>
         </li>
+        <li class="<?php echo e(Request::is('admin/adcontact*')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('adcontact.index')); ?>">
+                <i class="fa fa-envelope"></i> <span>Liên hệ</span>
+            </a>
+        </li>
 
     </ul>
 </section>

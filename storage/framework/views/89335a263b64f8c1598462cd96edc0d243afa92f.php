@@ -41,10 +41,10 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item <?php echo e(Request::is('/')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(route('homepage')); ?>">TRANG CHỦ</a></li>
-							<li class="menu-item <?php echo e(Request::is('/gioithieu')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(route('gioithieu')); ?>">GIỚI THIỆU</a></li>
+							<li class="menu-item current-menu-item"><a href="<?php echo e(route('homepage')); ?>">TRANG CHỦ</a></li>
+							<li class="menu-item"><a href="<?php echo e(route('gioithieu')); ?>">GIỚI THIỆU</a></li>
 							<?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<li class="menu-item <?php echo e(Request::is('/danhmuc/{id}')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(route('danhmuc',$parentcat->id)); ?>"><?php echo e($parentcat->name); ?></a></li>
+							<li class="menu-item <?php echo e(Request::is('danhmuc/'.$parentcat->id)? 'current-menu-item' : ''); ?>"><a href="<?php echo e(route('danhmuc',$parentcat->id)); ?>"><?php echo e($parentcat->name); ?></a></li>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							<li class="menu-item"><a href="<?php echo e(route('phongthuy')); ?>">PHONG THỦY</a></li>
 							<li class="menu-item"><a href="<?php echo e(route('contact.index')); ?>">LIÊN HỆ</a></li>
