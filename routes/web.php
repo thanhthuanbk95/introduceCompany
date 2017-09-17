@@ -18,6 +18,7 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
     Route::resource('categories', 'CatController');
     Route::resource('papers', 'PaperController');
     Route::resource('phongthuy', 'PhongThuyController');
+    Route::resource('indexImage', 'IndexImageController');
     Route::get('infor', 'InformationController@index')->name('infor');
     Route::post('inforUpdate', 'InformationController@update')->name('inforUpdate');
     Route::get('introInfo', 'IntroduceController@index')->name('introInfo');
@@ -35,7 +36,7 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
 
 Route::group(['namespace'=>'FrontEnd'],function (){
     Route::get('/','HomeController@index')->name('homepage');
-    Route::get('/about','AboutController@index');
+    Route::get('/gioithieu','AboutController@index')->name('gioithieu');
     Route::get('/project','ProjectController@index');
     Route::get('/project-single','ProjectSingleController@index');
     Route::get('/furniture','FurnitureController@index');

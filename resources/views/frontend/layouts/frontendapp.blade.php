@@ -41,12 +41,12 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="{{ url('/') }}">TRANG CHỦ</a></li>
-							<li class="menu-item"><a href="{{ url('/about') }}">GIỚI THIỆU</a></li>
+							<li class="menu-item current-menu-item"><a href="{{ route('homepage') }}">TRANG CHỦ</a></li>
+							<li class="menu-item"><a href="{{ route('gioithieu') }}">GIỚI THIỆU</a></li>
 							@foreach($parentcats as $parentcat)
 							<li class="menu-item"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
 							@endforeach
-							<li class="menu-item"><a href="{{ url('/phongthuy') }}">PHONG THỦY</a></li>
+							<li class="menu-item"><a href="{{ route('phongthuy') }}">PHONG THỦY</a></li>
 							<li class="menu-item"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
@@ -91,9 +91,9 @@
 			</footer> <!-- .site-footer -->
 		</div>
 
-		<script src="{{ URL::asset('js/public/jquery-1.11.1.min.js') }}"></script>
-		<script src="{{ URL::asset('js/public/plugins.js') }}"></script>
-		<script src="{{ URL::asset('js/public/app.js') }}"></script>
+		<script src="{{ asset('js/public/jquery-1.11.1.min.js') }}"></script>
+		<script src="{{ asset('js/public/plugins.js') }}"></script>
+		<script src="{{ asset('js/public/app.js') }}"></script>
 		
 	</body>
 
