@@ -10,13 +10,28 @@
 
 						<div class="filter-links filterable-nav">
 						@if(count($categories) > 0)
-							<select class="mobile-filter">
+							<select class="mobile-filter" id="CatSelect" onchange="selectChange();">
 							@foreach($categories as $category)
-								<option value="{{ $category->id }}">{{ $category->name }}</option>
+								<option value="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</option>
 							@endforeach
 							</select>
+							<script type="text/javascript">
+								function selectChange(){
+									var id = document.getElementById("CatSelect").value;
+									window.location=id;
+								}
+							</script>
 							@foreach($categories as $category)
-							<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+								@if(Request::is('danhmuc/*'))
+									@if($loop->first)
+										<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+									@endif
+								@endif
+								@if(Request::is('danhmuc/tieumuc/'.$category->id))
+									<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+								@else
+									<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+								@endif
 							@endforeach
 						@endif	
 						</div>
@@ -26,7 +41,12 @@
 								<div class="project-item filterable-item shopping-center">
 									<figure class="featured-image">
 										<a href="{{ route('baiviet',$paper->id) }}">
-										<img src="{{ url('storage/images/'.$paper->image) }}" alt="#" width="400px" height="300px"><span class="project-title">{{ $paper->user }}</span>
+										@if(empty($paper->image))
+										<img src="{{ asset('images/projectdefault.png') }}" alt="#" ><span class="project-title">
+										@else
+										<img src="{{ url('storage/images/'.$paper->image) }}" alt="#" ><span class="project-title">
+										@endif
+											{{ $paper->title }}</span>
 										</a>
 									</figure>
 								</div>

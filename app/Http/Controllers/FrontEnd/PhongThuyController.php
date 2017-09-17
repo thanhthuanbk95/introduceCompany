@@ -20,8 +20,9 @@ class PhongThuyController extends Controller
     }
 
     public function showSinglePage($id){
+        $parentcats = ParentCat::all();
     	$phongthuy = PhongThuy::findOrFail($id);
-    	$information = Information::findOrFail(1);
-        return view('frontend.phongthuy-single')->with('phongthuy', $phongthuy)->with('infor', $information);
+    	$infor = Information::findOrFail(1);
+        return view('frontend.phongthuy-single', compact('parentcats','phongthuy','infor'));
     }
 }

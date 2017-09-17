@@ -21,11 +21,11 @@
 								</div>
 							</div>
 							<div class="col-md-3 col-md-offset-1">
-								<div class="contact-form">
+								<div class="contact-form" >
 									<?php if(Session::has('success')): ?>
-										<h3><?php echo e(Session::get('success')); ?></h3>
+										<h3 style="color: #fff"><?php echo e(Session::get('success')); ?></h3>
 									<?php endif; ?>
-									<h2 class="section-title">Liên hệ với chúng tôi</h2>
+									<h2 class="section-title" style="color: #34b5d4;">Liên hệ với chúng tôi</h2>
 
 									<form method="POST" action="<?php echo e(route('contact.store')); ?>" id="contact">
 										<?php echo e(csrf_field()); ?>

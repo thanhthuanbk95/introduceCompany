@@ -44,7 +44,7 @@
 							<li class="menu-item current-menu-item"><a href="{{ route('homepage') }}">TRANG CHỦ</a></li>
 							<li class="menu-item"><a href="{{ route('gioithieu') }}">GIỚI THIỆU</a></li>
 							@foreach($parentcats as $parentcat)
-							<li class="menu-item"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
+							<li class="menu-item {{ Request::is('danhmuc/'.$parentcat->id)? 'current-menu-item' : '' }}"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
 							@endforeach
 							<li class="menu-item"><a href="{{ route('phongthuy') }}">PHONG THỦY</a></li>
 							<li class="menu-item"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>

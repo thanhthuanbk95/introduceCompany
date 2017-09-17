@@ -41,12 +41,13 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="<?php echo e(url('/')); ?>">TRANG CHỦ</a></li>
-							<li class="menu-item"><a href="<?php echo e(url('/about')); ?>">GIỚI THIỆU</a></li>
-							<li class="menu-item"><a href="<?php echo e(url('/project')); ?>">DỰ ÁN</a></li>
-							<li class="menu-item"><a href="<?php echo e(url('/furniture')); ?>">NỘI THẤT</a></li>
-							<li class="menu-item"><a href="<?php echo e(route('phongthuy')); ?>">PHONG THỦY</a></li>
-							<li class="menu-item"><a href="<?php echo e(route('contact.index')); ?>">LIÊN HỆ</a></li>
+							<li class="menu-item <?php echo e(Request::is('/')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(url('/')); ?>">TRANG CHỦ</a></li>
+							<li class="menu-item <?php echo e(Request::is('about')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(url('/about')); ?>">GIỚI THIỆU</a></li>
+							<?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<li class="menu-item <?php echo e(Request::is('danhmuc/'.$parentcat->id)? 'current-menu-item' : ''); ?>"><a href="<?php echo e(route('danhmuc',$parentcat->id)); ?>"><?php echo e($parentcat->name); ?></a></li>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+							<li class="menu-item <?php echo e(Request::is('phongthuy')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(url('phongthuy')); ?>">PHONG THỦY</a></li>
+							<li class="menu-item <?php echo e(Request::is('contact')? 'current-menu-item' : ''); ?>"><a href="<?php echo e(route('contact.index')); ?>">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -90,7 +91,7 @@
 			</footer> <!-- .site-footer -->
 		</div>
 
-		<script src="<?php echo e(URL::asset('js/public/jquery-1.11.1.min.js')); ?>"></script>
+		<!-- <script src="<?php echo e(URL::asset('js/public/jquery-1.11.1.min.js')); ?>"></script> -->
 		<script src="<?php echo e(URL::asset('js/public/plugins.js')); ?>"></script>
 		<script src="<?php echo e(URL::asset('js/public/app.js')); ?>"></script>
 		
