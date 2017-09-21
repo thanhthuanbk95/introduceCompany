@@ -18,7 +18,7 @@
                 </li>
                 <li class="user-footer">
                     <div class="pull-left">
-                        <a href="<?php echo e(route('users.edit',Auth::user()->id)); ?>" class="btn btn-default btn-flat">Edit profile</a>
+                        <a href="<?php echo e(route('getEdit')); ?>" class="btn btn-default btn-flat">Edit profile</a>
                     </div>
                     <div class="pull-right">
                         <a href="<?php echo url('/logout'); ?>" class="btn btn-default btn-flat"

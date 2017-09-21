@@ -57,7 +57,7 @@
                             </label>
                         </form>
                         
-                            <a href="<?php echo e(route('papers.show', $paper->id)); ?>" title="Lưu" class="btn btn-primary" onclick="return confirm('Nhấn OK để xem toàn bộ bài viết')">Lưu</a>
+                            <a href="<?php echo e(route('papers.show', $paper->id)); ?>" title="Lưu" class="btn btn-primary" onclick="return confirm('Nhấn OK để xem toàn bộ bài viết')"><i class="glyphicon glyphicon-edit"></i> Lưu</a>
                         
                     </div>
                 </div>
@@ -92,7 +92,7 @@
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: formdata,
             success: function(data){
-                var show = '<div class=\"picture-'+data.id+'\"><img src=\"../storage/images/'+ data.name +'\" class=\"img-thumbnail\" width=\"400px\">';
+                var show = '<div class=\"picture-'+data.id+'\"><img src=\"../../storage/images/'+ data.name +'\" class=\"img-thumbnail\" width=\"400px\">';
                 show = show + '<form method=\"POST\" action=\"javascript:void(0)\">'
                             + '<meta name=\"csrf-token\" content=\"<?php echo e(csrf_token()); ?>\">'
                             + '<input type=\"submit\" value=\"Xóa Ảnh\" onclick=\"deleteImage('+data.id+')\">';

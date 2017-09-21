@@ -30,6 +30,11 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
     Route::post('/deleteimage','PaperController@deleteImage')->name('deleteImage');
     Route::post('/delphongthuyimage','PhongThuyController@deleteImage')->name('delImage');
     Route::post('/replyContact','ContactController@replyContact')->name('replyContact');
+    Route::get('/taikhoan','UserController@getEdit')->name('getEdit');
+    Route::put('/taikhoan','UserController@putEdit')->name('putEdit');
+    Route::get('/baiviet/{idParent}','PaperController@indexByCat')->name('paperByCat');
+    Route::get('/them-bai-viet/{idParent}','PaperController@create')->name('createPaper');
+    Route::post('/them-bai-viet/{idParent}','PaperController@store')->name('storePaper');
 });
 
 

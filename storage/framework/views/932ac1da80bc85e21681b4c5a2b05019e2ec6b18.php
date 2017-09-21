@@ -51,11 +51,13 @@
                 <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
             </a>
         </li>
-        <li class="<?php echo e(Request::is('admin/papers*')? 'active' : ''); ?>">
-            <a href="<?php echo e(route('papers.index')); ?>">
-                <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+        <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <li class="<?php echo e(Request::is('admin/paperByCat/'.$parentcat->id)? 'active' : ''); ?>">
+            <a href="<?php echo e(route('paperByCat',$parentcat->id)); ?>">
+                <i class="fa fa-newspaper-o"></i> <span><?php echo e($parentcat->name); ?></span>
             </a>
         </li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <li class="<?php echo e(Request::is('admin/phongthuy*')? 'active' : ''); ?>">
             <a href="<?php echo e(route('phongthuy.index')); ?>">
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>

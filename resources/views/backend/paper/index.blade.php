@@ -19,7 +19,7 @@
                             Bài viết
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('papers.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="{{ route('createPaper',$idParent) }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">

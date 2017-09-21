@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\BackEnd;
 
 use App\IndexImage;
+use App\ParentCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 class IndexImageController extends Controller
 {
+    protected $parentcats;
     function __construct()
     {
         $this->middleware('auth');
+        $this->parentcats = ParentCat::all();
     }
 
     /**
@@ -22,7 +25,8 @@ class IndexImageController extends Controller
     public function index()
     {
         $images = IndexImage::paginate(5);
-        return view('backend.index_images.index',compact('images'));
+        return view('backend.index_images.index',compact('images'))
+            ->with('parentcats',$this->parentcats);
     }
 
     /**
@@ -32,7 +36,8 @@ class IndexImageController extends Controller
      */
     public function create()
     {
-        return view('backend.index_images.create');
+        return view('backend.index_images.create')
+            ->with('parentcats',$this->parentcats);;
     }
 
     /**

@@ -18,9 +18,6 @@
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
                             Danh mục
                         </h3>
-                        <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('parentcats.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
-                        </div>
                     </div>
                     <div class="box-body table-responsive">
                         <table class="table table-responsive table-bordered" id="tours-table">
@@ -36,23 +33,19 @@
                             @else
                             @foreach($parentcats as $parentcat)
                                 <tr>
-                                    <td>{{ $parentcat->name }}</td>
                                     <td class="text-center">
-                                        <form method="POST" action="{{ route('parentcats.destroy',$parentcat->id) }}" accept-charset="UTF-8">
-                                            {{ csrf_field() }}
-                                            <input name="_method" type="hidden" value="DELETE">
-                                            <div class='btn-group'>
-                                                <a href="{{ route('parentcats.show',$parentcat->id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                                <a href="{{ route('parentcats.edit',$parentcat->id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-edit"></i>
-                                                </a>
-                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Danh mục con của danh mục này sẽ bị xóa theo?&#039;)">
-                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                </button>
-                                            </div>
-                                        </form>
+                                        <strong>{{ mb_strtoupper($parentcat->name) }}</strong>
+                                    </td>
+                                    <td class="text-center">
+
+                                         <div class='btn-group'>
+                                             <a href="{{ route('parentcats.show',$parentcat->id) }}" class='btn btn-default btn-xs'>
+                                                 <i class="glyphicon glyphicon-eye-open"></i>
+                                             </a>
+                                             <a href="{{ route('parentcats.edit',$parentcat->id) }}" class='btn btn-default btn-xs'>
+                                                 <i class="glyphicon glyphicon-edit"></i>
+                                             </a>
+                                         </div>
                                     </td>
                                 </tr>
                                @endforeach

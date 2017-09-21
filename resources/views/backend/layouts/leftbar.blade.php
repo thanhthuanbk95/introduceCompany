@@ -50,11 +50,13 @@
                 <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
             </a>
         </li>
-        <li class="{{ Request::is('admin/papers*')? 'active' : '' }}">
-            <a href="{{ route('papers.index') }}">
-                <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+        @foreach($parentcats as $parentcat)
+        <li class="{{ Request::is('admin/paperByCat/'.$parentcat->id)? 'active' : '' }}">
+            <a href="{{ route('paperByCat',$parentcat->id) }}">
+                <i class="fa fa-newspaper-o"></i> <span>{{ $parentcat->name }}</span>
             </a>
         </li>
+        @endforeach
         <li class="{{ Request::is('admin/phongthuy*')? 'active' : '' }}">
             <a href="{{ route('phongthuy.index') }}">
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>
