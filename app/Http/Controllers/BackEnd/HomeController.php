@@ -26,7 +26,8 @@ class HomeController extends Controller
         $user_count = User::count();
         //dem so bai viet hien tai
         $paper_count = Paper::count();
-
+        //lay danh sach danh muc
+        $parentcats = ParentCat::all();
         //dem user,admin,superadmin
         $countUsers = User::where('level', 0)->count();
         $countAdmins = User::where('level', 1)->count();
@@ -34,6 +35,6 @@ class HomeController extends Controller
         //user recent
         $userRecents = User::where('level', 0)->orderBy('id', 'desc')->take(4)->get();
         return view('backend.home.index',compact('parent_count','cat_count','user_count','paper_count'
-                    ,'countAdmins','countSuperAdmins','countUsers','userRecents'));
+                    ,'countAdmins','countSuperAdmins','countUsers','userRecents','parentcats'));
     }
 }

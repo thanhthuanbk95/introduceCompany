@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers\BackEnd;
 
+use App\ParentCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Information;
 
 class InformationController extends Controller
 {
+    protected $parentcats;
+    function __construct()
+    {
+        $this->parentcats = ParentCat::all();
+    }
+
     public function index()
     {	
     	$information = Information::findOrFail(1);
-        return view('backend.information.index')->with('information',$information);
+        return view('backend.information.index')->with('information',$information)
+            ->with('parentcats',$this->parentcats);
     }
 
     public function update(Request $request)

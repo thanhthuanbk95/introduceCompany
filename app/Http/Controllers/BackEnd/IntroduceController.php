@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers\BackEnd;
 
+use App\ParentCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Introduce;
 
 class IntroduceController extends Controller
 {
+    protected $parentcats;
+    function __construct()
+    {
+        $this->parentcats = ParentCat::all();
+    }
     public function index()
     {   
     	$introduces = Introduce::findOrFail(1);
-        return view('backend.introduce.index')->with('introduces',$introduces);
+        return view('backend.introduce.index')->with('introduces',$introduces)
+            ->with('parentcats',$this->parentcats);
     }
 
     public function update(Request $request)

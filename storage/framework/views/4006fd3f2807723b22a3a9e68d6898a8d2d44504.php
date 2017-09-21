@@ -17,9 +17,6 @@
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
                             Danh mục
                         </h3>
-                        <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="<?php echo e(route('parentcats.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
-                        </div>
                     </div>
                     <div class="box-body table-responsive">
                         <table class="table table-responsive table-bordered" id="tours-table">
@@ -35,24 +32,19 @@
                             <?php else: ?>
                             <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td><?php echo e($parentcat->name); ?></td>
                                     <td class="text-center">
-                                        <form method="POST" action="<?php echo e(route('parentcats.destroy',$parentcat->id)); ?>" accept-charset="UTF-8">
-                                            <?php echo e(csrf_field()); ?>
+                                        <strong><?php echo e(mb_strtoupper($parentcat->name)); ?></strong>
+                                    </td>
+                                    <td class="text-center">
 
-                                            <input name="_method" type="hidden" value="DELETE">
-                                            <div class='btn-group'>
-                                                <a href="<?php echo e(route('parentcats.show',$parentcat->id)); ?>" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                                <a href="<?php echo e(route('parentcats.edit',$parentcat->id)); ?>" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-edit"></i>
-                                                </a>
-                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Danh mục con của danh mục này sẽ bị xóa theo?&#039;)">
-                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                </button>
-                                            </div>
-                                        </form>
+                                         <div class='btn-group'>
+                                             <a href="<?php echo e(route('parentcats.show',$parentcat->id)); ?>" class='btn btn-default btn-xs'>
+                                                 <i class="glyphicon glyphicon-eye-open"></i>
+                                             </a>
+                                             <a href="<?php echo e(route('parentcats.edit',$parentcat->id)); ?>" class='btn btn-default btn-xs'>
+                                                 <i class="glyphicon glyphicon-edit"></i>
+                                             </a>
+                                         </div>
                                     </td>
                                 </tr>
                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

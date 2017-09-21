@@ -1,33 +1,14 @@
 <?php $__env->startSection('content'); ?>
 <div class="hero hero-slider">
 				<ul class="slides">
-					<li data-bg-image="<?php echo e(URL::asset('/dummy/slide-1.jpg')); ?>">
-						<div class="container">
-							<div class="slide-title">
+					<?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<li data-bg-image="<?php echo e(url('storage/indexImage/'.$image->name)); ?>">
+							<div class="container">
+								<div class="slide-title">
+								</div>
 							</div>
-						</div>
-					</li>
-					<li data-bg-image="dummy/slide-2.jpg">
-						<div class="container">
-							<div class="slide-title">
-								
-							</div>
-						</div>
-					</li>
-					<li data-bg-image="dummy/slide-3.jpg">
-						<div class="container">
-							<div class="slide-title">
-								
-							</div>
-						</div>
-					</li>
-					<li data-bg-image="dummy/slide-2.jpg">
-						<div class="container">
-							<div class="slide-title">
-								
-							</div>
-						</div>
-					</li>
+						</li>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				</ul> <!-- .slides -->
 			</div> <!-- .hero-slider -->			
 

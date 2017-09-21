@@ -38,14 +38,14 @@ class CategoryController extends Controller
                     $index = rand(0,count($images)-1);
                     $paper->image = $images[$index]->name;
                 }
-                // else{
-                //     $paper->image = 'default.jpg';
-                // }
+
             }
         }
         //lay danh sach tieu muc
         $category = Category::findOrFail($id);
         $categories = Category::where('id_parent','=',$category->id_parent)->get();
-        return view('frontend.project',compact('parentcats','infor','papers','categories'));
+        //lay danh muc
+        $parentcat = ParentCat::findOrFail($category->id_parent);
+        return view('frontend.project',compact('parentcats','infor','papers','categories', 'parentcat'));
     }
 }

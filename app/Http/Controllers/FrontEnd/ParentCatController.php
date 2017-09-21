@@ -47,6 +47,11 @@ class ParentCatController extends Controller
             }
         }
         // dd(count($papers));
-        return view('frontend.project',compact('parentcats','categories','papers','infor'));
+//        if($id == 1){
+            return view('frontend.project',compact('parentcats','categories','papers','infor'));
+//        } else {
+//            return view('frontend.furniture',compact('parentcats','categories','papers','infor'));
+//        }
+
     }
 }

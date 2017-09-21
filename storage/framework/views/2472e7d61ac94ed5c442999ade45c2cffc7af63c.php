@@ -21,55 +21,45 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="<?php echo e(route('storePaper',$idParent)); ?>" accept-charset="UTF-8" id="papers" class="papersForm">
+                    <form method="POST" action="<?php echo e(route('phongthuy.store')); ?>" accept-charset="UTF-8" id="phongthuy" class="phongthuyForm" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
                         <div class="form-group">
                             <!-- Name Field -->
                             <div class="col-sm-12">
                                 <label for="title">Tiêu đề bài viết:</label>
-                                <input class="form-control" name="title" type="text" id="name">
+                                <input class="form-control" name="title" type="text" id="title">
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <!-- Parent Cat -->
                             <div class="col-sm-12">
-                                <label for="parentcat">Chọn danh mục:</label>
-                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()" disabled="disabled">
-                                    <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($parentcat->id); ?>" <?php if($parentcat->id == $idParent): ?> selected="selected"<?php endif; ?>><?php echo e($parentcat->name); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="form-group" id="categoryform">
-                            <!-- Parent Cat -->
-                            <div class="col-sm-12">
-                                <label for="category">Chọn tiểu mục:</label>
-                                <select name="category" class="form-control">
-                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if($category->id_parent == $idParent): ?>
-                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
+                                <label for="preview_text">Mô tả ngắn:</label>
+                                <input class="form-control" name="preview_text" type="text" id="preview_text">
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <!-- Parent Cat -->
                             <div class="col-sm-12">
-                                <label for="describe">Mô tả:</label>
-                                <textarea name="describe" class="form-control" id="describe" width="100%" rows="5"></textarea>
+                                <label for="detail_text">Nội dung:</label>
+                                <textarea name="detail_text" class="form-control" id="detail_text" width="100%" rows="5"></textarea>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="upload">Ảnh hiển thị:</label><br />
+                                <!-- <button type="file" class="btn btn-default" name="upload" value="Upload"><i class="glyphicon glyphicon-upload"></i> Upload</button> -->
+                                <input type="file" name="upload" id="upload" value="upload">
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <!-- Submit Field -->
                             <div class="col-sm-12">
-                                <button type="submit" form="papers" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm ảnh</button>
+                                <button type="submit" form="phongthuy" class="btn btn-primary" name="submit" value="Thêm"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
                                 <button class="btn btn-default" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                             </div>
                             <div class="clearfix"></div>
@@ -79,32 +69,9 @@
             </div>
         </div>
     </section>
-
-</div>
-<script>
-    function setCat() {
-        var value = $("#parentcat :selected").val();
-        if (value == 0) {
-            $('#categoryform').html("<div class=\"col-sm-12\"><label for=\"category\">Chọn tiểu mục:</label><label for=\"category\" class=\"form-control\"><span style=\"color: #9f191f\">BẠN CHƯA CHỌN DANH MỤC</span></label></div><div class=\"clearfix\"></div>");
-        } else {
-            $.ajax({
-                url: "<?php echo e(route('setCategories')); ?>",
-                type: 'POST',
-                cache: false,
-                data: {
-                    'id_parent': value
-                },
-                success: function(data){
-                    $('#categoryform').html(data);
-                },
-                error: function (){
-                }
-            });
-        }
-    }
-
+    <script>
         //EDITOR
-        CKEDITOR.replace('describe', {
+        CKEDITOR.replace('detail_text', {
         filebrowserBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html')); ?>",
         filebrowserImageBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html?type=Images')); ?>",
         filebrowserFlashBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html?type=Flash')); ?>",
@@ -113,5 +80,6 @@
         filebrowserFlashUploadUrl: "<?php echo e(asset('admin/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash')); ?>"
         });
     </script>
+</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

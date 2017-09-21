@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
+use App\Category;
 use App\Image;
 use App\Information;
 use App\Paper;
@@ -26,9 +27,13 @@ class PaperController extends Controller
         //tang luot view len 1
         $paper->seen = $paper->seen + 1;
         $paper->save();
+        //lay tieu muc
+        $category = Category::findOrFail($paper->id_cat);
+        //lay danh muc
+        $parentcat = ParentCat::findOrFail($category->id_parent);
         //lay danh sach anh
         $images = Image::where('id_paper','=',$paper->id)->get();
-        return view('frontend.project-single',compact('parentcats','paper','images','infor'));
+        return view('frontend.project-single',compact('parentcats','paper','images','infor','parentcat'));
     }
 
 }

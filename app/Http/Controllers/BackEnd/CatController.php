@@ -9,8 +9,10 @@ use App\Http\Controllers\Controller;
 
 class CatController extends Controller
 {
+    protected $parentcats;
     function __construct()
     {
+        $this->parentcats = ParentCat::all();
         $this->middleware('auth');
     }
 
@@ -33,7 +35,9 @@ class CatController extends Controller
 
             }
         }
-        return view('backend.category.index')->with('categories',$categories);
+        return view('backend.category.index')
+            ->with('categories',$categories)
+            ->with('parentcats',$this->parentcats);
     }
 
     /**
@@ -45,7 +49,9 @@ class CatController extends Controller
     {
         //get list parentcat
         $parentcat = ParentCat::all();
-        return view('backend.category.create')->with('parentcat',$parentcat);
+        return view('backend.category.create')
+            ->with('parentcat',$parentcat)
+            ->with('parentcats',$this->parentcats);
     }
 
     /**
@@ -77,7 +83,9 @@ class CatController extends Controller
         $category = Category::findOrFail($id);
         $parentname = ParentCat::findOrFail($category->id_parent);
         $category->parent_name = $parentname->name;
-        return view('backend.category.show')->with('category',$category);
+        return view('backend.category.show')
+            ->with('category',$category)
+            ->with('parentcats',$this->parentcats);
     }
 
     /**
@@ -91,7 +99,8 @@ class CatController extends Controller
         $category = Category::findOrFail($id);
         //get list parentcat
         $parentcat = ParentCat::all();
-        return view('backend.category.edit',compact('category','parentcat'));
+        return view('backend.category.edit',compact('category','parentcat'))
+            ->with('parentcats',$this->parentcats);
     }
 
     /**

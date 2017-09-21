@@ -22,7 +22,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('papers.store') }}" accept-charset="UTF-8" id="papers" class="papersForm">
+                    <form method="POST" action="{{ route('storePaper',$idParent) }}" accept-charset="UTF-8" id="papers" class="papersForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->
@@ -36,9 +36,9 @@
                             <!-- Parent Cat -->
                             <div class="col-sm-12">
                                 <label for="parentcat">Chọn danh mục:</label>
-                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()">
+                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()" disabled="disabled">
                                     @foreach($parentcats as $parentcat)
-                                    <option value="{{ $parentcat->id }}">{{ $parentcat->name }}</option>
+                                    <option value="{{ $parentcat->id }}" @if($parentcat->id == $idParent) selected="selected"@endif>{{ $parentcat->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
                                 <label for="category">Chọn tiểu mục:</label>
                                 <select name="category" class="form-control">
                                 @foreach($categories as $category)
-                                    @if($category->id_parent == $parentcats[0]->id)
+                                    @if($category->id_parent == $idParent)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endif
                                 @endforeach

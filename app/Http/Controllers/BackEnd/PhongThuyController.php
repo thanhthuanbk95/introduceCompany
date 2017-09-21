@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BackEnd;
 
+use App\ParentCat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\PhongThuy;
@@ -9,6 +10,12 @@ use File;
 
 class PhongThuyController extends Controller
 {
+    protected $parentcats;
+    function __construct()
+    {
+        $this->middleware('auth');
+        $this->parentcats = ParentCat::all();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,9 @@ class PhongThuyController extends Controller
     public function index()
     {
         $phongthuy = PhongThuy::orderBy('id','DESC')->paginate(5);
-        return view('backend.phongthuy.index')->with('phongthuy', $phongthuy);
+        return view('backend.phongthuy.index')
+            ->with('phongthuy', $phongthuy)
+            ->with('parentcats', $this->parentcats);
     }
 
     /**
@@ -27,7 +36,7 @@ class PhongThuyController extends Controller
      */
     public function create()
     {
-        return view('backend.phongthuy.create');
+        return view('backend.phongthuy.create')->with('parentcats', $this->parentcats);
     }
 
     /**
@@ -64,7 +73,7 @@ class PhongThuyController extends Controller
     public function show($id)
     {   
         $phongthuy = PhongThuy::findOrFail($id);
-        return view('backend.phongthuy.show')->with('phongthuy', $phongthuy);
+        return view('backend.phongthuy.show')->with('phongthuy', $phongthuy)->with('parentcats', $this->parentcats);
     }
 
     /**
@@ -76,7 +85,7 @@ class PhongThuyController extends Controller
     public function edit($id)
     {   
         $phongthuy = PhongThuy::findOrFail($id);
-        return view('backend.phongthuy.edit')->with('phongthuy', $phongthuy);
+        return view('backend.phongthuy.edit')->with('phongthuy', $phongthuy)->with('parentcats', $this->parentcats);
     }
 
     /**
