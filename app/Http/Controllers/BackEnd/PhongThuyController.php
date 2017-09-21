@@ -16,7 +16,7 @@ class PhongThuyController extends Controller
      */
     public function index()
     {
-        $phongthuy = PhongThuy::orderBy('id','DESC')->paginate(5);
+        $phongthuy = PhongThuy::orderBy('id','DESC')->paginate(9);
         return view('backend.phongthuy.index')->with('phongthuy', $phongthuy);
     }
 

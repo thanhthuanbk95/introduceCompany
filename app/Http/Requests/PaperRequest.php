@@ -25,7 +25,7 @@ class PaperRequest extends FormRequest
     {
         return [
             'title' => 'required|min:10|max:100',
-            'describe' => 'required|min:10',
+            'describe' => 'required',
             'parentcat' => 'required|numeric|integer',
             'category' => 'required|numeric|integer'
         ];
@@ -37,7 +37,6 @@ class PaperRequest extends FormRequest
             'title.min' => 'Tiêu đề phải có ít nhất 10 ký tự',
             'title.max' => 'Tiêu đề không được dài quá 100 ký tự',
             'describe.required' => 'Mô tả không được bỏ trống',
-            'describe.min' => 'Mô tả phải có ít nhất 10 ký tự',
             'parentcat.required' => 'Danh mục không được bỏ trống',
             'parentcat.numeric' => 'Danh mục không hợp lệ',
             'parentcat.integer' => 'Danh mục không hợp lệ',

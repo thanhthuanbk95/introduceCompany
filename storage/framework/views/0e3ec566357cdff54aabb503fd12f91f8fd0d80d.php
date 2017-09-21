@@ -1,12 +1,15 @@
 <?php $__env->startSection('content'); ?>
+			<script>
+				//set active parent cat
+                document.getElementById("<?php echo e($parentcat->name); ?>").className='menu-item current-menu-item';
+			</script>
 			<main class="main-content">
 				
 				<div class="page">
 					<div class="container">
 						<a href="<?php echo e(url()->previous()); ?>" class="button-back"><img src="<?php echo e(asset('/images/arrow-back.png')); ?>" alt="" class="icon">QUAY LẠI</a>
 
-						<div class="slideshow-container" style="width: 90%;">
-							<h2><?php echo e($paper->title); ?></h2>
+						<div class="slideshow-container" style="width: 100%;">
 					<?php if(count($images) > 0): ?>
 						<?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<div class="mySlides fade">
@@ -24,8 +27,9 @@
 							<span>Địa chỉ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </span><span>100 Hùng Vương, Đà Nẵng</span><br>
 							<span>Diện tích&nbsp;&nbsp;&nbsp;&nbsp;	: </span><span>10x30m</span></div> -->
 					<?php endif; ?>
-						<div class="text" style="background: #000; opacity: 0.8;">
-						  	<span><?php echo e($paper->describe); ?></span>
+						<div class="text project-detail" style="background: #000; opacity: 0.6;">
+						  	<?php echo $paper->describe; ?>
+
 						</div>
 						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 						<a class="next" onclick="plusSlides(1)">&#10095;</a>

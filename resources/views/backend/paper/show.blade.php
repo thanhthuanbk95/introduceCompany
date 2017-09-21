@@ -34,7 +34,7 @@
                                 </tr>
                                 <tr>
                                     <td>Mô tả</td>
-                                    <td>{{ $paper->describe }}</td>
+                                    <td>{!! $paper->describe !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Người đăng</td>

@@ -1,14 +1,5 @@
 <section class="sidebar">
-    <div class="user-panel">
-        <div class="pull-left image">
-            <img src="<?php echo e(url("storage/avatars/".Auth::user()->avatar)); ?>" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-            <p><?php echo e(Auth::user()->fullname); ?></p>
-            @ <?php echo e(Auth::user()->name); ?>
 
-        </div>
-    </div>
 
     <ul class="sidebar-menu" id="list_pages">
         <li class="<?php echo e(Request::is('homepage')? 'active' : ''); ?>">

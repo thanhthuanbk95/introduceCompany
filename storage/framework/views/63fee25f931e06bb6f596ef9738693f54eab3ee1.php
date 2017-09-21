@@ -33,7 +33,7 @@
                                 </tr>
                                 <tr>
                                     <td>Mô tả</td>
-                                    <td><?php echo e($paper->describe); ?></td>
+                                    <td><?php echo $paper->describe; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Người đăng</td>
