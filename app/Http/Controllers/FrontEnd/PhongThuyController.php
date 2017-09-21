@@ -15,7 +15,7 @@ class PhongThuyController extends Controller
     {
         $parentcats = ParentCat::all();
     	$infor = Information::findOrFail(1);
-    	$phongthuy = PhongThuy::orderBy('id','DESC')->paginate(3);
+    	$phongthuy = PhongThuy::orderBy('id','DESC')->paginate(9);
         return view('frontend.phongthuy',compact('phongthuy','infor','parentcats'));
     }
 

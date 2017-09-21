@@ -21,6 +21,11 @@
                 <i class="fa fa-bar-chart"></i> <span>Thống kê</span>
             </a>
         </li>
+        <li class="<?php echo e(Request::is('admin/indexImage*')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('indexImage.index')); ?>">
+                <i class="fa fa-image"></i> <span>Ảnh Homepage</span>
+            </a>
+        </li>
         <?php if(Auth::user()->level ==  2): ?>
 
             <li class="<?php echo e(Request::is('admin/users*')? 'active' : ''); ?>">
@@ -61,6 +66,7 @@
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>
             </a>
         </li>
+
         <li class="<?php echo e(Request::is('admin/adcontact*')? 'active' : ''); ?>">
             <a href="<?php echo e(route('adcontact.index')); ?>">
                 <i class="fa fa-envelope"></i> <span>Liên hệ</span>
