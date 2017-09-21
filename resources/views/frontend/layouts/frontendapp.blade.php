@@ -12,12 +12,17 @@
 
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="{{ URL::asset('css/style-public.css') }}">
-		
 
-		<script src="{{ asset('js/public/ie-support/html5.js') }}"></script>
-		<script src="{{ asset('js/public/ie-support/respond.js') }}"></script>
-		<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
-		<script src="{{ asset('js/jquery.min.js') }}"></script>
+
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+		<script src="{{ asset('js/public/jquery-1.11.1.min.js') }}"></script>
+
+
+
+
 
 	</head>
 
@@ -41,13 +46,13 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="{{ route('homepage') }}">TRANG CHỦ</a></li>
-							<li class="menu-item"><a href="{{ route('gioithieu') }}">GIỚI THIỆU</a></li>
+							<li class="menu-item {{ Request::is('/')? 'current-menu-item' : '' }}"><a href="{{ route('homepage') }}">TRANG CHỦ</a></li>
+							<li class="menu-item {{ Request::is('gioithieu')? 'current-menu-item' : '' }}"><a href="{{ route('gioithieu') }}">GIỚI THIỆU</a></li>
 							@foreach($parentcats as $parentcat)
-							<li class="menu-item {{ Request::is('danhmuc/'.$parentcat->id)? 'current-menu-item' : '' }}"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
+							<li class="menu-item {{ Request::is('danhmuc/'.$parentcat->id)? 'current-menu-item' : '' }}" id="{{ $parentcat->name }}"><a href="{{ route('danhmuc',$parentcat->id) }}">{{ $parentcat->name }}</a></li>
 							@endforeach
-							<li class="menu-item"><a href="{{ route('phongthuy') }}">PHONG THỦY</a></li>
-							<li class="menu-item"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>
+							<li class="menu-item {{ Request::is('phongthuy')? 'current-menu-item' : '' }}" id="phongthuy"><a href="{{ route('phongthuy') }}">PHONG THỦY</a></li>
+							<li class="menu-item {{ Request::is('contact')? 'current-menu-item' : '' }}"><a href="{{ route('contact.index') }}">LIÊN HỆ</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -76,10 +81,10 @@
 
 						<div class="social-links">
 
-							<a href="http://{{$infor->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
-							<a href="http://{{$infor->google}}" target="_blank"><i class="fa fa-google-plus"></i></a>
-							<a href="http://{{$infor->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
-							<a href="http://{{$infor->pinterest}}" target="_blank"><i class="fa fa-pinterest"></i></a>
+							<a href="{{$infor->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a href="{{$infor->google}}" target="_blank"><i class="fa fa-google-plus"></i></a>
+							<a href="{{$infor->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+							<a href="{{$infor->pinterest}}" target="_blank"><i class="fa fa-pinterest"></i></a>
 
 						</div>
 
@@ -91,7 +96,7 @@
 			</footer> <!-- .site-footer -->
 		</div>
 
-		<script src="{{ asset('js/public/jquery-1.11.1.min.js') }}"></script>
+		<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
 		<script src="{{ asset('js/public/plugins.js') }}"></script>
 		<script src="{{ asset('js/public/app.js') }}"></script>
 		

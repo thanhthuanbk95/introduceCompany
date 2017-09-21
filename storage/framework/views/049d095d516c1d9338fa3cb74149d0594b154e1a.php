@@ -1,6 +1,12 @@
 <?php $__env->startSection('content'); ?>
 <main class="main-content">
-				
+	<script src="<?php echo e(asset('js/jquery-3.2.1.min.js')); ?>"></script>
+				<?php if(!empty($parentcat)): ?>
+				<script>
+					//set active parent cat
+					document.getElementById("<?php echo e($parentcat->name); ?>").className='menu-item current-menu-item';
+				</script>
+				<?php endif; ?>
 				<div class="page">
 					<div class="container">
 						<!-- <h2 class="entry-title"></h2>
@@ -10,7 +16,11 @@
 						<?php if(count($categories) > 0): ?>
 							<select class="mobile-filter" id="CatSelect" onchange="selectChange();">
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<option value="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></option>
+									<?php if(Request::is('danhmuc/tieumuc/'.$category->id)): ?>
+										<option value="<?php echo e(route('tieumuc', $category->id)); ?>" selected="selected"><?php echo e($category->name); ?></option>
+									<?php else: ?>
+										<option value="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></option>
+									<?php endif; ?>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</select>
 							<script type="text/javascript">
@@ -19,16 +29,20 @@
 									window.location=id;
 								}
 							</script>
+
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<?php if(Request::is('danhmuc/*')): ?>
+								<?php if(Request::is('danhmuc/'.$category->id_parent)): ?>
 									<?php if($loop->first): ?>
 										<a class="current" href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+									<?php else: ?>
+											<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
 									<?php endif; ?>
-								<?php endif; ?>
-								<?php if(Request::is('danhmuc/tieumuc/'.$category->id)): ?>
-									<a class="current" href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
 								<?php else: ?>
-									<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+									<?php if(Request::is('danhmuc/tieumuc/'.$category->id)): ?>
+										<a class="current" href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+									<?php elseif(!$loop->first || !Request::is('danhmuc/tieumuc/'.$category->id)): ?>
+										<a href="<?php echo e(route('tieumuc', $category->id)); ?>"><?php echo e($category->name); ?></a>
+									<?php endif; ?>
 								<?php endif; ?>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						<?php endif; ?>	

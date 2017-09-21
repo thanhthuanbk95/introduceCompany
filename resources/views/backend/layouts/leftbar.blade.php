@@ -1,13 +1,5 @@
 <section class="sidebar">
-    <div class="user-panel">
-        <div class="pull-left image">
-            <img src="{{ url("storage/avatars/".Auth::user()->avatar) }}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-            <p>{{ Auth::user()->fullname }}</p>
-            @ {{ Auth::user()->name }}
-        </div>
-    </div>
+
 
     <ul class="sidebar-menu" id="list_pages">
         <li class="{{ Request::is('homepage')? 'active' : '' }}">
@@ -18,6 +10,11 @@
         <li class="{{ Request::is('admin/index')? 'active' : '' }}">
             <a href="{{ route('admin.index') }}">
                 <i class="fa fa-bar-chart"></i> <span>Thống kê</span>
+            </a>
+        </li>
+        <li class="{{ Request::is('admin/indexImage*')? 'active' : '' }}">
+            <a href="{{ route('indexImage.index') }}">
+                <i class="fa fa-image"></i> <span>Ảnh Homepage</span>
             </a>
         </li>
         @if(Auth::user()->level ==  2)
@@ -62,11 +59,7 @@
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>
             </a>
         </li>
-        <li class="{{ Request::is('admin/indexImage*')? 'active' : '' }}">
-            <a href="{{ route('indexImage.index') }}">
-                <i class="fa fa-adjust"></i> <span>Ảnh Homepage</span>
-            </a>
-        </li>
+
         <li class="{{ Request::is('admin/adcontact*')? 'active' : '' }}">
             <a href="{{ route('adcontact.index') }}">
                 <i class="fa fa-envelope"></i> <span>Liên hệ</span>

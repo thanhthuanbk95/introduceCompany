@@ -2,7 +2,13 @@
 
 @section('content')
 <main class="main-content">
-				
+	<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+				@if(!empty($parentcat))
+				<script>
+					//set active parent cat
+					document.getElementById("{{$parentcat->name}}").className='menu-item current-menu-item';
+				</script>
+				@endif
 				<div class="page">
 					<div class="container">
 						<!-- <h2 class="entry-title"></h2>
@@ -12,7 +18,11 @@
 						@if(count($categories) > 0)
 							<select class="mobile-filter" id="CatSelect" onchange="selectChange();">
 							@foreach($categories as $category)
-								<option value="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</option>
+									@if(Request::is('danhmuc/tieumuc/'.$category->id))
+										<option value="{{ route('tieumuc', $category->id) }}" selected="selected">{{ $category->name }}</option>
+									@else
+										<option value="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</option>
+									@endif
 							@endforeach
 							</select>
 							<script type="text/javascript">
@@ -21,16 +31,20 @@
 									window.location=id;
 								}
 							</script>
+
 							@foreach($categories as $category)
-								@if(Request::is('danhmuc/*'))
+								@if(Request::is('danhmuc/'.$category->id_parent))
 									@if($loop->first)
 										<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+									@else
+											<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
 									@endif
-								@endif
-								@if(Request::is('danhmuc/tieumuc/'.$category->id))
-									<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
 								@else
-									<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+									@if(Request::is('danhmuc/tieumuc/'.$category->id))
+										<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+									@elseif(!$loop->first || !Request::is('danhmuc/tieumuc/'.$category->id))
+										<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+									@endif
 								@endif
 							@endforeach
 						@endif	

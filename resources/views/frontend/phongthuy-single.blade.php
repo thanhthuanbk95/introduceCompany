@@ -2,7 +2,10 @@
 
 @section('content')
 <main class="main-content">
-				
+	<script>
+        //set active parent cat
+        document.getElementById("phongthuy").className='menu-item current-menu-item';
+	</script>
 				<div class="page">
 					<div class="container">
 						<a href="{{ url()->previous() }}" class="button-back"><img src="{{URL::asset('/images/arrow-back.png')}}" alt="" class="icon">Quay lại</a>

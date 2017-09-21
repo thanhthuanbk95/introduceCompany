@@ -1577,8 +1577,7 @@ form input[type="submit"], form button, form input[type="reset"] {
     text-transform: uppercase; }
   .page p {
     font-size: 16px;
-    font-size: 1.1428571429em;
-    line-height: 2; }
+    font-size: 1.1428571429em;  }
 
 .feature-numbered {
   text-align: center; }
@@ -2013,4 +2012,12 @@ form input[type="submit"], form button, form input[type="reset"] {
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+}
+
+.project-detail{
+  /*padding: 10px 0px !important;*/
+}
+.project-detail p{
+  /*line-height: 0.3;*/
+  margin-top: 10px !important;
 }
