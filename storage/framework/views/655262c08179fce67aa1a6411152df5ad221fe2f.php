@@ -15,49 +15,48 @@
                 <div class="box box-default">
                     <div class="box-header" style="background-color: #f4f4f4; ">
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
-                            Bài viết Phong thủy
+                            Nội Thất
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="<?php echo e(route('phongthuy.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="<?php echo e(route('furniture.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
-                        <table class="table table-responsive table-bordered" id="tours-table">
+                        <table class="table table-responsive table-bordered " id="tours-table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Id</th>
-                                    <th class="text-center">Tiêu đề bài viết</th>
-                                    <th class="text-center">Mô tả</th>
-                                    <th class="text-center">Ảnh hiển thị</th>
-                                    <th class="text-center" colspan="3">Thao tác</th>
+                                    <th class="text-center align-middle">Id</th>
+                                    <th class="text-center align-middle">Tiêu đề</th>
+                                    <th class="text-center align-middle" width="130px">Tiểu mục</th>
+                                    <th class="text-center align-middle" width="150px">Người đăng</th>
+                                    <th class="text-center align-middle">Ảnh hiển thị</th>
+                                    <th class="text-center align-middle" width="100px">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(count($phongthuy) < 1): ?>
+                                <?php if(count($furnitures) < 1): ?>
                                 <td  class="text-center" colspan="8">Chưa có bài viết nào!</td>
                             <?php else: ?>
-                            <?php $__currentLoopData = $phongthuy; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $furnitures; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td class="text-center"><?php echo e($item->id); ?></td>
-                                    <td class="text-center"><?php echo e($item->title); ?></td>
-                                    <td class="text-center"><?php echo e($item->preview_text); ?></td>
-                                    <td class="text-center">
-                                        <?php if(empty($item->feature_image)): ?>
+                                    <td class="text-center align-middle"><?php echo e($item->id); ?></td>
+                                    <td class="text-left align-middle"><?php echo e($item->title); ?></td>
+                                    <td class="text-center align-middle"><?php echo e($item->category); ?></td>
+                                    <td class="text-center align-middle"><?php echo e($item->fullname); ?></td>
+                                    <td class="text-center align-middle">
+                                        <?php if(empty($item->image)): ?>
                                             <img src="<?php echo e(URL::asset('/images/noimage.png')); ?>" height="150px">
                                         <?php else: ?>
-                                            <img src="<?php echo e(URL::asset('/storage/phongthuy/'.$item->feature_image)); ?>" height="150px">
+                                            <img src="<?php echo e(URL::asset('/storage/images/'.$item->image)); ?>" height="150px">
                                         <?php endif; ?>
                                     </td>
                                     <td class="text-center">
-                                        <form method="POST" action="<?php echo e(route('phongthuy.destroy',$item->id)); ?>" accept-charset="UTF-8">
+                                        <form method="POST" action="<?php echo e(route('furniture.destroy',$item->id)); ?>" accept-charset="UTF-8">
                                             <?php echo e(csrf_field()); ?>
 
                                             <input name="_method" type="hidden" value="DELETE">
                                             <div class='btn-group'>
-                                                <a href="<?php echo e(route('phongthuy.show',$item->id)); ?>" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                                <a href="<?php echo e(route('phongthuy.edit',$item->id)); ?>" class='btn btn-default btn-xs'>
+                                                <a href="<?php echo e(route('furniture.edit',$item->id)); ?>" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Bạn muốn xóa bài viết này?&#039;)">
@@ -74,7 +73,7 @@
                     </div>
                     <div class="box-footer clearfix">
                         <div class="pagination-sm no-margin pull-right">
-                            <?php echo e($phongthuy->links()); ?>
+                            <?php echo e($furnitures->links()); ?>
 
                         </div>
                     </div>

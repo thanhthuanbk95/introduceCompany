@@ -21,7 +21,7 @@
                             
                             <tbody>
                                 <tr>
-                                    <td class="text-bold">ID</td>
+                                    <td class="text-bold" width="100px">ID</td>
                                     <td><?php echo e($phongthuy->id); ?></td>
                                 </tr>
                                 <tr>
@@ -48,12 +48,12 @@
                                 </tr>
                                 <tr>
                                     <td class="text-bold">Nội dung chi tiết</td>
-                                    <td><?php echo e($phongthuy->detail_text); ?></td>
+                                    <td><?php echo $phongthuy->detail_text; ?></td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
-                        <button class="btn btn-warning" type="button" onclick="window.location='<?php echo e(url()->previous()); ?>';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                        <button class="btn btn-warning" type="button" onclick="window.location='<?php echo e(route('phongthuy.index')); ?>';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                         
                     </div>
                 </div>

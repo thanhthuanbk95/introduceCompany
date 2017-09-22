@@ -52,13 +52,13 @@
 						<div class="filterable-items">
 						@if(count($papers)>0)
 							@foreach($papers as $paper)
-								<div class="project-item filterable-item shopping-center">
-									<figure class="featured-image">
-										<a href="{{ route('baiviet',$paper->id) }}">
+								<div class="project-item">
+									<figure class="featured-image" style="margin-bottom: 10px;">
+										<a href="{{ route('baiviet',$paper->id) }}" style="height: 200px;">
 										@if(empty($paper->image))
 										<img src="{{ asset('images/projectdefault.png') }}" alt="#" ><span class="project-title">
 										@else
-										<img src="{{ url('storage/images/'.$paper->image) }}" alt="#" ><span class="project-title">
+										<img src="{{ url('storage/images/'.$paper->image) }}" alt="#" style="height:inherit; max-width: 100%;"><span class="project-title">
 										@endif
 											{{ $paper->title }}</span>
 										</a>

@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <!-- Fullname Field -->
                             <div class="col-sm-6">
-                                <label for="fullname">Họ và têm:</label>
+                                <label for="fullname">Họ và tên:</label>
                                 <input class="form-control" name="fullname" type="text" id="fullname" value="<?php echo e($user->fullname); ?>">
                             </div>
                             <!-- Level Field -->

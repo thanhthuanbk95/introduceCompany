@@ -16,7 +16,7 @@
                 <span class="info-box-icon bg-aqua"><i class="fa fa-database" aria-hidden="true"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">DANH MỤC</a></span>
+                    <span class="info-box-text"><a href="{{route('parentcats.index')}}">DANH MỤC</a></span>
                     <span class="info-box-number">{{ $parent_count }}</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -29,7 +29,7 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-file-code-o"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">TIỂU MỤC</a></span>
+                    <span class="info-box-text"><a href="{{route('categories.index')}}">TIỂU MỤC</a></span>
                     <span class="info-box-number">{{ $cat_count }}</span>
                 </div>
                 <!-- /.info-box-content -->
@@ -43,11 +43,11 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-newspaper-o"></i></span>
+                <span class="info-box-icon bg-green"><i class="fa fa-image"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">BÀI VIẾT</a></span>
-                    <span class="info-box-number">{{ $paper_count }}</span>
+                    <span class="info-box-text"><a href="{{route('indexImage.index')}}">ẢNH HOMEPAGE</a></span>
+                    <span class="info-box-number">{{ $homepage_image }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -59,8 +59,66 @@
                 <span class="info-box-icon bg-yellow"><i class="fa fa-user" aria-hidden="true"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text"><a href="">NGƯỜI DÙNG</a></span>
+                    <span class="info-box-text"><a href="{{ route('users.index') }}">NGƯỜI DÙNG</a></span>
                     <span class="info-box-number">{{ $user_count }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-maroon"><i class="fa fa-university" aria-hidden="true"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text"><a href="{{ route('papers.index') }}">DỰ ÁN</a></span>
+                    <span class="info-box-number">{{ $paper_count }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-purple"><i class="fa fa-cubes"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text"><a href="{{ route('furniture.index') }}">NỘI THẤT</a></span>
+                    <span class="info-box-number">{{ $furniture_count }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-teal"><i class="fa fa-adjust"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text"><a href="{{ route('phongthuy.index') }}">PHONG THỦY</a></span>
+                    <span class="info-box-number">{{ $phongthuy_count }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-navy"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text"><a href="{{ route('adcontact.index') }}">THƯ CHƯA TRẢ LỜI</a></span>
+                    <span class="info-box-number">{{ $contact }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -111,87 +169,9 @@
                 </div>
             </div>
             <!-- /.box -->
-
-            <!-- TO DO List -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">User register recent</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                    <ul class="users-list clearfix">
-                    	@for($i=1;$i<4;$i++)
-                        <li>
-                            <img src="{{ url("storage/avatars/avatar.png") }}" alt="User Image">
-                            <a class="users-list-name" >Nguyen Manh Linh</a>
-                            <span class="users-list-date">linhnm</span>
-                        </li>
-                    	@endfor
-                    </ul>
-                    <!-- /.users-list -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                    <a href="{{ route('users.index') }}" class="uppercase">Show all</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-
         </section>
         <!-- /.Left col -->
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-5 connectedSortable">
 
-            <!-- Map box -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">The biggest rooms</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Count of member</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                	<tr>
-                                        <td>asdasdasd</td>
-                                        <td>12</td>
-                                        <td>asdasdasdasd</td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                    <a href="" class="btn btn-sm btn-info btn-flat pull-left">Create room</a>
-                    <a href="" class="btn btn-sm btn-default btn-flat pull-right">Show all rooms</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-        </section>
         <!-- right col -->
     </div>
     <!-- /.row (main row) -->

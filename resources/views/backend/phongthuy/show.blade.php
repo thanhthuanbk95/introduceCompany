@@ -22,7 +22,7 @@
                             
                             <tbody>
                                 <tr>
-                                    <td class="text-bold">ID</td>
+                                    <td class="text-bold" width="100px">ID</td>
                                     <td>{{ $phongthuy->id }}</td>
                                 </tr>
                                 <tr>
@@ -49,12 +49,12 @@
                                 </tr>
                                 <tr>
                                     <td class="text-bold">Nội dung chi tiết</td>
-                                    <td>{{ $phongthuy->detail_text }}</td>
+                                    <td>{!! $phongthuy->detail_text !!}</td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
-                        <button class="btn btn-warning" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                        <button class="btn btn-warning" type="button" onclick="window.location='{{ route('phongthuy.index') }}';" style="margin-top: 15px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
                         
                     </div>
                 </div>

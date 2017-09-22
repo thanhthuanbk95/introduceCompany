@@ -5,7 +5,11 @@
     <ul class="nav navbar-nav">
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset("/storage/avatars/".Auth::user()->avatar)}}" class="user-image" alt="User Image">
+                @if(!empty(Auth::user()->avatar))
+                    <img src="{{ asset("/storage/avatars/".Auth::user()->avatar)}}" class="user-image" alt="#">
+                @else
+                    <img src="{{ asset("/storage/avatars/avatar.png")}}" class="user-image" alt="#">
+                @endif
                 <span class="hidden-xs">{{ Auth::user()->fullname }}</span>
             </a>
             <ul class="dropdown-menu">

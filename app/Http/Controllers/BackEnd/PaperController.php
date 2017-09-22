@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\File;
 class PaperController extends Controller
 {
     protected $parentcats;
+    private $idParent;
     function __construct()
     {
         $this->middleware('auth');
         $this->parentcats = ParentCat::all();
+        $this->idParent = 1; //Du An
     }
     /**
      * Display a listing of the resource.
@@ -28,7 +30,12 @@ class PaperController extends Controller
      */
     public function index()
     {
-        $papers = Paper::orderBy('id','DESC')->paginate(10);
+        $papers = Category::join('papers','category.id','=','papers.id_cat')
+            ->join('parentcategory','category.id_parent','=','parentcategory.id')
+            ->where('id_parent','=',$this->idParent)
+            ->orderby('id','DESC')
+            ->select(['papers.*'])
+            ->paginate(10);
         if(count($papers) > 0){
             foreach ($papers as $paper){
                 $user = User::findOrFail($paper->id_user);
@@ -42,7 +49,8 @@ class PaperController extends Controller
             }
         }
         return view('backend.paper.index',compact('papers'))
-            ->with('parentcats',$this->parentcats);;
+            ->with('parentcats',$this->parentcats)
+            ->with('idParent',$this->idParent);
     }
 
     /**
@@ -52,7 +60,7 @@ class PaperController extends Controller
      */
     public function create(Request $request)
     {
-        $idParent = $request->idParent;
+        $idParent = $this->idParent;
         $categories = Category::all();
         $parentcats = ParentCat::all();
         return view('backend.paper.create',compact('categories','parentcats'))
@@ -70,7 +78,7 @@ class PaperController extends Controller
     {
         $title = $request->title;
         $describe = $request->describe;
-        $id_parent = $request->idParent;
+        $id_parent = $this->idParent;
         $id_cat = $request->category;
         $category = Category::findOrFail($id_cat);
         if($category->id_parent != $id_parent){
@@ -110,7 +118,8 @@ class PaperController extends Controller
         //lay danh sach anh
         $images = Image::where('id_paper','=',$id)->get();
         return view('backend.paper.show',compact('paper','images'))
-            ->with('parentcats',$this->parentcats);
+            ->with('parentcats',$this->parentcats)
+            ->with('idParent',$parentcat->id);
     }
 
     /**
@@ -155,10 +164,9 @@ class PaperController extends Controller
         }
         $title = $request->title;
         $describe = $request->describe;
-        $id_parent = $request->parentcat;
         $id_cat = $request->category;
         $category = Category::findOrFail($id_cat);
-        if($category->id_parent != $id_parent){
+        if($category->id_parent != $this->idParent){
             $request->session()->flash('fail','Tiểu mục và danh mục không chính xác!');
             return redirect()->back();
         }else{
@@ -219,30 +227,5 @@ class PaperController extends Controller
         File::delete('storage/images/'.$image->name);
         $image->delete();
         return $id_image;
-    }
-    public function indexByCat(Request $request)
-    {
-        $idParent = $request->idParent;
-        $papers = Category::join('papers','category.id','=','papers.id_cat')
-                        ->join('parentcategory','category.id_parent','=','parentcategory.id')
-                        ->where('id_parent','=',$idParent)
-                        ->select(['papers.*'])
-                        ->paginate(5);
-//        $papers = Paper::orderBy('id','DESC')->paginate(10);
-        if(count($papers) > 0){
-            foreach ($papers as $paper){
-                $user = User::findOrFail($paper->id_user);
-                $paper->fullname = $user->fullname;
-                $category = Category::findOrFail($paper->id_cat);
-                $paper->category = $category->name;
-                $parent_cat = ParentCat::findOrFail($category->id_parent);
-                $paper->parent_cat = $parent_cat->name;
-                $images = Image::where('id_paper', '=', $paper->id)->count();
-                $paper->images = $images;
-            }
-        }
-        return view('backend.paper.index',compact('papers'))
-            ->with('parentcats',$this->parentcats)
-            ->with('idParent',$idParent);
     }
 }

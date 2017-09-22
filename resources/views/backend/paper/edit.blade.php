@@ -34,9 +34,9 @@
                             <!-- Parent Cat -->
                             <div class="col-sm-12">
                                 <label for="parentcat">Chọn danh mục:</label>
-                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()">
+                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()" disabled="disabled">
                                     @foreach($parentcats as $parentcat)
-                                        <option value="{{ $parentcat->id }}" @if($parentcat->id == $paper->idparent) selected="selected" @endif>{{ $parentcat->name }}</option>
+                                        <option value="{{ $parentcat->id }} @if($parentcat->id == $paper->idParent) selected="selected" @endif">{{ $parentcat->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -140,6 +140,22 @@
         });
         return false;
     });
+
+    function deleteImage(id){
+        $.ajax({
+            url: "{{ route('deleteImage') }}",
+            type: 'post',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                'idimage': id
+            },
+            success: function (data) {
+                $('.picture-' + data).remove();
+            },
+            error: function () {
+            }
+        });
+    }
     function setCat() {
         var value = $("#parentcat :selected").val();
         if (value == 0) {
@@ -160,22 +176,6 @@
             });
         }
     }
-    function deleteImage(id){
-        $.ajax({
-            url: "{{ route('deleteImage') }}",
-            type: 'post',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                'idimage': id
-            },
-            success: function (data) {
-                $('.picture-' + data).remove();
-            },
-            error: function () {
-            }
-        });
-    }
-
     //EDITOR
         CKEDITOR.replace('describe', {
         filebrowserBrowseUrl: "{{ asset('admin/js/ckfinder/ckfinder.html') }}",

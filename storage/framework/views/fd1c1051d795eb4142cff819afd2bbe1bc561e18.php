@@ -29,7 +29,7 @@
                                     <th class="text-center">Tiêu đề bài viết</th>
                                     <th class="text-center">Mô tả</th>
                                     <th class="text-center">Ảnh hiển thị</th>
-                                    <th class="text-center" colspan="3">Thao tác</th>
+                                    <th class="text-center" width="100px">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>

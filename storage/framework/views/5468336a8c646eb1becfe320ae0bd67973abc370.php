@@ -34,9 +34,9 @@
                             <!-- Parent Cat -->
                             <div class="col-sm-12">
                                 <label for="parentcat">Chọn danh mục:</label>
-                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()">
+                                <select name="parentcat" id="parentcat" class="form-control" onchange="setCat()" disabled="disabled">
                                     <?php $__currentLoopData = $parentcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $parentcat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($parentcat->id); ?>" <?php if($parentcat->id == $paper->idparent): ?> selected="selected" <?php endif; ?>><?php echo e($parentcat->name); ?></option>
+                                        <option value="<?php echo e($parentcat->id); ?> <?php if($parentcat->id == $paper->idParent): ?> selected="selected" <?php endif; ?>"><?php echo e($parentcat->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -127,7 +127,6 @@
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: formdata,
             success: function(data){
-                alert(data.name);
                 var show = '<div class=\"picture-'+data.id+'\"><img src=\"../../../storage/images/'+ data.name +'\" class=\"img-thumbnail\" width=\"400px\">';
                 show = show + '<form method=\"POST\" action=\"javascript:void(0)\">'
                     + '<meta name=\"csrf-token\" content=\"<?php echo e(csrf_token()); ?>\">'
@@ -142,6 +141,22 @@
         });
         return false;
     });
+
+    function deleteImage(id){
+        $.ajax({
+            url: "<?php echo e(route('deleteImage')); ?>",
+            type: 'post',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                'idimage': id
+            },
+            success: function (data) {
+                $('.picture-' + data).remove();
+            },
+            error: function () {
+            }
+        });
+    }
     function setCat() {
         var value = $("#parentcat :selected").val();
         if (value == 0) {
@@ -162,22 +177,6 @@
             });
         }
     }
-    function deleteImage(id){
-        $.ajax({
-            url: "<?php echo e(route('deleteImage')); ?>",
-            type: 'post',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                'idimage': id
-            },
-            success: function (data) {
-                $('.picture-' + data).remove();
-            },
-            error: function () {
-            }
-        });
-    }
-
     //EDITOR
         CKEDITOR.replace('describe', {
         filebrowserBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html')); ?>",

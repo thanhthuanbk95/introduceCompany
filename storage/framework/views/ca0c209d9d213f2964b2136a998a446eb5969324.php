@@ -7,13 +7,10 @@
             <div class="col-md-12">
                 <div class="clearfix"></div>
                 <div class="box box-default">
-                    <div class="box-header" style="background-color: #f4f4f4; ">
+                    <div class="box-header" style="background-color: #f4f4f4;">
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
                             Thông tin danh mục
                         </h3>
-                        <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="<?php echo e(route('parentcats.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
-                        </div>
                     </div>
                     <div class="box-body table-responsive">
                         <table class="table table-responsive table-bordered" id="tours-table">

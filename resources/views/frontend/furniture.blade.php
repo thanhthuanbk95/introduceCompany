@@ -2,90 +2,75 @@
 
 @section('content')
 <main class="main-content">
-				
+	<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+	@if(!empty($parentcat))
+		<script>
+            //set active parent cat
+            document.getElementById("{{$parentcat->name}}").className='menu-item current-menu-item';
+		</script>
+	@endif
 				<div class="page">
 					<div class="container">
-						<!-- <h2 class="entry-title"></h2>
-						<p>Dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p> -->
-
 						<div class="filter-links filterable-nav">
-							<select class="mobile-filter">
-								<option value="">Furniture</option>
-								<option value="">Bếp</option>
-								<option value="">Phòng tắm</option>
-								<option value="">Đèn trang trí</option>
-								<option value="	">Sofa</option>
-							</select>
+							@if(count($categories) > 0)
+								<select class="mobile-filter" id="CatSelect" onchange="selectChange();">
+									@foreach($categories as $category)
+										@if(Request::is('danhmuc/tieumuc/'.$category->id))
+											<option value="{{ route('tieumuc', $category->id) }}" selected="selected">{{ $category->name }}</option>
+										@else
+											<option value="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</option>
+										@endif
+									@endforeach
+								</select>
+								<script type="text/javascript">
+                                    function selectChange(){
+                                        var id = document.getElementById("CatSelect").value;
+                                        window.location=id;
+                                    }
+								</script>
 
-							<a href="#" class="current" data-filter="*">Furniture</a>
-							<a href="#" class="">Bếp</a>
-							<a href="#" class="" >Phòng tắm</a>
-							<a href="#" class="" >Đèn trang trí</a>
-							<a href="#" class="" >Sofa</a>
+								@foreach($categories as $category)
+									@if(Request::is('danhmuc/'.$category->id_parent))
+										@if($loop->first)
+											<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+										@else
+											<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+										@endif
+									@else
+										@if(Request::is('danhmuc/tieumuc/'.$category->id))
+											<a class="current" href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+										@elseif(!$loop->first || !Request::is('danhmuc/tieumuc/'.$category->id))
+											<a href="{{ route('tieumuc', $category->id) }}">{{ $category->name }}</a>
+										@endif
+									@endif
+								@endforeach
+							@endif
 						</div>
 
 						<div class="filterable-items">
-							<div class="project-item filterable-item shopping-center">
-								<figure class="featured-image">
-									<img src="{{URL::asset('/dummy/large-thumb-1.jpg')}}" alt="#" id="open-slideshow">
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-2.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscraper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-3.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item apartment">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-4.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-5.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-6.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item shopping-center">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-7.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-8.jpg" alt="#"></a>
-								</figure>
-							</div>
-							<div class="project-item filterable-item skyscrapper">
-								<figure class="featured-image">
-									<a href="project-single.html"><img src="dummy/large-thumb-9.jpg" alt="#"></a>
-									<!-- <figcaption>
-										<h2 class="project-title"><a href="project-single.html">quam exercitationem</a></h2>
-										<p class="project-subtotle">Maecenas dictum suscipit</p>
-										<p>Sed ut perspiciatis unde omnis iste natus accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-										<a href="#" class="more-link"><img src="images/arrow.png" alt=""></a>
-									</figcaption> -->
-								</figure>
-							</div>
+
+							@if(count($papers)>0)
+								@php ($i = 1)
+								@foreach($papers as $paper)
+									@if(!empty($paper->image))
+										<div class="project-item">
+											<figure class="featured-image">
+												<img src="{{url('storage/images/'.$paper->image)}}" alt="#" class="open-slideshow" id="{{$i}}" height="200">
+											</figure>
+										</div>
+										@php ($i = $i +1)
+									@endif
+								@endforeach
+							@else
+								<div class="project-item filterable-item shopping-center">
+									<h3>KHÔNG CÓ BÀI VIẾT NÀO</h3>
+								</div>
+							@endif
 							<span style="float:right; width: 100%;">
 							<div class="pagination dark" style="float: right;">
-								<a href="#" class="pagenumber dark gradient"><<</a>
-								<span class="pagenumber dark active">1</span>
-								<a href="#" class="pagenumber dark gradient">2</a>
-								<a href="#" class="pagenumber dark gradient">3</a>
-								<a href="#" class="pagenumber dark gradient">4</a>
-								<a href="#" class="pagenumber dark gradient">5</a>
-								<a href="#" class="pagenumber dark gradient">6</a>
-								<a href="#" class="pagenumber dark gradient">>></a>
+								@if(count($papers) > 0)
+									{{ $papers->links() }}
+								@endif
 							</div>
 							</span>
 						</div>
@@ -104,41 +89,17 @@
     <span class="close">&times;</span>
     
     <div class="slideshow-container">
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-1.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-2.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-3.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-4.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-5.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-6.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-7.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-8.jpg" alt="#" id="open-slideshow">
-		</div>
-
-		<div class="mySlides fade">
-		  <img src="dummy/large-thumb-9.jpg" alt="#" id="open-slideshow">
-		</div>
+		@if(count($papers)>0)
+			@php ($i = 1)
+			@foreach($papers as $paper)
+				@if(!empty($paper->image))
+					<div class="mySlides fade">
+						<img src="{{url('storage/images/'.$paper->image)}}" alt="#" >
+					</div>
+				@endif
+				@php ($i = $i + 1)
+			@endforeach
+		@endif
 
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 		<a class="next" onclick="plusSlides(1)">&#10095;</a>

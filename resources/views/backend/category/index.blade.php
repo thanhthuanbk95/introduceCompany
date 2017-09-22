@@ -37,8 +37,8 @@
                             @else
                             @foreach($categories as $category)
                                 <tr>
-                                    <td class="text-center">{{ mb_strtoupper($category->name) }}</td>
-                                    <td class="text-center">{{ mb_strtoupper($category->parent_name) }}</td>
+                                    <td class="text-center">{{ ($category->name) }}</td>
+                                    <td class="text-center">{{ ($category->parent_name) }}</td>
                                     <td class="text-center">
                                         <form method="POST" action="{{ route('categories.destroy',$category->id) }}" accept-charset="UTF-8">
                                             {{ csrf_field() }}

@@ -14,6 +14,7 @@
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
                             <a class="btn btn-success pull-right" href="{{ route('papers.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-primary pull-right" href="{{ route('papers.edit', $paper->id) }}" style="margin-right: 10px;"><i class="glyphicon glyphicon-edit"></i> Sửa tin</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">

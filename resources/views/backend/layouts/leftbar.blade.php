@@ -34,33 +34,34 @@
                     <i class="fa fa-file-text-o"></i> <span>Giới thiệu</span>
                 </a>
             </li>
+            <li class="{{ Request::is('admin/parentcats*')? 'active' : '' }}">
+                <a href="{{ route('parentcats.index') }}">
+                    <i class="fa fa-database"></i> <span>Danh mục</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('admin/categories*')? 'active' : '' }}">
+                <a href="{{ route('categories.index') }}">
+                    <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
+                </a>
+            </li>
         @endif
-        
-
-        <li class="{{ Request::is('admin/parentcats*')? 'active' : '' }}">
-            <a href="{{ route('parentcats.index') }}">
-                <i class="fa fa-database"></i> <span>Danh mục</span>
+        <li class="{{ Request::is('admin/papers*')? 'active' : '' }}">
+            <a href="{{ route('papers.index') }}">
+                <i class="fa fa-university"></i> <span>Dự án</span>
             </a>
         </li>
-        <li class="{{ Request::is('admin/categories*')? 'active' : '' }}">
-            <a href="{{ route('categories.index') }}">
-                <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
+        <li class="{{ Request::is('admin/furniture*')? 'active' : '' }}">
+            <a href="{{ route('furniture.index') }}">
+                <i class="fa fa-cubes"></i> <span>Nội thất</span>
             </a>
         </li>
-        @foreach($parentcats as $parentcat)
-        <li class="{{ Request::is('admin/paperByCat/'.$parentcat->id)? 'active' : '' }}">
-            <a href="{{ route('paperByCat',$parentcat->id) }}">
-                <i class="fa fa-newspaper-o"></i> <span>{{ $parentcat->name }}</span>
-            </a>
-        </li>
-        @endforeach
         <li class="{{ Request::is('admin/phongthuy*')? 'active' : '' }}">
             <a href="{{ route('phongthuy.index') }}">
                 <i class="fa fa-adjust"></i> <span>Phong thủy</span>
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/adcontact*')? 'active' : '' }}">
+        <li class="{{ Request::is('admin/adcontact*')? 'active': '' }}">
             <a href="{{ route('adcontact.index') }}">
                 <i class="fa fa-envelope"></i> <span>Liên hệ</span>
             </a>

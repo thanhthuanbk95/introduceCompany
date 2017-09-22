@@ -25,7 +25,7 @@ class CategoryController extends Controller
         //lay danh sach danh muc
         $parentcats = $this->parentcats;
         $infor = $this->infor;
-        $papers = Paper::where('id_cat','=',$id)->paginate(6);
+        $papers = Paper::where('id_cat','=',$id)->paginate(9);
 
         if(count($papers) > 0){
             foreach($papers as $paper){
@@ -46,6 +46,10 @@ class CategoryController extends Controller
         $categories = Category::where('id_parent','=',$category->id_parent)->get();
         //lay danh muc
         $parentcat = ParentCat::findOrFail($category->id_parent);
-        return view('frontend.project',compact('parentcats','infor','papers','categories', 'parentcat'));
+        if($parentcat->id == 1){
+            return view('frontend.project',compact('parentcats','categories','papers','infor', 'parentcat'));
+        } else {
+            return view('frontend.furniture',compact('parentcats','categories','papers','infor', 'parentcat'));
+        }
     }
 }

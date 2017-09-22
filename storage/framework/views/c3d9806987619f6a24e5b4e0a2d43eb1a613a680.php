@@ -36,8 +36,8 @@
                             <?php else: ?>
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td class="text-center"><?php echo e($category->name); ?></td>
-                                    <td class="text-center"><?php echo e($category->parent_name); ?></td>
+                                    <td class="text-center"><?php echo e(($category->name)); ?></td>
+                                    <td class="text-center"><?php echo e(($category->parent_name)); ?></td>
                                     <td class="text-center">
                                         <form method="POST" action="<?php echo e(route('categories.destroy',$category->id)); ?>" accept-charset="UTF-8">
                                             <?php echo e(csrf_field()); ?>

@@ -50,13 +50,13 @@
 						<div class="filterable-items">
 						<?php if(count($papers)>0): ?>
 							<?php $__currentLoopData = $papers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $paper): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-								<div class="project-item filterable-item shopping-center">
-									<figure class="featured-image">
-										<a href="<?php echo e(route('baiviet',$paper->id)); ?>">
+								<div class="project-item">
+									<figure class="featured-image" style="margin-bottom: 10px;">
+										<a href="<?php echo e(route('baiviet',$paper->id)); ?>" style="height: 200px;">
 										<?php if(empty($paper->image)): ?>
 										<img src="<?php echo e(asset('images/projectdefault.png')); ?>" alt="#" ><span class="project-title">
 										<?php else: ?>
-										<img src="<?php echo e(url('storage/images/'.$paper->image)); ?>" alt="#" ><span class="project-title">
+										<img src="<?php echo e(url('storage/images/'.$paper->image)); ?>" alt="#" style="height:inherit; max-width: 100%;"><span class="project-title">
 										<?php endif; ?>
 											<?php echo e($paper->title); ?></span>
 										</a>

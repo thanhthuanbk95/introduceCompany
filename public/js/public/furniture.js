@@ -3,15 +3,20 @@
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var openslideshow = document.getElementById("open-slideshow");
+var openslideshow = document.getElementsByClassName("open-slideshow");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-openslideshow.onclick = function() {
-    modal.style.display = "block";
-}
+// When the user clicks the button, open the modal
+var slideIndex = 1;
+Array.from(openslideshow).forEach(function (item) {
+    item.onclick = function() {
+        modal.style.display = "block";
+        slideIndex = item.id;
+        showSlides(slideIndex);
+    }
+});
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -27,11 +32,13 @@ window.onclick = function(event) {
 
 
 /*JS SLIDESHOW*/
-var slideIndex = 1;
+
 showSlides(slideIndex);
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    n = parseInt(n, 10);
+    slideIndex = parseInt(slideIndex, 10);
+    showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
@@ -41,10 +48,10 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {modal.style.display = "none"; slideIndex = 1;}    
+  if (n > slides.length) {modal.style.display = "none"; slideIndex = 1;}
   if (n < 1) {modal.style.display = "none"; slideIndex = 1;}
   for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+      slides[i].style.display = "none";
   }
-  slides[slideIndex-1].style.display = "block";  
+  slides[slideIndex-1].style.display = "block";
 }

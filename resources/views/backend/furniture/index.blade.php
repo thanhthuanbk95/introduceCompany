@@ -16,48 +16,47 @@
                 <div class="box box-default">
                     <div class="box-header" style="background-color: #f4f4f4; ">
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
-                            Bài viết Phong thủy
+                            Nội Thất
                         </h3>
                         <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('phongthuy.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+                            <a class="btn btn-success pull-right" href="{{ route('furniture.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
                         </div>
                     </div>
                     <div class="box-body table-responsive">
-                        <table class="table table-responsive table-bordered" id="tours-table">
+                        <table class="table table-responsive table-bordered " id="tours-table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Id</th>
-                                    <th class="text-center">Tiêu đề bài viết</th>
-                                    <th class="text-center">Mô tả</th>
-                                    <th class="text-center">Ảnh hiển thị</th>
-                                    <th class="text-center" width="100px">Thao tác</th>
+                                    <th class="text-center align-middle">Id</th>
+                                    <th class="text-center align-middle">Tiêu đề</th>
+                                    <th class="text-center align-middle" width="130px">Tiểu mục</th>
+                                    <th class="text-center align-middle" width="150px">Người đăng</th>
+                                    <th class="text-center align-middle">Ảnh hiển thị</th>
+                                    <th class="text-center align-middle" width="100px">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(count($phongthuy) < 1)
+                                @if(count($furnitures) < 1)
                                 <td  class="text-center" colspan="8">Chưa có bài viết nào!</td>
                             @else
-                            @foreach($phongthuy as $item)
+                            @foreach($furnitures as $item)
                                 <tr>
-                                    <td class="text-center">{{ $item->id }}</td>
-                                    <td class="text-center">{{ $item->title }}</td>
-                                    <td class="text-center">{{ $item->preview_text }}</td>
-                                    <td class="text-center">
-                                        @if(empty($item->feature_image))
+                                    <td class="text-center align-middle">{{ $item->id }}</td>
+                                    <td class="text-left align-middle">{{ $item->title }}</td>
+                                    <td class="text-center align-middle">{{ $item->category }}</td>
+                                    <td class="text-center align-middle">{{ $item->fullname }}</td>
+                                    <td class="text-center align-middle">
+                                        @if(empty($item->image))
                                             <img src="{{URL::asset('/images/noimage.png')}}" height="150px">
                                         @else
-                                            <img src="{{URL::asset('/storage/phongthuy/'.$item->feature_image)}}" height="150px">
+                                            <img src="{{URL::asset('/storage/images/'.$item->image)}}" height="150px">
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <form method="POST" action="{{ route('phongthuy.destroy',$item->id) }}" accept-charset="UTF-8">
+                                        <form method="POST" action="{{ route('furniture.destroy',$item->id) }}" accept-charset="UTF-8">
                                             {{ csrf_field() }}
                                             <input name="_method" type="hidden" value="DELETE">
                                             <div class='btn-group'>
-                                                <a href="{{ route('phongthuy.show',$item->id) }}" class='btn btn-default btn-xs'>
-                                                    <i class="glyphicon glyphicon-eye-open"></i>
-                                                </a>
-                                                <a href="{{ route('phongthuy.edit',$item->id) }}" class='btn btn-default btn-xs'>
+                                                <a href="{{ route('furniture.edit',$item->id) }}" class='btn btn-default btn-xs'>
                                                     <i class="glyphicon glyphicon-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(&#039;Bạn muốn xóa bài viết này?&#039;)">
@@ -74,7 +73,7 @@
                     </div>
                     <div class="box-footer clearfix">
                         <div class="pagination-sm no-margin pull-right">
-                            {{ $phongthuy->links() }}
+                            {{ $furnitures->links() }}
                         </div>
                     </div>
                 </div>

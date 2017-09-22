@@ -10,7 +10,7 @@
 				<div class="filterable-items">
 					@if(count($phongthuy)>0)
 						@foreach($phongthuy as $item)
-							<div style="width: 33%; padding: 0 15px; float: left; margin-bottom: 30px;">
+							<div class="project-item">
 								<figure><a href="{{ route('phongthuysingle', $item->id) }}" style="height: 250px;">
 										@if(empty($item->feature_image))
 											<img src="{{URL::asset('/images/defaultimage.jpg')}}" alt="No Image" style="height:inherit; max-width: 100%;">

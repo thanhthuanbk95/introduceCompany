@@ -28,7 +28,7 @@ class ParentCatController extends Controller
         $papers = null;
         if(count($categories) > 0){
             //lay bai viet cua danh muc dau tien
-            $papers = Paper::where('id_cat','=',$categories[0]->id)->paginate(6);
+            $papers = Paper::where('id_cat','=',$categories[0]->id)->paginate(9);
             if(count($papers) > 0){
                 foreach($papers as $paper){
                     //lay ten nguoi dung dang bai viet
@@ -46,12 +46,12 @@ class ParentCatController extends Controller
                 }
             }
         }
-        // dd(count($papers));
-//        if($id == 1){
+        //dd(count($papers));
+        if($id == 1){
             return view('frontend.project',compact('parentcats','categories','papers','infor'));
-//        } else {
-//            return view('frontend.furniture',compact('parentcats','categories','papers','infor'));
-//        }
+        } else {
+            return view('frontend.furniture',compact('parentcats','categories','papers','infor'));
+        }
 
     }
 }

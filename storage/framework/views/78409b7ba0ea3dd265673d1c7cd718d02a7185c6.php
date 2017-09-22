@@ -18,37 +18,35 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="<?php echo e(route('phongthuy.update', $phongthuy->id)); ?>" accept-charset="UTF-8" id="phongthuy" class="phongthuyForm" enctype="multipart/form-data">
+                    <form method="POST" action="<?php echo e(route('furniture.update', $furniture->id)); ?>" accept-charset="UTF-8" id="phongthuy" class="phongthuyForm" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="title">ID:</label>
-                                <input class="form-control" name="id" type="text" id="id" value="<?php echo e($phongthuy->id); ?>" readonly="readonly">
+                                <input class="form-control" name="id" type="text" id="id" value="<?php echo e($furniture->id); ?>" readonly="readonly">
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <label for="title">Tiêu đề bài viết:</label>
-                                <input class="form-control" name="title" type="text" id="title" value="<?php echo e($phongthuy->title); ?>">
+                                <label for="title">Tiêu đề:</label>
+                                <input class="form-control" name="title" type="text" id="title" value="<?php echo e($furniture->title); ?>">
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="form-group">
-                            <!-- Parent Cat -->
+                        <div class="form-group" id="categoryform">
+                            <!-- Cat -->
                             <div class="col-sm-12">
-                                <label for="preview_text">Mô tả ngắn:</label>
-                                <input class="form-control" name="preview_text" type="text" id="preview_text" value="<?php echo e($phongthuy->preview_text); ?>">
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="form-group">
-                            <!-- Parent Cat -->
-                            <div class="col-sm-12">
-                                <label for="detail_text">Nội dung:</label>
-                                <textarea name="detail_text" class="form-control" id="detail_text" width="100%" rows="5"><?php echo e($phongthuy->detail_text); ?></textarea>
+                                <label for="category">Chọn tiểu mục:</label>
+                                <select name="category" class="form-control">
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($category->id_parent == $idParent): ?>
+                                            <option value="<?php echo e($category->id); ?> <?php if($category->id == $furniture->idcat): ?> selected="selected" <?php endif; ?>"><?php echo e($category->name); ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -57,11 +55,11 @@
                                 <label for="upload">Ảnh hiển thị:</label><br />
                                 <div class="feature_image">
                                 <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-                                <?php if(empty($phongthuy->feature_image)): ?>
+                                <?php if(empty($furniture->image)): ?>
                                     <input type="file" name="upload" id="upload" value="upload">
                                 <?php else: ?>
-                                    <img src="<?php echo e(URL::asset('/storage/phongthuy/'.$phongthuy->feature_image)); ?>" height="200px">
-                                    <button type="button" class="btn btn-warning" name="deleteImage" value="deleteImage" onclick="delImage(<?php echo e($phongthuy->id); ?>);" style="vertical-align: bottom; margin-left: 10px;"><i class="glyphicon glyphicon-remove"></i> Xóa ảnh</button>
+                                    <img src="<?php echo e(URL::asset('/storage/images/'.$furniture->image)); ?>" height="200px">
+                                    <button type="button" class="btn btn-warning" name="deleteImage" value="deleteImage" onclick="delImage(<?php echo e($furniture->id); ?>);" style="vertical-align: bottom; margin-left: 10px;"><i class="glyphicon glyphicon-remove"></i> Xóa ảnh</button>
                                 <?php endif; ?>
                                 </div>
                             </div>
@@ -76,28 +74,18 @@
                             <div class="clearfix"></div>
                         </div>
                     </form>
+                    </form>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 </div>
 <script type="text/javascript">
-    //EDITOR
-    CKEDITOR.replace('detail_text', {
-        filebrowserBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html')); ?>",
-        filebrowserImageBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html?type=Images')); ?>",
-        filebrowserFlashBrowseUrl: "<?php echo e(asset('admin/js/ckfinder/ckfinder.html?type=Flash')); ?>",
-        filebrowserUploadUrl: "<?php echo e(asset('admin/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files')); ?>",
-        filebrowserImageUploadUrl: "<?php echo e(asset('admin/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images')); ?>",
-        filebrowserFlashUploadUrl: "<?php echo e(asset('admin/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash')); ?>"
-    });
-
     function delImage(id){
         if(confirm("Bạn muốn xóa ảnh này?")){
             $.ajax({
-                url: "<?php echo e(route('delImage')); ?>",
+                url: "<?php echo e(route('delFurnitureImage')); ?>",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'post',
                 cache: false,

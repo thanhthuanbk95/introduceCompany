@@ -5,7 +5,11 @@
     <ul class="nav navbar-nav">
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<?php echo e(asset("/storage/avatars/".Auth::user()->avatar)); ?>" class="user-image" alt="User Image">
+                <?php if(!empty(Auth::user()->avatar)): ?>
+                    <img src="<?php echo e(asset("/storage/avatars/".Auth::user()->avatar)); ?>" class="user-image" alt="#">
+                <?php else: ?>
+                    <img src="<?php echo e(asset("/storage/avatars/avatar.png")); ?>" class="user-image" alt="#">
+                <?php endif; ?>
                 <span class="hidden-xs"><?php echo e(Auth::user()->fullname); ?></span>
             </a>
             <ul class="dropdown-menu">
@@ -18,7 +22,7 @@
                 </li>
                 <li class="user-footer">
                     <div class="pull-left">
-                        <a href="<?php echo e(route('users.edit',Auth::user()->id)); ?>" class="btn btn-default btn-flat">Edit profile</a>
+                        <a href="<?php echo e(route('getEdit')); ?>" class="btn btn-default btn-flat">Edit profile</a>
                     </div>
                     <div class="pull-right">
                         <a href="<?php echo url('/logout'); ?>" class="btn btn-default btn-flat"

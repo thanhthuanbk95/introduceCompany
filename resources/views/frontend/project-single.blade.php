@@ -23,11 +23,6 @@
 						<div class="mySlides fade">
 							<img src="{{ asset('images/projectsingledefault.png') }}" style="width: 100%;">
 						</div>
-						<!--
-						<div class="text" style="background: #000; opacity: 0.8;">
-							<span>Chủ đầu tư&nbsp;: </span><span>Phan Thanh Thuận</span><br />
-							<span>Địa chỉ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </span><span>100 Hùng Vương, Đà Nẵng</span><br>
-							<span>Diện tích&nbsp;&nbsp;&nbsp;&nbsp;	: </span><span>10x30m</span></div> -->
 					@endif
 						<div class="text project-detail" style="background: #000; opacity: 0.6;">
 						  	{!! $paper->describe !!}

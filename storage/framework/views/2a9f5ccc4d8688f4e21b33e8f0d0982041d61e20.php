@@ -8,7 +8,7 @@
 				<div class="filterable-items">
 					<?php if(count($phongthuy)>0): ?>
 						<?php $__currentLoopData = $phongthuy; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<div style="width: 33%; padding: 0 15px; float: left; margin-bottom: 30px;">
+							<div class="project-item">
 								<figure><a href="<?php echo e(route('phongthuysingle', $item->id)); ?>" style="height: 250px;">
 										<?php if(empty($item->feature_image)): ?>
 											<img src="<?php echo e(URL::asset('/images/defaultimage.jpg')); ?>" alt="No Image" style="height:inherit; max-width: 100%;">

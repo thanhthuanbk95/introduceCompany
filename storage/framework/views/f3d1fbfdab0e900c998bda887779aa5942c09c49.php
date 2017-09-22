@@ -34,22 +34,25 @@
                     <i class="fa fa-file-text-o"></i> <span>Giới thiệu</span>
                 </a>
             </li>
+            <li class="<?php echo e(Request::is('admin/parentcats*')? 'active' : ''); ?>">
+                <a href="<?php echo e(route('parentcats.index')); ?>">
+                    <i class="fa fa-database"></i> <span>Danh mục</span>
+                </a>
+            </li>
+            <li class="<?php echo e(Request::is('admin/categories*')? 'active' : ''); ?>">
+                <a href="<?php echo e(route('categories.index')); ?>">
+                    <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
+                </a>
+            </li>
         <?php endif; ?>
-        
-
-        <li class="<?php echo e(Request::is('admin/parentcats*')? 'active' : ''); ?>">
-            <a href="<?php echo e(route('parentcats.index')); ?>">
-                <i class="fa fa-database"></i> <span>Danh mục</span>
-            </a>
-        </li>
-        <li class="<?php echo e(Request::is('admin/categories*')? 'active' : ''); ?>">
-            <a href="<?php echo e(route('categories.index')); ?>">
-                <i class="fa fa-file-code-o"></i> <span>Tiểu mục</span>
-            </a>
-        </li>
         <li class="<?php echo e(Request::is('admin/papers*')? 'active' : ''); ?>">
             <a href="<?php echo e(route('papers.index')); ?>">
-                <i class="fa fa-newspaper-o"></i> <span>Bài viết</span>
+                <i class="fa fa-university"></i> <span>Dự án</span>
+            </a>
+        </li>
+        <li class="<?php echo e(Request::is('admin/furniture*')? 'active' : ''); ?>">
+            <a href="<?php echo e(route('furniture.index')); ?>">
+                <i class="fa fa-cubes"></i> <span>Nội thất</span>
             </a>
         </li>
         <li class="<?php echo e(Request::is('admin/phongthuy*')? 'active' : ''); ?>">
@@ -58,7 +61,7 @@
             </a>
         </li>
 
-        <li class="<?php echo e(Request::is('admin/adcontact*')? 'active' : ''); ?>">
+        <li class="<?php echo e(Request::is('admin/adcontact*')? 'active': ''); ?>">
             <a href="<?php echo e(route('adcontact.index')); ?>">
                 <i class="fa fa-envelope"></i> <span>Liên hệ</span>
             </a>

@@ -22,7 +22,7 @@
             </div>
             <div class="box-body">
                 <div class="row">
-                    <form method="POST" action="{{ route('storePaper',$idParent) }}" accept-charset="UTF-8" id="papers" class="papersForm">
+                    <form method="POST" action="{{ route('papers.store') }}" accept-charset="UTF-8" id="papers" class="papersForm">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <!-- Name Field -->
