@@ -7,8 +7,8 @@
 
         <title>Evita- Admin</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!-- Loading third party fonts -->
+        <link href="{{ URL::asset('fonts/font-awesome.min.css') }} " rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <link href="{{ asset('css/error.css') }}" rel="stylesheet" type="text/css">

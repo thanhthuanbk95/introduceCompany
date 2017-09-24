@@ -4,8 +4,12 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-		
-		<title>Modern Architecture</title>
+		<link rel="shortcut icon" type="image/gif" href="{{URL::asset('/images/icontitle.png')}}" />
+
+		<title>Việt Vũ Long - Tư vấn thiết kê và xây dựng</title>
+
+		<meta name="keywords" content="evita, design, architecture, tư vấn thiết kế, xây dựng, Thiết kế nhà đẹp , nội thất đẹp , công ty kiến trúc , thi công nội thất đẹp . Thiết kế nhà hàng , cafe">
+		<meta name="description" content="">
 
 		<!-- Loading third party fonts -->
 		<link href="{{ URL::asset('fonts/font-awesome.min.css') }} " rel="stylesheet" type="text/css">
@@ -40,7 +44,7 @@
 					</a> <!-- #branding -->
 
 
-			
+
 
 					<!-- Default snippet for navigation -->
 					<div class="main-navigation">
@@ -60,7 +64,7 @@
 				</div>
 			</div> <!-- .site-header -->
 
-			
+
 
 			<!-- content -->
 			@yield('content')
@@ -99,7 +103,7 @@
 		<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
 		<script src="{{ asset('js/public/plugins.js') }}"></script>
 		<script src="{{ asset('js/public/app.js') }}"></script>
-		
+
 	</body>
 
 </html>
