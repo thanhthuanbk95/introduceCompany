@@ -35,6 +35,8 @@ Route::group(['prefix'=> 'admin','namespace'=>'BackEnd'],function (){
     Route::get('/baiviet/{idParent}','PaperController@indexByCat')->name('paperByCat');
     Route::get('/them-bai-viet/{idParent}','PaperController@create')->name('createPaper');
     Route::post('/them-bai-viet/{idParent}','PaperController@store')->name('storePaper');
+    Route::get('/bai-viet/{idPaper}','PaperController@showPaper')->name('showPaper');
+
 });
 
 

@@ -88,7 +88,8 @@ class PaperController extends Controller
             $paper->category = $category->name;
             $paper->parentcat = $parentcat->name;
             return view('backend.paper.uploadimage',compact('paper'))
-                ->with('parentcats',$this->parentcats);
+                ->with('parentcats',$this->parentcats)
+                ->with('idParent',$id_parent);
         }
     }
 
@@ -244,5 +245,17 @@ class PaperController extends Controller
         return view('backend.paper.index',compact('papers'))
             ->with('parentcats',$this->parentcats)
             ->with('idParent',$idParent);
+    }
+    public function showPaper(Request $request){
+        $idPaper = $request->idPaper;
+        //lay idCat của bai viet
+        $idCat = Paper::findOrFail($idPaper)
+                ->select('id_cat')
+                ->first();
+        //lay idParent
+        $idParent = Category::findOrFail($idCat->id_cat)
+                    ->select('id_parent')
+                    ->first();
+        return redirect()->route('paperByCat',$idParent->id_parent);
     }
 }

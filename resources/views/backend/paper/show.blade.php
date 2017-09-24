@@ -12,9 +12,6 @@
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
                             Chi tiết bài viết <span style="color: #9f191f">{{ $paper->name }}</span>
                         </h3>
-                        <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="{{ route('papers.create') }}"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
-                        </div>
                     </div>
                     <div class="box-body table-responsive">
                         <table class="table table-responsive table-bordered" id="tours-table">
@@ -69,7 +66,11 @@
                                 </tr>
                             @endfor
                             </table>
-                            <button class="btn btn-warning" type="button" onclick="window.location='{{ url()->previous() }}';" style="margin-left: 5px;"><i class="glyphicon glyphicon-remove"></i> Trở về</button>
+                            <button class="btn btn-warning" type="button" style="margin-left: 5px;">
+                                <a href="{{ route('showPaper',$paper->id) }}">
+                                    <i class="glyphicon glyphicon-remove"></i> Trở về
+                                </a>
+                            </button>
                         </div>
                     </div>
                 </div>

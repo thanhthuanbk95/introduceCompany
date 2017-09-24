@@ -11,9 +11,6 @@
                         <h3 class="pull-left" style="margin: 4px 5px 0px 5px;">
                             Chi tiết bài viết <span style="color: #9f191f"><?php echo e($paper->name); ?></span>
                         </h3>
-                        <div class="pull-right" style="margin: 0px 10px;">
-                            <a class="btn btn-success pull-right" href="<?php echo e(route('papers.create')); ?>"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
-                        </div>
                     </div>
                     <div class="box-body table-responsive">
                         <table class="table table-responsive table-bordered" id="tours-table">
@@ -33,7 +30,7 @@
                                 </tr>
                                 <tr>
                                     <td>Mô tả</td>
-                                    <td><?php echo e($paper->describe); ?></td>
+                                    <td><?php echo $paper->describe; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Người đăng</td>
@@ -68,6 +65,11 @@
                                 </tr>
                             <?php endfor; ?>
                             </table>
+                            <button class="btn btn-warning" type="button" style="margin-left: 5px;">
+                                <a href="<?php echo e(route('showPaper',$paper->id)); ?>">
+                                    <i class="glyphicon glyphicon-remove"></i> Trở về
+                                </a>
+                            </button>
                         </div>
                     </div>
                 </div>
